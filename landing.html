@@ -49,6 +49,47 @@
     .sur-footer a{color:#8e442e;font-weight:700}
     @media(max-width:780px){.sur-hero{min-height:640px}.sur-hero:before{width:330px;height:330px;right:-100px;top:230px}.sur-hero:after{width:220px;height:290px;right:8%;top:39%;opacity:.83}.sur-copy{max-width:580px}.work-grid{grid-template-columns:1fr 1fr}.sur-title{align-items:flex-start;flex-direction:column}}
     @media(max-width:540px){.sur-nav nav a:not(.btn){display:none}.sur-hero{min-height:680px;padding-top:125px}.sur-hero:after{width:150px;height:205px;top:auto;bottom:13%;right:12%}.sur-hero:before{width:250px;height:250px;top:auto;bottom:9%;right:-60px}.sur-note{width:100px;height:100px;right:53%;bottom:13%;font-size:.8rem}.work-grid{grid-template-columns:1fr}.work-card{min-height:unset}.sur-section{padding-top:64px;padding-bottom:64px}.project-form{grid-template-columns:1fr}.project-form .wide{grid-column:auto}}
+    #proceso {
+      max-width: none;
+      padding-right: max(24px, calc((100% - 1160px) / 2));
+      padding-left: max(24px, calc((100% - 1160px) / 2));
+      background: #f1e7d8;
+    }
+    .sur-title { margin-bottom: 40px; }
+    .sur-title h2 { line-height: .96; }
+    .sur-title p {
+      padding-left: 18px;
+      border-left: 2px solid var(--coral);
+    }
+    .work-grid { gap: 20px; }
+    .work-card {
+      position: relative;
+      min-height: 280px;
+      padding: 28px;
+      border: 1px solid #e4d7c6;
+      border-radius: 8px 26px 26px 26px;
+      background: #fffcf6;
+    }
+    .work-card:nth-child(2) { margin-top: 26px; background: #e8eee6; }
+    .work-card:nth-child(3) { margin-top: 52px; background: #f7e4d8; }
+    .work-card strong { font-size: 3.8rem; }
+    .work-card h3 { margin-top: 34px; }
+    #contacto { padding-top: 82px; padding-bottom: 82px; }
+    .sur-contact {
+      border: 1px solid #45566b;
+      box-shadow: 0 24px 55px #17243a20;
+    }
+    .project-form select:focus-visible,
+    .project-form textarea:focus-visible { outline-color: #e6ae6e; }
+    @media(max-width:780px) {
+      #proceso { padding-right: 6%; padding-left: 6%; }
+      .work-card:nth-child(n) { margin-top: 0; }
+    }
+    @media(max-width:540px) {
+      #proceso { padding-right: 5%; padding-left: 5%; }
+      #contacto { padding-top: 60px; padding-bottom: 60px; }
+      .work-card { min-height: 220px; }
+    }
   </style>
 </head>
 <body>

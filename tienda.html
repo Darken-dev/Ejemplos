@@ -77,6 +77,55 @@
     .shop-footer a{color:#f3be75;font-weight:700}
     @media(max-width:700px){.shop-still-life{right:-55px;opacity:.34}.shop-main{padding:44px 5% 62px}.shop-tools,.shop-heading{align-items:stretch;flex-direction:column}.shop-controls{width:100%;flex-direction:column;align-items:stretch}.shop-search{width:100%}.shop-nav-links>a:not(.btn){display:none}}
     @media(prefers-reduced-motion:reduce){.shop-cart-panel{transition:none}}
+    .shop-main {
+      max-width: none;
+      padding-right: max(24px, calc((100% - 1180px) / 2));
+      padding-left: max(24px, calc((100% - 1180px) / 2));
+      background: linear-gradient(180deg, #f5eee2, #fbf8f2 72%);
+    }
+    .shop-heading {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ded5c7;
+    }
+    .shop-heading h2 { font-size: clamp(44px, 7vw, 76px); }
+    .shop-heading #result-count {
+      padding: 8px 13px;
+      border: 1px solid #d9cdbc;
+      border-radius: 99px;
+      background: #fffaf1;
+      color: var(--shop-green);
+      font-weight: 700;
+    }
+    .shop-tools { margin-bottom: 30px; }
+    .filter-chip { background: #fffaf2; }
+    .filter-chip[aria-pressed=true] { box-shadow: 0 6px 16px #2c46322b; }
+    .product {
+      border-color: #e2d9cb;
+      border-radius: 24px;
+      box-shadow: 0 10px 24px #39311e0c;
+    }
+    .product-art { height: 245px; }
+    .product-info { padding: 20px; }
+    .product-title-row h3 { font-size: 1.4rem; }
+    #nosotros {
+      padding: 64px max(24px, calc((100% - 1180px) / 2)) 82px;
+      background: #ebe3d5;
+    }
+    #nosotros .grid { gap: 18px; }
+    #nosotros .card {
+      min-height: 205px;
+      padding: 28px;
+      border-color: #e0d4c3;
+      border-radius: 24px;
+      background: #fffaf2;
+    }
+    #nosotros .card:nth-child(2) { background: #f0e7d8; }
+    #nosotros .card:nth-child(3) { background: #e4ebe2; }
+    @media(max-width:700px) {
+      .shop-main { padding: 44px 5% 62px; }
+      #nosotros { padding: 48px 5% 62px; }
+      .product-art { height: 220px; }
+    }
   </style>
 </head>
 <body>
@@ -94,7 +143,7 @@
       <div class="shop-grid" id="shop-grid"></div>
       <p class="shop-note">Tienda de demostración: los productos y precios son ilustrativos; el carrito no procesa compras.</p>
     </section>
-    <section id="nosotros" style="padding-top:0"><div class="grid"><article class="card"><span class="shop-kicker">01 / Curiosidad</span><h3 style="margin:12px 0">Diseño con intención</h3><p>Elegimos piezas que combinan utilidad, materialidad y personalidad.</p></article><article class="card"><span class="shop-kicker">02 / Detalle</span><h3 style="margin:12px 0">Hecho para durar</h3><p>Pequeños detalles que transforman la experiencia de cada objeto.</p></article><article class="card"><span class="shop-kicker">03 / Cercanía</span><h3 style="margin:12px 0">Una compra simple</h3><p>Una tienda clara, con información a mano y sin pasos de más.</p></article></div></section>
+    <section id="nosotros"><div class="grid"><article class="card"><span class="shop-kicker">01 / Curiosidad</span><h3 style="margin:12px 0">Diseño con intención</h3><p>Elegimos piezas que combinan utilidad, materialidad y personalidad.</p></article><article class="card"><span class="shop-kicker">02 / Detalle</span><h3 style="margin:12px 0">Hecho para durar</h3><p>Pequeños detalles que transforman la experiencia de cada objeto.</p></article><article class="card"><span class="shop-kicker">03 / Cercanía</span><h3 style="margin:12px 0">Una compra simple</h3><p>Una tienda clara, con información a mano y sin pasos de más.</p></article></div></section>
   </main>
   <div class="cart-backdrop" id="cart-backdrop" aria-hidden="true"></div>
   <aside class="shop-cart-panel" id="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true">

@@ -90,6 +90,57 @@
     @media(max-width:1024px){.biz-orbit{right:-320px;opacity:.2}}
     @media(max-width:800px){.biz-grid{grid-template-columns:1fr 1fr}.biz-section-head{align-items:flex-start;flex-direction:column}.biz-band{grid-template-columns:1fr}.biz-slide{grid-template-columns:1fr}}
     @media(max-width:560px){.biz-nav nav a:not(.btn){display:none}.biz-grid{grid-template-columns:1fr}.biz-card{min-height:unset}.biz-orbit{width:150px;height:150px;top:18%}.biz-orbit span{width:80px;height:80px;font-size:2rem}.biz-band{padding:24px}.biz-hero{padding-bottom:76px}}
+    .biz-section { padding-top: clamp(64px, 8vw, 98px); padding-bottom: clamp(64px, 8vw, 98px); }
+    #servicios {
+      max-width: none;
+      padding-right: max(24px, calc((100% - 1180px) / 2));
+      padding-left: max(24px, calc((100% - 1180px) / 2));
+      background: linear-gradient(180deg, #fbf5eb, #f3e8d8);
+    }
+    .biz-section-head { margin-bottom: 36px; }
+    .biz-section-head p {
+      padding: 14px 0 14px 18px;
+      border-left: 2px solid var(--violet);
+    }
+    .biz-card {
+      position: relative;
+      min-height: 260px;
+      padding: 28px;
+      border-radius: 8px 24px 24px 24px;
+      background: linear-gradient(155deg, #fffdf8, #fff7ec);
+      box-shadow: 0 12px 28px #49334c0b;
+    }
+    .biz-card:nth-child(2) { background: linear-gradient(155deg, #fffdf8, #f1eddd); }
+    .biz-card:nth-child(3) { background: linear-gradient(155deg, #fffdf8, #f8e6d9); }
+    .biz-card[aria-expanded=true] { box-shadow: 0 18px 38px #4a2d2026; }
+    .biz-icon { box-shadow: 0 6px 14px #49302c12; }
+    .biz-showcase {
+      border-color: #dfcfbe;
+      box-shadow: 0 22px 48px #49334c12;
+    }
+    #enfoque { padding-top: 28px; }
+    .biz-band {
+      border: 1px solid #e2cfbb;
+      background: linear-gradient(125deg, #f1e2d2, #f4e9dc 58%, #e8ead9);
+      box-shadow: 0 18px 42px #49334c0d;
+    }
+    .biz-metric { box-shadow: 0 6px 16px #49334c0a; }
+    .biz-metric[aria-selected=true] { box-shadow: 0 8px 20px #c15d3c22; }
+    #contacto .biz-band {
+      background: linear-gradient(120deg, #342329, #49302c);
+      color: #fffaf3;
+    }
+    #contacto .biz-band h2 { color: #fff3e5; }
+    #contacto .biz-band p { color: #ead8cb; }
+    @media(max-width:800px) {
+      #servicios { padding-right: 6%; padding-left: 6%; }
+      .biz-card { min-height: 220px; }
+    }
+    @media(max-width:560px) {
+      #servicios { padding-right: 5%; padding-left: 5%; }
+      .biz-card { min-height: 190px; }
+      #contacto .biz-band { padding: 24px; }
+    }
   </style>
 </head>
 <body>

@@ -49,6 +49,42 @@
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     @media(max-width:720px){.community-shell{grid-template-columns:minmax(0,1fr)}.community-sidebar{padding:14px}.community-sidebar h2{margin:0 0 10px}.topic-filters{display:flex;max-width:100%;min-width:0;overflow:auto;gap:5px}.topic-filter{width:auto;white-space:nowrap;flex:0 0 auto}.sidebar-note{display:none}.community-hero:after{right:-110px}}
     @media(max-width:520px){.common-nav nav a:not(.btn){display:none}.community-shell{padding-right:5%;padding-left:5%}.composer,.feed-card{padding:16px}.composer-bottom{align-items:flex-start;flex-direction:column}.community-hero{padding-top:42px;padding-bottom:48px}}
+    .community-shell { gap: 24px; margin-top: 48px; }
+    .community-sidebar {
+      border-color: #ded0bc;
+      border-radius: 8px 22px 22px 22px;
+      background: linear-gradient(160deg, #f2e7d7, #fffaf2 74%);
+      box-shadow: 0 14px 30px #4c34200d;
+    }
+    .community-sidebar h2,
+    .feed-heading h2 { font-size: clamp(1.9rem, 3vw, 2.45rem); }
+    .topic-filter { border: 1px solid transparent; }
+    .topic-filter:hover { border-color: #d7c5ad; background: #fffaf2; }
+    .topic-filter[aria-pressed=true] { border-color: var(--deep); }
+    .composer {
+      border-color: #ddcfbb;
+      border-radius: 8px 22px 22px 22px;
+      box-shadow: 0 14px 30px #4c34200d;
+    }
+    .composer-top { font-size: 1.05rem; }
+    .composer textarea { min-height: 110px; background: #fffdf9; }
+    .feed-heading {
+      margin-top: 30px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ddcfbb;
+    }
+    .feed-card {
+      border-left: 4px solid #c76557;
+      border-radius: 6px 18px 18px 6px;
+      background: #fffdf8;
+      box-shadow: 0 8px 22px #4c34200a;
+    }
+    .feed-card:nth-child(even) { border-left-color: var(--green); }
+    .post-author .avatar { box-shadow: 0 0 0 4px #f3e5d2; }
+    @media(max-width:720px) {
+      .community-shell { margin-top: 30px; }
+      .community-sidebar { border-radius: 18px; }
+    }
   </style>
 </head>
 <body>

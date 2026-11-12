@@ -45,6 +45,38 @@
     .booking-footer a{color:#ffd4c8}
     @media(max-width:760px){.booking-layout{grid-template-columns:1fr;margin-top:28px}.booking-hero:after{right:-70px;opacity:.5}.booking-aside{order:-1}}
     @media(max-width:520px){.lua-nav nav a:not(.btn){display:none}.booking-hero{padding-top:55px;padding-bottom:60px}.booking-hero:after{width:180px;height:240px;right:-110px}.booking-layout{padding-right:5%;padding-left:5%}.booking-card{padding:22px}}
+    .booking-layout { gap: 26px; }
+    .booking-card {
+      border-color: #ead9ca;
+      border-radius: 8px 28px 28px 28px;
+      box-shadow: 0 22px 54px #49334c12;
+    }
+    .booking-card h2 { font-size: clamp(2.3rem, 4vw, 3.1rem); }
+    .booking-progress { padding: 16px; border-radius: 16px; background: #faf3e9; }
+    .progress-track { height: 10px; }
+    .field-label { margin-top: 24px; color: #70463f; }
+    .service-select { background: #fffaf4; }
+    .choice {
+      padding: 10px 15px;
+      border-color: #e1d3c7;
+      background: #fffaf4;
+    }
+    .choice:hover { border-color: var(--rose); background: #fff0e4; }
+    .choice[aria-pressed=true] { box-shadow: 0 6px 14px #49302c2b; }
+    .booking-aside {
+      align-self: stretch;
+      padding: clamp(24px, 4vw, 36px);
+      border: 1px solid #dce1ce;
+      background: linear-gradient(150deg, #edf0e3, #e5eadc);
+      box-shadow: 0 18px 42px #49334c0c;
+    }
+    .booking-aside h2 { line-height: 1.04; }
+    .booking-summary { border: 1px solid #e7d6c3; }
+    #booking-result { border-left: 3px solid var(--rose); }
+    @media(max-width:760px) {
+      .booking-layout { gap: 16px; }
+      .booking-aside { border-radius: 22px; }
+    }
   </style>
 </head>
 <body>

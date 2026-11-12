@@ -83,7 +83,7 @@
       top: 14%;
       right: 4%;
       border: 1px solid #f4bb7838;
-      border-top-color: var(--accent);
+      border-top: 2px solid var(--accent);
       border-radius: 50%;
       box-shadow: 0 0 0 42px #f4bb780c, 0 0 0 84px #f4bb7808;
     }
@@ -407,6 +407,67 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .bar.is-hidden { transform: translateX(-50%); }
       .mq div { animation: none; }
+    }
+    #ejemplos {
+      background: radial-gradient(ellipse at 8% 12%, #493137 0, transparent 38%), #2b2025;
+    }
+    #ejemplos .section-heading h2,
+    .service-section h2 {
+      letter-spacing: -.015em;
+    }
+    #ejemplos .eyebrow,
+    .service-section > h2 {
+      color: var(--accent);
+    }
+    .portfolio-filters {
+      padding: 8px;
+      border: 1px solid #594348;
+      border-radius: 18px;
+      background: #241c20;
+    }
+    .portfolio-filter[aria-pressed="true"] {
+      box-shadow: 0 6px 18px #d66b4940;
+    }
+    .portfolio-count {
+      margin: 14px 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .c {
+      border-color: #594348;
+      box-shadow: 0 12px 30px #120d1055;
+    }
+    .c:nth-child(3n + 2) { transform: translateY(14px); }
+    .c:nth-child(3n + 2):hover { transform: translateY(8px); }
+    .service-section {
+      position: relative;
+      padding-top: clamp(58px, 8vw, 92px);
+      padding-bottom: clamp(58px, 8vw, 92px);
+      border-top: 1px solid #594348;
+    }
+    .service-section:nth-of-type(even) {
+      background: linear-gradient(145deg, #2e2328, #271f23);
+    }
+    .service-section > h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+    }
+    .section-lead {
+      max-width: 700px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+    .plan-card.featured {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 46px #0004, 0 0 0 5px #d66b491a;
+    }
+    .contact {
+      box-shadow: 0 24px 60px #0004;
+    }
+    @media (max-width: 640px) {
+      .c:nth-child(3n + 2), .plan-card.featured { transform: none; }
+      .portfolio-filters { padding: 6px; }
     }
   </style>
 </head>
