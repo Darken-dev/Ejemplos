@@ -469,6 +469,326 @@
       .c:nth-child(3n + 2), .plan-card.featured { transform: none; }
       .portfolio-filters { padding: 6px; }
     }
+    #servicios,
+    #publicidad,
+    #preguntas {
+      background:
+        radial-gradient(ellipse at 92% 10%, #73433830, transparent 34%),
+        linear-gradient(145deg, #302329, #251d21 76%);
+    }
+    #servicios .section-lead,
+    #planes .section-lead,
+    #extras .section-lead,
+    #publicidad .section-lead,
+    #dominio .section-lead,
+    #herramientas .section-lead { max-width: 620px; }
+    #servicios {
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 8% 92%, #d66b491c, transparent 34%),
+        radial-gradient(ellipse at 94% 8%, #f4bb7817, transparent 30%),
+        linear-gradient(145deg, #302329, #251d21 76%);
+    }
+    #servicios > h2 {
+      max-width: 700px;
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      line-height: .9;
+    }
+    #servicios > .section-lead {
+      max-width: 520px;
+      margin: 18px 0 42px;
+      padding-left: 16px;
+      border-left: 2px solid var(--accent-strong);
+    }
+    .process-grid {
+      position: relative;
+      isolation: isolate;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: start;
+      gap: 14px;
+      padding-top: 20px;
+    }
+    .process-grid::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 54px;
+      right: 9%;
+      left: 9%;
+      height: 2px;
+      background: linear-gradient(90deg, #d66b49, #f4bb78 52%, #d66b49);
+      opacity: .7;
+    }
+    .process-step {
+      position: relative;
+      min-width: 0;
+      min-height: 260px;
+      padding: 20px;
+      overflow: hidden;
+      border: 1px solid #ead8c54d;
+      border-radius: 7px 22px 22px;
+      background: linear-gradient(155deg, #fffaf3, #f3e7d8);
+      box-shadow: 0 18px 38px #100a0c35;
+    }
+    .process-step:nth-child(even) {
+      margin-top: 38px;
+      background: linear-gradient(155deg, #fffaf3, #edddd0);
+    }
+    .process-step::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: -52px;
+      bottom: -58px;
+      border: 1px solid #bd563930;
+      border-radius: 50%;
+      box-shadow: 0 0 0 14px #bd56390a, 0 0 0 28px #bd563907;
+      transition: transform .35s ease, border-color .35s ease;
+    }
+    .process-step:hover::after { transform: scale(1.16) rotate(18deg); border-color: #bd563975; }
+    .process-step b {
+      position: relative;
+      z-index: 1;
+      width: 54px;
+      height: 54px;
+      margin: 0 0 30px;
+      display: grid;
+      place-items: center;
+      border: 5px solid #fffaf3;
+      border-radius: 18px;
+      background: #f3dfc9;
+      color: #a64e37;
+      font-size: 1.65rem;
+      box-shadow: 0 0 0 1px #d8b69b, 0 8px 18px #49302c1a;
+      transition: transform .25s ease, border-radius .25s ease;
+    }
+    .process-step:hover b { transform: rotate(-7deg) scale(1.06); border-radius: 50%; }
+    .process-step h3 { position: relative; z-index: 1; margin-bottom: 10px; color: #38282a; font-size: 1.55rem; }
+    .process-step p { position: relative; z-index: 1; color: #6d5b52; }
+    #planes {
+      background:
+        radial-gradient(ellipse at 12% 80%, #a34a3830, transparent 34%),
+        #211a1e;
+    }
+    .plan-grid { gap: 20px; }
+    .plan-card {
+      min-height: 420px;
+      padding: 30px;
+      border: 1px solid #f1dfcf;
+      border-radius: 8px 26px 26px;
+      background: linear-gradient(155deg, #fffaf3, #f1e4d7);
+      box-shadow: 0 18px 38px #0e090b44;
+    }
+    .plan-card:nth-child(3) { background: linear-gradient(155deg, #fffaf3, #e9e9dc); }
+    .plan-card.featured {
+      border: 2px solid var(--accent);
+      background: linear-gradient(155deg, #fffdf8, #f8e6d3);
+      box-shadow: 0 24px 48px #0e090b5c, 0 0 0 5px #f4bb781c;
+    }
+    .plan-card h3 { font-size: 2rem; }
+    .plan-badge { background: #f4bb78; color: #3a2728; }
+    .plan-card .plan-link { align-self: stretch; text-align: center; }
+    #extras {
+      background:
+        radial-gradient(ellipse at 90% 15%, #d89c6828, transparent 30%),
+        linear-gradient(145deg, #493137, #302329);
+    }
+    .extras-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(22px, 4vw, 40px);
+      border: 1px solid #ffffff37;
+      border-radius: 28px;
+      background: linear-gradient(130deg, #fffaf3, #f0e2d3);
+      color: #38282a;
+      box-shadow: 0 24px 55px #100a0c4d;
+    }
+    .extras-panel::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -130px;
+      top: -150px;
+      border: 1px solid #c15d3c2b;
+      border-radius: 50%;
+      box-shadow: 0 0 0 22px #c15d3c0d, 0 0 0 46px #c15d3c08;
+      pointer-events: none;
+    }
+    .extras-plan { position: relative; z-index: 1; }
+    .extras-plan select {
+      border-color: #dfcdb9;
+      border-radius: 12px;
+      background: #fffdf9;
+      color: #38282a;
+    }
+    .extras-grid { position: relative; z-index: 1; gap: 14px; }
+    .extra-option {
+      border-color: #e6d7c6;
+      border-radius: 15px;
+      background: #fffdf9;
+      box-shadow: 0 6px 16px #49302c0c;
+    }
+    .extras-summary {
+      position: relative;
+      z-index: 1;
+      padding: 14px 16px;
+      border-left: 3px solid #bd5639;
+      border-radius: 0 12px 12px 0;
+      background: #f5e8d9;
+      color: #5e4d45;
+    }
+    .extras-submit { position: relative; z-index: 1; }
+    #publicidad .ads-link {
+      border-color: #ead9c8;
+      border-radius: 8px 18px 18px;
+      background: linear-gradient(145deg, #fffaf3, #f1e5d9);
+      box-shadow: 0 10px 24px #100a0c24;
+    }
+    .ads-support {
+      padding: clamp(20px, 3vw, 30px);
+      border: 1px solid #ffffff25;
+      border-radius: 20px;
+      background: linear-gradient(120deg, #493137, #38272c);
+      box-shadow: 0 14px 30px #100a0c30;
+    }
+    #dominio {
+      background: linear-gradient(150deg, #f0e4d7, #e8e7db);
+      color: #38282a;
+    }
+    #dominio > h2,
+    #herramientas > h2 { color: #38282a; }
+    #dominio > .section-lead,
+    #herramientas > .section-lead { color: #6b5b51; }
+    .ownership-grid { gap: 18px; }
+    .ownership-card {
+      min-height: 230px;
+      border: 1px solid #ddcbb9;
+      border-radius: 8px 22px 22px;
+      background: linear-gradient(150deg, #fffaf3, #f8f0e6);
+      box-shadow: 0 12px 28px #49302c10;
+    }
+    .ownership-card:nth-child(2) { background: linear-gradient(150deg, #fffaf3, #f1e8dc); }
+    .ownership-card:nth-child(3) { background: linear-gradient(150deg, #fffaf3, #e9ecdf); }
+    .ownership-card h3 { color: #9c442f; font-size: 1.8rem; }
+    .payment-note {
+      padding: 20px 24px;
+      border: 1px solid #d5c1ad;
+      border-left: 5px solid #bd5639;
+      border-radius: 5px 16px 16px 5px;
+      background: #fffaf3;
+      color: #55453f;
+      box-shadow: 0 8px 22px #49302c0c;
+    }
+    #preguntas .faq-list {
+      max-width: none;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid #ffffff26;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #fffaf3, #f2e7db);
+      box-shadow: 0 20px 42px #100a0c38;
+    }
+    .faq-item { border-color: #e3d2c1; border-radius: 12px; }
+    .faq-question { min-height: 62px; }
+    #herramientas {
+      background:
+        radial-gradient(ellipse at 84% 78%, #c15d3c17, transparent 33%),
+        #f4eadb;
+      color: #38282a;
+    }
+    .sk {
+      max-width: 920px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid #e1d0be;
+      border-radius: 22px;
+      background: #fffaf3;
+      box-shadow: 0 14px 34px #49302c10;
+    }
+    .sk span {
+      padding: 10px 17px;
+      border-color: #e0cbb6;
+      background: #f4e7d8;
+      color: #66463a;
+    }
+    .contact {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      padding: clamp(34px, 7vw, 84px) max(6%, calc((100% - 1120px) / 2));
+      border: 0;
+      border-radius: 0;
+      background:
+        radial-gradient(circle at 88% 18%, #f4bb7830 0 2px, transparent 3px),
+        radial-gradient(ellipse at 90% 8%, #d66b4948, transparent 34%),
+        linear-gradient(125deg, #493137, #241c20 78%);
+      box-shadow: none;
+    }
+    .contact::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -110px;
+      bottom: -180px;
+      border: 1px solid #f4bb7844;
+      border-radius: 50%;
+      box-shadow: 0 0 0 34px #f4bb7810, 0 0 0 70px #f4bb7808;
+      pointer-events: none;
+    }
+    .contact .eyebrow { color: var(--accent); }
+    .contact h2 { position: relative; z-index: 1; font-size: clamp(3rem, 7vw, 5.5rem); }
+    .contact > p { position: relative; z-index: 1; }
+    .contact-options { position: relative; z-index: 1; gap: 16px; }
+    .contact-link {
+      min-height: 92px;
+      justify-content: center;
+      border: 1px solid #ead8c7;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #fffaf3, #f3e5d7);
+      box-shadow: 0 12px 28px #100a0c30;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .contact-link:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 18px 34px #100a0c40;
+    }
+    .contact-link strong { color: #9c442f; }
+    .contact-link span { color: #493a35; }
+    footer { padding: 25px 5%; background: #1b1518; }
+    @media (max-width: 760px) {
+      .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .process-grid::before { display: none; }
+      .process-step:nth-child(even) { margin-top: 22px; }
+      .plan-card { min-height: 380px; }
+      .plan-card.featured { transform: none; }
+      .ownership-card { min-height: unset; }
+    }
+    @media (max-width: 640px) {
+      #servicios > .section-lead { margin-bottom: 28px; }
+      .process-grid { grid-template-columns: 1fr; gap: 12px; padding: 0 0 0 16px; }
+      .process-grid::before {
+        display: block;
+        top: 28px;
+        bottom: 28px;
+        left: 41px;
+        width: 2px;
+        height: auto;
+        background: linear-gradient(180deg, #d66b49, #f4bb78 52%, #d66b49);
+      }
+      .process-step,
+      .process-step:nth-child(even) {
+        min-height: 0;
+        margin: 0;
+        padding: 18px;
+      }
+      .process-step b { margin-bottom: 18px; }
+      .plan-card { min-height: unset; padding: 24px; }
+      #preguntas .faq-list { padding: 14px; }
+      .contact { padding: 52px 6%; }
+      .contact-link { min-width: 100%; }
+    }
   </style>
 </head>
 <body>
