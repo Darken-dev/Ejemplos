@@ -1,8 +1,124 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Blog y noticias</title><style>body{background:#fff}header{border-bottom:3px solid #111;text-align:center;padding:22px}header h1{font-size:3.4rem}.f{margin:30px 5%;border-radius:24px;min-height:300px;background:linear-gradient(120deg,#111,#0a63ff);color:#fff;padding:40px;display:flex;flex-direction:column;justify-content:flex-end}.f h2{font-size:clamp(34px,5vw,60px);max-width:640px}.tg{background:#fff;color:#111;padding:3px 12px;border-radius:99px;font-weight:700;font-size:.8rem;align-self:flex-start;margin-bottom:12px}.card h3{font-size:1.6rem;margin:8px 0}.card small{color:#0a63ff;font-weight:700}</style></head><body>
-<header><h1>EL CRONISTA DIARIO</h1></header>
-<div class="f rv"><span class="tg">Destacado</span><h2>Cómo la tecnología cambió la manera de contar historias</h2></div>
-<section style="padding-top:10px"><div class="grid">
-<div class="card"><small>Economía</small><h3>El comercio local se digitaliza</h3><p>Cada vez más negocios venden por internet.</p></div>
-<div class="card"><small>Cultura</small><h3>Festival de cine independiente</h3><p>Una semana de estrenos y charlas.</p></div>
-<div class="card"><small>Deportes</small><h3>La liga define a sus finalistas</h3><p>Resumen de la fecha y posiciones.</p></div>
-<div class="card"><small>Tecnología</small><h3>Diseño web: tendencias del año</h3><p>Más velocidad y menos ruido visual.</p></div></div></section><a class="back" href="index.html">← Volver al portafolio</a></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ejemplo de revista digital con notas y filtros por tema.">
+  <title>Papel &amp; Punto | Ideas para entender lo que pasa</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root{--editorial:#bf3927;--paper:#f6f1e8;--ink:#1f1e1b;--muted:#77736d}
+    body{background:var(--paper);color:var(--ink)}
+    .masthead{padding:0 max(5%,calc((100% - 1120px)/2));background:var(--paper)}
+    .masthead nav{position:static;padding:13px 0;background:transparent;backdrop-filter:none;border-bottom:1px solid #d7d0c4}
+    .masthead nav a{margin:0;color:var(--ink);text-decoration:none;font-size:.88rem}
+    .masthead nav .brand{font:800 1.2rem 'Barlow Condensed';letter-spacing:.08em}
+    .masthead nav .brand span{color:var(--editorial)}
+    .masthead .section-link{font-weight:700}
+    .brandline{padding:32px 0 25px;display:flex;align-items:end;justify-content:space-between;gap:15px}
+    .brandline h1{font-size:clamp(48px,8vw,88px);line-height:.83;letter-spacing:-.04em}
+    .brandline h1 span{color:var(--editorial)}
+    .brandline p{max-width:230px;color:var(--muted);font-size:.92rem;text-align:right}
+    .editorial-main{max-width:1120px;margin:auto;padding:12px 24px 76px}
+    .editorial-feature{position:relative;min-height:370px;overflow:hidden;padding:clamp(28px,6vw,58px);display:flex;align-items:end;border-radius:4px;background:linear-gradient(110deg,#342421 8%,#6a4334 58%,#bd543b);color:#fff}
+    .editorial-feature:before{content:"";position:absolute;width:270px;height:270px;right:13%;top:12%;border:1px solid #ffffff44;border-radius:50%;box-shadow:0 0 0 34px #ffffff12,0 0 0 68px #ffffff0b}
+    .editorial-feature:after{content:"";position:absolute;width:130px;height:220px;right:19%;top:21%;border-radius:90px 90px 12px 12px;background:linear-gradient(160deg,#e2ad7544,#e2ad7500);border:1px solid #ffffff32}
+    .feature-copy{position:relative;z-index:1;max-width:680px}
+    .feature-label{display:inline-block;margin-bottom:14px;padding:5px 10px;background:var(--editorial);font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .editorial-feature h2{font-size:clamp(38px,6vw,68px);line-height:.95}
+    .feature-meta{display:flex;gap:14px;margin:15px 0 20px;color:#dedede;font-size:.87rem}
+    .read-link{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700}
+    .read-link:hover{color:#ffd27d}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:48px 0 18px}
+    .section-heading h2{font-size:clamp(34px,5vw,54px)}
+    .story-filters{display:flex;flex-wrap:wrap;gap:7px}
+    .story-filter{padding:8px 13px;border:1px solid #d7d0c4;border-radius:99px;background:transparent;font:700 .85rem Barlow;cursor:pointer;white-space:nowrap}
+    .story-filter[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+    .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .story{min-height:225px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;border-top:4px solid var(--editorial);background:#fff;transition:transform .2s,box-shadow .2s}
+    .story:hover{transform:translateY(-4px);box-shadow:0 14px 28px #22190c12}
+    .story-open{display:flex;align-items:center;gap:7px;margin-top:16px;padding:0;border:0;background:transparent;color:var(--editorial);font:700 .9rem Barlow;cursor:pointer}
+    .story-open:hover{color:#7d2c20}
+    .story-open:focus-visible{outline:3px solid #d39743;outline-offset:4px;border-radius:3px}
+    .story-dialog{width:min(560px,calc(100% - 32px));margin:auto;padding:0;border:0;border-radius:22px;background:#fffaf2;color:var(--ink);box-shadow:0 24px 80px #1f120b55}
+    .story-dialog::backdrop{background:#211714aa;backdrop-filter:blur(3px)}
+    .dialog-content{padding:clamp(22px,5vw,36px)}
+    .dialog-top{display:flex;align-items:center;justify-content:space-between;gap:15px}
+    .dialog-close{width:40px;height:40px;border:0;border-radius:50%;background:#f1e4d7;color:var(--ink);font-size:1.35rem;cursor:pointer}
+    .dialog-content h2{margin:18px 0 12px;font-size:clamp(32px,7vw,48px)}
+    .dialog-summary{color:#554b43;font-size:1.08rem}
+    .dialog-note{margin-top:24px;padding:12px;border-left:3px solid var(--editorial);background:#f8eee3;color:#705f50;font-size:.88rem}
+    .story-dialog-open{overflow:hidden}
+    .story:nth-child(3n+2){border-color:#50756e}.story:nth-child(3n){border-color:#d39743}
+    .story small{color:var(--editorial);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .story h3{margin:12px 0;font:700 1.5rem Barlow;line-height:1.15}
+    .story p{color:var(--muted);font-size:.92rem}
+    .story-meta{margin-top:20px;color:var(--muted);font-size:.8rem}
+    .editorial-footer{padding:26px 5%;background:#1f1e1b;color:#f6f1e8;text-align:center}
+    .editorial-footer a{color:#ffc580;font-weight:700}
+    @media(max-width:750px){.story-grid{grid-template-columns:1fr 1fr}.section-heading{align-items:flex-start;flex-direction:column}.editorial-feature:before{right:-70px}.editorial-feature:after{right:4%}}
+    @media(max-width:520px){.masthead nav .section-link{display:none}.brandline{align-items:flex-start;flex-direction:column}.brandline p{text-align:left}.story-grid{grid-template-columns:1fr}.story{min-height:180px}.editorial-main{padding:12px 5% 55px}}
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <nav aria-label="Navegación principal"><a class="brand" href="#inicio">P&P<span>.</span></a><div><a class="section-link" href="#notas">Últimas notas</a><a class="btn" href="index.html">Ver ejemplos</a></div></nav>
+    <div class="brandline" id="inicio"><h1>PAPEL &<br><span>PUNTO</span></h1><p>Ideas, cultura y actualidad<br>para mirar distinto.</p></div>
+  </header>
+  <main class="editorial-main">
+    <article class="editorial-feature">
+      <div class="feature-copy"><span class="feature-label">Edición destacada</span><h2>Cómo la tecnología cambió la manera de contar historias</h2><div class="feature-meta"><span>Especial de cultura</span><span>·</span><span>6 min de lectura</span></div><a class="read-link" href="#notas">Explorar la edición <span aria-hidden="true">→</span></a></div>
+    </article>
+    <section id="notas">
+      <div class="section-heading"><div><p class="feature-label">Lo último</p><h2>Historias que importan.</h2></div><div class="story-filters" id="story-filters" role="group" aria-label="Filtrar notas"></div></div>
+      <div class="story-grid" id="story-grid"></div>
+    </section>
+  </main>
+  <dialog class="story-dialog" id="story-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-content">
+      <div class="dialog-top"><span class="feature-label" id="dialog-category"></span><button class="dialog-close" id="dialog-close" type="button" aria-label="Cerrar nota">×</button></div>
+      <h2 id="dialog-title"></h2>
+      <p class="dialog-summary" id="dialog-summary"></p>
+      <p class="dialog-note">Vista previa editorial: esta nota y su contenido son ejemplos ilustrativos.</p>
+    </div>
+  </dialog>
+  <footer class="editorial-footer">Papel & Punto · <a href="index.html">Volver a los ejemplos</a></footer>
+  <script>
+    const stories=[
+      {category:"Economía",title:"El comercio local se reinventa",description:"Pequeños negocios descubren nuevas formas de llegar a sus comunidades.",time:"4 min"},
+      {category:"Cultura",title:"Un festival para descubrir nuevas voces",description:"Artistas independientes abren sus espacios a una ciudad curiosa.",time:"6 min"},
+      {category:"Deportes",title:"La temporada entra en su etapa decisiva",description:"Los equipos afinan estrategias para una definición que promete.",time:"3 min"},
+      {category:"Tecnología",title:"Diseñar para una vida más conectada",description:"Ideas y herramientas que hacen más sencilla la experiencia digital.",time:"5 min"},
+      {category:"Cultura",title:"Librerías pequeñas, grandes encuentros",description:"Los espacios de lectura se vuelven puntos de encuentro del barrio.",time:"4 min"},
+      {category:"Economía",title:"Emprender con propósito y comunidad",description:"Nuevos proyectos ponen a las personas en el centro de su crecimiento.",time:"7 min"}
+    ];
+    let activeStoryFilter="Todas";
+    const filters=["Todas",...new Set(stories.map(story=>story.category))];
+    const filterContainer=document.getElementById("story-filters");
+    const grid=document.getElementById("story-grid");
+    let previousStoryButton=null;
+    function renderStories(){
+      filterContainer.innerHTML=filters.map(filter=>`<button class="story-filter" type="button" data-filter="${filter}" aria-pressed="${activeStoryFilter===filter}">${filter}</button>`).join("");
+      const visible=stories.filter(story=>activeStoryFilter==="Todas"||story.category===activeStoryFilter);
+      grid.innerHTML=visible.map(story=>`<article class="story"><div><small>${story.category}</small><h3>${story.title}</h3><p>${story.description}</p><button class="story-open" type="button" data-story="${stories.indexOf(story)}">Leer nota <span aria-hidden="true">→</span></button></div><div class="story-meta">Lectura · ${story.time}</div></article>`).join("");
+    }
+    filterContainer.addEventListener("click",event=>{const button=event.target.closest("[data-filter]");if(!button)return;activeStoryFilter=button.dataset.filter;renderStories();filterContainer.querySelector('[aria-pressed="true"]')?.focus()});
+    const storyDialog=document.getElementById("story-dialog");
+    const closeStoryDialog=()=>storyDialog.close();
+    grid.addEventListener("click",event=>{
+      const button=event.target.closest("[data-story]");
+      if(!button)return;
+      const story=stories[Number(button.dataset.story)];
+      previousStoryButton=button;
+      document.getElementById("dialog-category").textContent=story.category;
+      document.getElementById("dialog-title").textContent=story.title;
+      document.getElementById("dialog-summary").textContent=story.description;
+      storyDialog.showModal();
+    });
+    document.getElementById("dialog-close").addEventListener("click",closeStoryDialog);
+    storyDialog.addEventListener("close",()=>previousStoryButton?.focus());
+    renderStories();
+  </script>
+  <a class="back" href="index.html">← Volver a los ejemplos</a>
+</body>
+</html>

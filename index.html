@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Manuel Fernandez Tolomeo crea sitios web a medida, rápidos y adaptables. Conocé sus ejemplos, servicios y opciones de contacto.">
-  <meta name="theme-color" content="#08152b">
+  <meta name="theme-color" content="#241c20">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
@@ -19,14 +19,14 @@
   <style>
     :root {
       color-scheme: dark;
-      --page: #08152b;
-      --surface: #10213d;
-      --surface-raised: #172b4b;
-      --text: #f5f8ff;
-      --muted: #becbe0;
-      --accent: #77a7ff;
-      --accent-strong: #3478f6;
-      --line: #2a3d5d;
+      --page: #241c20;
+      --surface: #30252a;
+      --surface-raised: #403036;
+      --text: #fff8f0;
+      --muted: #dfcfc4;
+      --accent: #f4bb78;
+      --accent-strong: #d66b49;
+      --line: #594348;
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 100px; }
@@ -44,7 +44,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      background: #0e1e37;
+      background: #30252a;
       border: 1px solid var(--line);
       border-radius: 18px;
       z-index: 20;
@@ -58,35 +58,43 @@
     .nav-links a:not(.btn) { color: var(--muted); font-weight: 700; text-decoration: none; }
     .nav-links a:not(.btn):hover { color: var(--text); }
     .btn { background: var(--accent-strong); }
-    .btn:hover { background: #2468e8; }
+    .btn:hover { background: #bd5639; }
     .hero {
-      min-height: 92vh;
-      min-height: 92svh;
-      padding: 150px 8% 84px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      min-height: 88vh;
+      min-height: 88svh;
+      padding: 140px max(6%, calc((100% - 1180px) / 2)) 82px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(290px, .85fr);
+      align-items: center;
+      gap: 48px;
       position: relative;
       overflow: hidden;
       isolation: isolate;
       background:
-        radial-gradient(ellipse at 82% 23%, #2455a84d, transparent 34%),
-        linear-gradient(135deg, #08152b 12%, #10284d 100%);
+        radial-gradient(ellipse at 82% 23%, #c66a4d3b, transparent 34%),
+        linear-gradient(135deg, #241c20 12%, #452c2d 100%);
     }
     .hero::after {
       content: "";
       position: absolute;
       z-index: -1;
-      width: min(38vw, 460px);
+      width: min(36vw, 440px);
       aspect-ratio: 1;
-      top: 17%;
-      right: 3%;
-      border: 1px solid #77a7ff2e;
+      top: 14%;
+      right: 4%;
+      border: 1px solid #f4bb7838;
+      border-top-color: var(--accent);
       border-radius: 50%;
-      box-shadow: 0 0 0 42px #77a7ff0b, 0 0 0 84px #77a7ff08;
+      box-shadow: 0 0 0 42px #f4bb780c, 0 0 0 84px #f4bb7808;
     }
+    .hero-copy { position: relative; z-index: 1; }
     .eyebrow {
-      color: var(--accent);
+      width: fit-content;
+      padding: 7px 12px;
+      border: 1px solid #f4bb7852;
+      border-radius: 99px;
+      background: #3a282b;
+      color: #f7c68c;
       font-size: .9rem;
       font-weight: 700;
       letter-spacing: .12em;
@@ -94,9 +102,9 @@
       position: relative;
     }
     .hero h1 {
-      max-width: 900px;
+      max-width: 720px;
       margin-top: 18px;
-      font-size: clamp(54px, 9vw, 112px);
+      font-size: clamp(54px, 7.5vw, 98px);
       line-height: .96;
       letter-spacing: -.025em;
       position: relative;
@@ -110,10 +118,52 @@
       position: relative;
     }
     .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; position: relative; }
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      min-height: 405px;
+      display: grid;
+      place-items: center;
+    }
+    .hero-window {
+      position: relative;
+      width: min(100%, 400px);
+      padding: 15px;
+      border: 1px solid #ffffff36;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #503237, #2b2025);
+      box-shadow: 0 32px 75px #0006;
+      transform: rotate(3deg);
+    }
+    .window-bar { display: flex; align-items: center; justify-content: space-between; padding: 2px 3px 14px; color: #e3c9b9; font-size: .72rem; }
+    .window-dots { display: flex; gap: 5px; }
+    .window-dots i { width: 7px; height: 7px; border-radius: 50%; background: #d58e64; }
+    .window-body { min-height: 286px; padding: 24px; overflow: hidden; border-radius: 15px; background: #fff7ec; color: #35272a; }
+    .window-kicker { color: #b94f39; font-size: .7rem; font-weight: 800; letter-spacing: .14em; }
+    .window-body h2 { max-width: 255px; margin: 14px 0 10px; font-size: 2.7rem; line-height: .92; }
+    .window-body p { max-width: 240px; color: #78645b; font-size: .82rem; }
+    .window-sample { position: relative; height: 94px; margin-top: 20px; overflow: hidden; border-radius: 12px; background: linear-gradient(120deg, #f1c99b, #f8e9cf 50%, #edb5a2); }
+    .window-sample::before { content: ""; position: absolute; width: 84px; height: 130px; right: 28px; top: 10px; border-radius: 44px 44px 8px 8px; background: linear-gradient(160deg, #c66b4b, #753f3c); transform: rotate(-12deg); }
+    .window-sample::after { content: ""; position: absolute; width: 94px; height: 94px; right: 94px; top: 30px; border: 1px solid #fff9; border-radius: 50%; }
+    .window-sticker {
+      position: absolute;
+      right: -14px;
+      bottom: 34px;
+      padding: 13px 17px;
+      border: 1px solid #dfe8f7;
+      border-radius: 14px;
+      background: #fff;
+      color: #9c442f;
+      box-shadow: 0 15px 32px #0003;
+      font-size: .83rem;
+      font-weight: 800;
+      transform: rotate(-5deg);
+    }
+    .window-sticker span { display: block; color: #78645b; font-size: .7rem; font-weight: 600; }
     .btn-secondary {
       display: inline-block;
       padding: 11px 20px;
-      border: 1px solid #7185a5;
+      border: 1px solid #b98f7c;
       border-radius: 99px;
       color: var(--text);
       font-weight: 700;
@@ -121,10 +171,37 @@
       transition: background .2s, transform .2s;
     }
     .btn-secondary:hover { background: #ffffff12; transform: translateY(-2px); }
-    .mq { overflow: hidden; background: #0d1d35; padding: 14px 0; white-space: nowrap; border-block: 1px solid var(--line); }
+    .mq { overflow: hidden; background: #2e2226; padding: 14px 0; white-space: nowrap; border-block: 1px solid var(--line); }
     .mq div { display: inline-block; animation: marquee 32s linear infinite; font: 800 1.4rem 'Barlow Condensed', sans-serif; }
     .mq i { color: var(--accent); font-style: normal; margin: 0 22px; }
     @keyframes marquee { to { transform: translateX(-50%); } }
+    .portfolio-facts {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 30px 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .portfolio-fact { padding: 18px 22px; border-left: 2px solid #d66b49; background: #30252a; }
+    .portfolio-fact strong { display: block; color: var(--text); font: 800 1.65rem 'Barlow Condensed', sans-serif; }
+    .portfolio-fact span { color: var(--muted); font-size: .88rem; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+    .section-heading .section-lead { max-width: 380px; margin: 0 0 5px; }
+    .portfolio-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+    .portfolio-filter {
+      padding: 9px 15px;
+      border: 1px solid #674b48;
+      border-radius: 99px;
+      background: #30252a;
+      color: var(--muted);
+      cursor: pointer;
+      font: 700 .9rem Barlow, sans-serif;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .portfolio-filter:hover { border-color: var(--accent); color: var(--text); }
+    .portfolio-filter[aria-pressed="true"] { border-color: var(--accent-strong); background: var(--accent-strong); color: white; }
+    .portfolio-count { min-height: 22px; margin: -10px 0 14px; color: var(--muted); font-size: .86rem; }
     section h2 { margin-bottom: 10px; font-size: clamp(40px, 6vw, 68px); }
     .section-lead { max-width: 680px; margin-bottom: 30px; color: var(--muted); }
     .g { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 20px; }
@@ -139,6 +216,7 @@
       transition: transform .2s, border-color .2s, box-shadow .2s;
     }
     .c:hover { transform: translateY(-5px); border-color: #6b95d9; box-shadow: 0 18px 38px #0004; }
+    .c[hidden] { display: none; }
     .c:focus-visible, .bar a:focus-visible, .btn-secondary:focus-visible, .contact-link:focus-visible, .faq-question:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     .btn:focus-visible, .extras-submit:focus-visible, .extras-plan select:focus-visible, .extra-option input:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     .pv { height: 190px; overflow: hidden; position: relative; background: #e9eef5; }
@@ -171,14 +249,14 @@
     .process-step {
       min-height: 190px;
       padding: 22px;
-      border: 1px solid #d9e2ef;
+      border: 1px solid #eadbd0;
       border-radius: 20px;
-      background: #f8fafc;
-      color: #17243a;
+      background: #fff8f0;
+      color: #38282a;
     }
-    .process-step b { display: block; margin-bottom: 14px; color: var(--accent-strong); font: 800 2rem 'Barlow Condensed', sans-serif; }
+    .process-step b { display: block; margin-bottom: 14px; color: #bd5639; font: 800 2rem 'Barlow Condensed', sans-serif; }
     .process-step h3 { margin-bottom: 8px; font-size: 1.45rem; }
-    .process-step p { color: #53627a; }
+    .process-step p { color: #78645b; }
     .js .process-step { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
     .js .process-step.is-visible { opacity: 1; transform: none; }
     .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); align-items: stretch; gap: 18px; }
@@ -187,17 +265,17 @@
       padding: 26px;
       display: flex;
       flex-direction: column;
-      border: 1px solid #d9e2ef;
+      border: 1px solid #eadbd0;
       border-radius: 22px;
-      background: #f8fafc;
-      color: #17243a;
+      background: #fff8f0;
+      color: #38282a;
     }
-    .plan-card.featured { border: 2px solid #77a7ff; box-shadow: 0 12px 32px #0002; }
-    .plan-badge { align-self: flex-start; margin: -8px 0 10px; padding: 5px 11px; border-radius: 99px; background: #e8f0ff; color: #174ca5; font-size: .76rem; font-weight: 800; }
+    .plan-card.featured { border: 2px solid #d66b49; box-shadow: 0 12px 32px #0002; }
+    .plan-badge { align-self: flex-start; margin: -8px 0 10px; padding: 5px 11px; border-radius: 99px; background: #f8e6d5; color: #9c442f; font-size: .76rem; font-weight: 800; }
     .plan-card h3 { margin: 4px 0 10px; font-size: 1.8rem; }
-    .plan-description { min-height: 50px; color: #53627a; }
-    .plan-price { margin: 18px 0; color: #174ca5; font: 800 1.55rem 'Barlow Condensed', sans-serif; }
-    .plan-features { flex: 1; margin: 0 0 22px; padding-left: 21px; color: #36445a; }
+    .plan-description { min-height: 50px; color: #78645b; }
+    .plan-price { margin: 18px 0; color: #9c442f; font: 800 1.55rem 'Barlow Condensed', sans-serif; }
+    .plan-features { flex: 1; margin: 0 0 22px; padding-left: 21px; color: #51403c; }
     .plan-features li { margin: 9px 0; padding-left: 2px; }
     .plan-card .btn { align-self: flex-start; }
     .extras-panel { padding: clamp(20px, 4vw, 32px); border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
@@ -206,9 +284,9 @@
     .extras-plan select {
       width: 100%;
       padding: 12px 14px;
-      border: 1px solid #7185a5;
+      border: 1px solid #a68b7c;
       border-radius: 10px;
-      background: #0a1a31;
+      background: #241c20;
       color: var(--text);
       font: inherit;
     }
@@ -219,14 +297,14 @@
       display: flex;
       align-items: center;
       gap: 11px;
-      border: 1px solid #d9e2ef;
+      border: 1px solid #eadbd0;
       border-radius: 14px;
-      background: #f8fafc;
-      color: #17243a;
+      background: #fff8f0;
+      color: #38282a;
       cursor: pointer;
       transition: border-color .2s, background .2s;
     }
-    .extra-option:hover { border-color: #8daee3; background: #f0f5ff; }
+    .extra-option:hover { border-color: #d69a72; background: #fff0df; }
     .extra-option input { width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--accent-strong); }
     .extras-summary { min-height: 26px; margin: 18px 0 14px; color: var(--muted); }
     .extras-submit:disabled { cursor: not-allowed; opacity: .55; transform: none; box-shadow: none; }
@@ -238,26 +316,26 @@
       flex-direction: column;
       justify-content: center;
       gap: 6px;
-      border: 1px solid #d9e2ef;
+      border: 1px solid #eadbd0;
       border-radius: 16px;
-      background: #f8fafc;
-      color: #17243a;
+      background: #fff8f0;
+      color: #38282a;
       text-decoration: none;
       transition: transform .2s, border-color .2s, box-shadow .2s;
     }
-    .ads-link:hover { transform: translateY(-3px); border-color: #8daee3; box-shadow: 0 10px 24px #0002; }
-    .ads-link strong { color: #174ca5; font-size: 1.05rem; }
-    .ads-link span { color: #53627a; font-size: .9rem; }
-    .ads-support { margin-top: 18px; padding: 20px; border-radius: 16px; background: #10213d; }
+    .ads-link:hover { transform: translateY(-3px); border-color: #d69a72; box-shadow: 0 10px 24px #0002; }
+    .ads-link strong { color: #9c442f; font-size: 1.05rem; }
+    .ads-link span { color: #78645b; font-size: .9rem; }
+    .ads-support { margin-top: 18px; padding: 20px; border-radius: 16px; background: #30252a; }
     .ads-support p { margin-bottom: 14px; color: var(--muted); }
     .ads-note { margin-top: 16px; color: var(--muted); font-size: .9rem; }
     .ownership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px; }
-    .ownership-card { padding: 24px; border: 1px solid #d9e2ef; border-radius: 20px; background: #f8fafc; color: #17243a; }
+    .ownership-card { padding: 24px; border: 1px solid #eadbd0; border-radius: 20px; background: #fff8f0; color: #38282a; }
     .ownership-card h3 { margin-bottom: 10px; font-size: 1.6rem; }
-    .ownership-card p { color: #53627a; }
-    .payment-note { margin-top: 18px; padding: 17px 20px; border-left: 4px solid var(--accent); border-radius: 8px; background: #10213d; color: var(--muted); }
+    .ownership-card p { color: #78645b; }
+    .payment-note { margin-top: 18px; padding: 17px 20px; border-left: 4px solid var(--accent); border-radius: 8px; background: #30252a; color: var(--muted); }
     .faq-list { display: grid; gap: 10px; max-width: 900px; }
-    .faq-item { overflow: hidden; border: 1px solid #d9e2ef; border-radius: 14px; background: #f8fafc; color: #17243a; }
+    .faq-item { overflow: hidden; border: 1px solid #eadbd0; border-radius: 14px; background: #fff8f0; color: #38282a; }
     .faq-question {
       width: 100%;
       padding: 17px 20px;
@@ -272,17 +350,17 @@
       font: 700 1rem Barlow, sans-serif;
       text-align: left;
     }
-    .faq-question:hover { background: #eef3fb; }
-    .faq-question span:last-child { color: #174ca5; font-size: 1.3rem; }
-    .faq-answer { padding: 0 20px 18px; color: #53627a; }
+    .faq-question:hover { background: #fff0df; }
+    .faq-question span:last-child { color: #9c442f; font-size: 1.3rem; }
+    .faq-answer { padding: 0 20px 18px; color: #78645b; }
     .sk { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    .sk span { padding: 8px 16px; border: 1px solid #3b5275; border-radius: 99px; background: #10213d; color: #e1eaff; font-weight: 700; }
+    .sk span { padding: 8px 16px; border: 1px solid #674b48; border-radius: 99px; background: #30252a; color: #f4dfce; font-weight: 700; }
     .contact {
       margin: 20px 5% 70px;
       padding: clamp(28px, 6vw, 64px);
       border: 1px solid #3b5f91;
       border-radius: 28px;
-      background: linear-gradient(135deg, #10284b, #142f56);
+      background: linear-gradient(135deg, #38272c, #54333a);
     }
     .contact h2 { margin-bottom: 12px; }
     .contact > p { max-width: 620px; margin-bottom: 26px; color: var(--muted); }
@@ -295,7 +373,7 @@
       gap: 3px;
       border: 1px solid #49648a;
       border-radius: 16px;
-      background: #0a1a31;
+      background: #241c20;
       text-decoration: none;
     }
     .contact-link:hover { border-color: var(--accent); }
@@ -310,8 +388,17 @@
       .nav-links a:not(.btn):not(.nav-service) { display: none; }
       .bar .btn { padding: 9px 10px; font-size: .84rem; }
       .nav-links .nav-service { font-size: .85rem; }
-      .hero { min-height: 82svh; padding-inline: 6%; }
+      .hero { min-height: unset; padding: 130px 6% 48px; grid-template-columns: 1fr; gap: 22px; }
       .hero::after { width: 65vw; top: 17%; right: -24%; }
+      .hero-visual { min-height: 310px; }
+      .hero-window { width: min(88%, 360px); }
+      .window-body { min-height: 235px; padding: 18px; }
+      .window-body h2 { font-size: 2.3rem; }
+      .window-sample { height: 72px; }
+      .window-sticker { right: 0; bottom: 20px; }
+      .portfolio-facts { padding: 20px 6%; grid-template-columns: 1fr; gap: 8px; }
+      .portfolio-fact { padding: 13px 16px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
       section { padding: 52px 6%; }
       .contact { margin: 8px 4% 48px; }
     }
@@ -319,6 +406,7 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .bar.is-hidden { transform: translateX(-50%); }
+      .mq div { animation: none; }
     }
   </style>
 </head>
@@ -334,29 +422,58 @@
 
   <main>
     <div class="hero" id="inicio">
-      <p class="eyebrow">Diseño y desarrollo web</p>
-      <h1>Tu idea merece una web <span>que funcione.</span></h1>
-      <p class="sub">Creo sitios claros, rápidos y adaptados a cada pantalla para ayudar a que tu proyecto llegue más lejos.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#ejemplos">Ver ejemplos</a>
-        <a class="btn-secondary" href="https://wa.me/5492234371575">Hablemos por WhatsApp</a>
+      <div class="hero-copy">
+        <p class="eyebrow">Diseño y desarrollo web</p>
+        <h1>Tu idea merece una web <span>que funcione.</span></h1>
+        <p class="sub">Creo sitios claros, rápidos y adaptados a cada pantalla para ayudar a que tu proyecto llegue más lejos.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#ejemplos">Ver ejemplos</a>
+          <a class="btn-secondary" href="https://wa.me/5492234371575">Hablemos por WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-window">
+          <div class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>tu-proyecto.web</span><span>↗</span></div>
+          <div class="window-body">
+            <span class="window-kicker">UNA IDEA, EN INTERNET</span>
+            <h2>Tu espacio para crecer.</h2>
+            <p>Un sitio hecho para contar lo que hacés.</p>
+            <div class="window-sample"></div>
+          </div>
+        </div>
+        <div class="window-sticker">Diseño a medida<span>Adaptable a cada pantalla</span></div>
       </div>
     </div>
 
     <div class="mq" aria-hidden="true"><div id="marquee"></div></div>
+    <div class="portfolio-facts" aria-label="Sobre este portafolio">
+      <div class="portfolio-fact"><strong>08 ejemplos</strong><span>Distintos formatos para explorar</span></div>
+      <div class="portfolio-fact"><strong>A tu medida</strong><span>Una propuesta pensada para tu proyecto</span></div>
+      <div class="portfolio-fact"><strong>En todos tus dispositivos</strong><span>Diseño adaptable para móvil y escritorio</span></div>
+    </div>
 
     <section id="ejemplos">
-      <h2>Lo que puedo hacer por vos</h2>
-      <p class="section-lead">Explorá algunos ejemplos y abrilos para ver cada propuesta completa.</p>
-      <div class="g">
-        <a class="c" href="corporativa.html"><div class="pv"><iframe src="corporativa.html" loading="lazy" tabindex="-1" title="Vista previa de sitio corporativo"></iframe></div><div class="t"><h3>Páginas corporativas</h3><p>Una presencia profesional para tu empresa o institución.</p></div></a>
-        <a class="c" href="tienda.html"><div class="pv"><iframe src="tienda.html" loading="lazy" tabindex="-1" title="Vista previa de tienda online"></iframe></div><div class="t"><h3>Tiendas online</h3><p>Catálogo de productos y una experiencia de compra simple.</p></div></a>
-        <a class="c" href="catalogo.html"><div class="pv"><iframe src="catalogo.html" loading="lazy" tabindex="-1" title="Vista previa de catálogo de productos genéricos"></iframe></div><div class="t"><h3>Catálogos interactivos</h3><p>Producto 1, Producto 2 y más, con categorías, búsqueda y consultas directas.</p></div></a>
-        <a class="c" href="blog.html"><div class="pv"><iframe src="blog.html" loading="lazy" tabindex="-1" title="Vista previa de blog"></iframe></div><div class="t"><h3>Blogs y noticias</h3><p>Contenido ordenado, legible y fácil de recorrer.</p></div></a>
-        <a class="c" href="#inicio"><div class="here">Estás acá 👋</div><div class="t"><h3>Portafolios online</h3><p>Una página para mostrar proyectos, servicios y contacto.</p></div></a>
-        <a class="c" href="landing.html"><div class="pv"><iframe src="landing.html" loading="lazy" tabindex="-1" title="Vista previa de landing page"></iframe></div><div class="t"><h3>Landing pages</h3><p>Una página enfocada en una acción y un objetivo concreto.</p></div></a>
-        <a class="c" href="reservas.html"><div class="pv"><iframe src="reservas.html" loading="lazy" tabindex="-1" title="Vista previa de sistema de reservas"></iframe></div><div class="t"><h3>Reservas y citas</h3><p>Una forma práctica de organizar turnos y consultas.</p></div></a>
-        <a class="c" href="comunidad.html"><div class="pv"><iframe src="comunidad.html" loading="lazy" tabindex="-1" title="Vista previa de comunidad online"></iframe></div><div class="t"><h3>Foros y comunidades</h3><p>Espacios para compartir publicaciones e intercambiar ideas.</p></div></a>
+      <div class="section-heading">
+        <div><p class="eyebrow">Ideas en distintos formatos</p><h2>Explorá las demos.</h2></div>
+        <p class="section-lead">Cada ejemplo tiene su propio estilo. Abrilo para recorrerlo y probar sus funciones.</p>
+      </div>
+      <div class="portfolio-filters" role="group" aria-label="Filtrar ejemplos">
+        <button class="portfolio-filter" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+        <button class="portfolio-filter" type="button" data-filter="negocios" aria-pressed="false">Negocios</button>
+        <button class="portfolio-filter" type="button" data-filter="tiendas" aria-pressed="false">Tiendas</button>
+        <button class="portfolio-filter" type="button" data-filter="contenido" aria-pressed="false">Contenido</button>
+        <button class="portfolio-filter" type="button" data-filter="interactivos" aria-pressed="false">Interactivos</button>
+      </div>
+      <p class="portfolio-count" id="portfolio-count" aria-live="polite">8 ejemplos</p>
+      <div class="g" id="portfolio-grid">
+        <a class="c" data-category="negocios" href="corporativa.html"><div class="pv"><iframe src="corporativa.html" loading="lazy" tabindex="-1" title="Vista previa de sitio corporativo"></iframe></div><div class="t"><h3>Páginas corporativas</h3><p>Una presencia profesional para tu empresa o institución.</p></div></a>
+        <a class="c" data-category="tiendas" href="tienda.html"><div class="pv"><iframe src="tienda.html" loading="lazy" tabindex="-1" title="Vista previa de tienda online"></iframe></div><div class="t"><h3>Tiendas online</h3><p>Catálogo de productos y una experiencia de compra simple.</p></div></a>
+        <a class="c" data-category="tiendas" href="catalogo.html"><div class="pv"><iframe src="catalogo.html" loading="lazy" tabindex="-1" title="Vista previa de catálogo de productos genéricos"></iframe></div><div class="t"><h3>Catálogos interactivos</h3><p>Producto 1, Producto 2 y más, con categorías, búsqueda y consultas directas.</p></div></a>
+        <a class="c" data-category="contenido" href="blog.html"><div class="pv"><iframe src="blog.html" loading="lazy" tabindex="-1" title="Vista previa de blog"></iframe></div><div class="t"><h3>Blogs y noticias</h3><p>Contenido ordenado, legible y fácil de recorrer.</p></div></a>
+        <a class="c" data-category="contenido" href="#inicio"><div class="here">Estás acá 👋</div><div class="t"><h3>Portafolios online</h3><p>Una página para mostrar proyectos, servicios y contacto.</p></div></a>
+        <a class="c" data-category="contenido" href="landing.html"><div class="pv"><iframe src="landing.html" loading="lazy" tabindex="-1" title="Vista previa de landing page"></iframe></div><div class="t"><h3>Landing pages</h3><p>Una página enfocada en una acción y un objetivo concreto.</p></div></a>
+        <a class="c" data-category="interactivos" href="reservas.html"><div class="pv"><iframe src="reservas.html" loading="lazy" tabindex="-1" title="Vista previa de sistema de reservas"></iframe></div><div class="t"><h3>Reservas y citas</h3><p>Una forma práctica de organizar turnos y consultas.</p></div></a>
+        <a class="c" data-category="interactivos" href="comunidad.html"><div class="pv"><iframe src="comunidad.html" loading="lazy" tabindex="-1" title="Vista previa de comunidad online"></iframe></div><div class="t"><h3>Foros y comunidades</h3><p>Espacios para compartir publicaciones e intercambiar ideas.</p></div></a>
       </div>
     </section>
 
@@ -650,6 +767,28 @@
 
       document.querySelectorAll(".process-step").forEach((step) => processObserver.observe(step));
     }
+
+    const portfolioGrid = document.getElementById("portfolio-grid");
+    const portfolioFilters = document.querySelector(".portfolio-filters");
+    const portfolioCount = document.getElementById("portfolio-count");
+    portfolioFilters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-filter]");
+      if (!button) return;
+
+      const selectedFilter = button.dataset.filter;
+      const cards = [...portfolioGrid.querySelectorAll(".c")];
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const isVisible = selectedFilter === "todos" || card.dataset.category === selectedFilter;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      portfolioFilters.querySelectorAll("[data-filter]").forEach((filterButton) => {
+        filterButton.setAttribute("aria-pressed", String(filterButton === button));
+      });
+      portfolioCount.textContent = `${visibleCount} ${visibleCount === 1 ? "ejemplo" : "ejemplos"}`;
+    });
 
     const services = ["Corporativas", "Tiendas online", "Blogs", "Portafolios", "Landing pages", "Reservas", "Comunidades"];
     document.getElementById("marquee").innerHTML =

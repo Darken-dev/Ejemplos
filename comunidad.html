@@ -1,11 +1,122 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Comunidad</title><style>body{background:#e9eef5}.w{display:grid;grid-template-columns:230px 1fr;gap:20px;max-width:1000px;margin:24px auto;padding:0 16px}@media(max-width:700px){.w{grid-template-columns:1fr}}.sb a{display:block;padding:10px 14px;border-radius:12px;font-weight:700;color:inherit;text-decoration:none}.sb a:first-of-type{background:#111;color:#fff}.av{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;margin-right:10px;vertical-align:middle}.post{margin-bottom:16px}.post p{margin:12px 0}.lk{border:0;background:var(--soft);border-radius:99px;padding:6px 14px;cursor:pointer;font:700 .9rem Barlow;transition:.15s}.lk.on{background:#ffd9de;transform:scale(1.1)}textarea{width:100%;border:1px solid #d9e2ef;border-radius:14px;padding:12px;font:inherit;resize:none;margin-bottom:10px}</style></head><body>
-<nav><b>Comunidad Dev</b><a class="btn" href="#">Unirme</a></nav>
-<div class="w"><aside class="card sb"><h3 style="font-size:1.6rem;margin-bottom:8px">Foros</h3><a href="#">💬 General</a><a href="#">🎨 Diseño</a><a href="#">💻 Código</a><a href="#">🚀 Proyectos</a></aside>
-<main><div class="card" style="margin-bottom:16px"><textarea id="t" rows="2" placeholder="¿Qué querés compartir?"></textarea><button class="btn" id="p">Publicar</button></div><div id="f"></div></main></div>
-<script>
-const C=["#0a63ff","#e0457b","#16a34a"];let i=0;
-function add(n,x){const d=document.createElement("div");d.className="card post rv";d.innerHTML='<span class="av" style="background:'+C[i++%3]+'">'+n[0]+'</span><b>'+n+'</b><p></p><button class="lk">♥ <span>0</span></button>';d.querySelector("p").textContent=x;f.prepend(d)}
-add("Sofi","Terminé mi primera tienda online. ¿Consejos para el carrito?");add("Marcos","Tip: usá CSS Grid para catálogos, te ahorra mucho código.");
-f.onclick=e=>{const b=e.target.closest(".lk");if(b){const s=b.querySelector("span");b.classList.toggle("on");s.textContent=b.classList.contains("on")?1:0}};
-p.onclick=()=>{if(t.value.trim()){add("Vos",t.value);t.value=""}}
-</script><a class="back" href="index.html">← Volver al portafolio</a></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demostración de una comunidad online para compartir proyectos e ideas.">
+  <title>En Común | Comunidad creativa</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root{--deep:#342723;--green:#a85c3d;--lime:#efbd7c;--canvas:#f7f0e5}
+    body{background:var(--canvas);color:var(--deep)}
+    .common-nav{padding:14px max(5%,calc((100% - 1120px)/2));background:var(--deep);color:#fff}
+    .common-nav b{font-size:1.55rem}.common-nav b span{color:var(--lime)}
+    .common-nav a{text-decoration:none}.common-nav .btn{background:var(--lime);color:var(--deep)!important}
+    .community-hero{position:relative;overflow:hidden;padding:54px max(6%,calc((100% - 1120px)/2)) 66px;background:var(--deep);color:#fff}
+    .community-hero:after{content:"";position:absolute;width:270px;height:270px;right:13%;top:-110px;border:1px solid #ffffff3b;border-radius:50%;box-shadow:0 0 0 30px #ffffff0a,0 0 0 62px #ffffff08}
+    .community-hero p{position:relative;z-index:1;max-width:560px;margin-top:12px;color:#ead9c9}
+    .community-hero h1{position:relative;z-index:1;max-width:740px;font-size:clamp(50px,8vw,82px);line-height:.9}
+    .community-hero h1 span{color:var(--lime)}
+    .community-shell{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:20px;max-width:1080px;margin:34px auto;padding:0 20px 70px}
+    .community-sidebar,.composer,.feed-card{min-width:0;border:1px solid #e8dccb;border-radius:20px;background:#fffaf2}
+    .community-sidebar{align-self:start;padding:20px}
+    .community-sidebar h2{margin-bottom:14px;font-size:1.7rem}
+    .topic-filter{width:100%;margin:3px 0;padding:10px 12px;border:0;border-radius:12px;background:transparent;color:var(--deep);font:700 .95rem Barlow;text-align:left;cursor:pointer}
+    .topic-filter[aria-pressed=true]{background:var(--deep);color:#fff}
+    .sidebar-note{margin-top:20px;padding:14px;border-radius:14px;background:#f3e5d2;color:#6b5749;font-size:.88rem}
+    .composer{margin-bottom:16px;padding:20px}
+    .composer-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .avatar{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:50%;background:var(--green);color:white;font-weight:800}
+    .composer textarea{width:100%;min-height:90px;padding:13px;border:1px solid #e8dccb;border-radius:14px;background:#fffdf9;font:inherit;resize:vertical}
+    .composer-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
+    .composer-hint{color:#806f60;font-size:.85rem}
+    .composer .btn{background:var(--deep)}
+    .feed-heading{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 12px}
+    .feed-heading h2{font-size:2rem}.feed-heading span{color:#806f60;font-size:.88rem}
+    .feed-card{margin-bottom:13px;padding:20px}
+    .post-author{display:flex;align-items:center;gap:11px}
+    .post-author small{display:block;color:#806f60}
+    .post-topic{margin:15px 0 8px;color:#9b4d34;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .post-text{margin-bottom:16px;white-space:pre-wrap;overflow-wrap:anywhere}
+    .like-button{padding:7px 12px;border:0;border-radius:99px;background:#f4eadb;color:var(--deep);font:700 .92rem Barlow;cursor:pointer;transition:transform .16s,background .16s}
+    .like-button:hover{transform:translateY(-2px);background:#edddc5}
+    .like-button[aria-pressed=true]{background:#f8dfd2;color:#a74240}
+    .feed-card{transition:transform .2s,box-shadow .2s}
+    .feed-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #4c342018}
+    .empty-feed{padding:24px;border:1px dashed #d4c3af;border-radius:16px;color:#756556;text-align:center}
+    .common-footer{padding:25px 5%;background:var(--deep);color:#fff;text-align:center}
+    .common-footer a{color:var(--lime)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:720px){.community-shell{grid-template-columns:minmax(0,1fr)}.community-sidebar{padding:14px}.community-sidebar h2{margin:0 0 10px}.topic-filters{display:flex;max-width:100%;min-width:0;overflow:auto;gap:5px}.topic-filter{width:auto;white-space:nowrap;flex:0 0 auto}.sidebar-note{display:none}.community-hero:after{right:-110px}}
+    @media(max-width:520px){.common-nav nav a:not(.btn){display:none}.community-shell{padding-right:5%;padding-left:5%}.composer,.feed-card{padding:16px}.composer-bottom{align-items:flex-start;flex-direction:column}.community-hero{padding-top:42px;padding-bottom:48px}}
+  </style>
+</head>
+<body>
+  <header class="common-nav"><nav aria-label="Navegación principal"><b>en<span>común</span>.</b><div><a href="#conversacion">Conversaciones</a><a class="btn" href="#post-form">Sumarme</a></div></nav></header>
+  <main>
+    <section class="community-hero"><h1>Las ideas crecen<br><span>en común.</span></h1><p>Un espacio para compartir avances, pedir una mirada y celebrar lo que estamos creando juntos.</p></section>
+    <div class="community-shell">
+      <aside class="community-sidebar"><h2>Explorar</h2><div class="topic-filters" id="topic-filters" role="group" aria-label="Filtrar publicaciones por tema"></div><p class="sidebar-note">Demo interactiva: las publicaciones solo viven en esta página mientras está abierta.</p></aside>
+      <section id="conversacion" aria-label="Conversaciones">
+        <form class="composer" id="post-form">
+          <div class="composer-top"><span class="avatar" aria-hidden="true">T</span><strong>Compartí algo con la comunidad</strong></div>
+          <label class="sr-only" for="post-message">Tu publicación</label><textarea id="post-message" maxlength="400" placeholder="¿Qué querés compartir?" required></textarea>
+          <div class="composer-bottom"><span class="composer-hint"><span id="char-count">0</span>/400 · Publicación local de demostración</span><button class="btn" type="submit">Publicar <span aria-hidden="true">↗</span></button></div>
+        </form>
+        <div class="feed-heading"><h2>El espacio común</h2><span id="post-count"></span></div>
+        <div id="feed" aria-live="polite"></div>
+      </section>
+    </div>
+  </main>
+  <footer class="common-footer">En Común · <a href="index.html">Volver a los ejemplos</a></footer>
+  <script>
+    const seedPosts=[
+      {name:"Sofi",topic:"Proyectos",text:"Terminé mi primera tienda online. ¿Qué detalle te ayuda a confiar al comprar por primera vez?",likes:4},
+      {name:"Marcos",topic:"Código",text:"Tip de la semana: CSS Grid hace que las tarjetas se acomoden solas en distintos tamaños.",likes:7},
+      {name:"Lola",topic:"Diseño",text:"Estoy probando una paleta más tranquila para mi portfolio. ¿Cómo encuentran el contraste?",likes:2},
+      {name:"Nico",topic:"General",text:"¿Qué están construyendo estos días? Me encanta ver los avances de todos.",likes:5}
+    ];
+    const topics=["Todo","General","Diseño","Código","Proyectos"];
+    let activeTopic="Todo";
+    let posts=[...seedPosts];
+    const filters=document.getElementById("topic-filters");
+    const feed=document.getElementById("feed");
+    const form=document.getElementById("post-form");
+    const message=document.getElementById("post-message");
+    const escapeText=text=>text.replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+    function renderCommunity(){
+      filters.innerHTML=topics.map(topic=>`<button class="topic-filter" type="button" data-topic="${topic}" aria-pressed="${activeTopic===topic}">${topic}</button>`).join("");
+      const visible=posts.filter(post=>activeTopic==="Todo"||post.topic===activeTopic);
+      document.getElementById("post-count").textContent=`${visible.length} publicaciones`;
+      feed.innerHTML=visible.length?visible.map((post,index)=>`<article class="feed-card" data-post="${posts.indexOf(post)}"><div class="post-author"><span class="avatar" aria-hidden="true">${escapeText(post.name.slice(0,1).toUpperCase())}</span><div><strong>${escapeText(post.name)}</strong><small>${post.name==="Vos"?"Ahora":"En la comunidad"}</small></div></div><div class="post-topic">${escapeText(post.topic)}</div><p class="post-text">${escapeText(post.text)}</p><button class="like-button" type="button" aria-pressed="false" aria-label="Me gusta, ${post.likes} reacciones">♡ <span>${post.likes}</span> Me gusta</button></article>`).join(""):'<p class="empty-feed">Todavía no hay publicaciones en este tema. ¡Podés iniciar la conversación!</p>';
+    }
+    filters.addEventListener("click",event=>{const button=event.target.closest("[data-topic]");if(!button)return;activeTopic=button.dataset.topic;renderCommunity();filters.querySelector('[aria-pressed="true"]')?.focus()});
+    feed.addEventListener("click",event=>{
+      const button=event.target.closest(".like-button");
+      if(!button)return;
+      const post=posts[Number(button.closest("[data-post]").dataset.post)];
+      const liked=button.getAttribute("aria-pressed")==="true";
+      post.likes+=liked?-1:1;
+      button.setAttribute("aria-pressed",String(!liked));
+      button.querySelector("span").textContent=post.likes;
+      button.setAttribute("aria-label",`Me gusta, ${post.likes} reacciones`);
+      button.firstChild.textContent=liked?"♡ ":"♥ ";
+    });
+    document.getElementById("char-count").textContent="0";
+    message.addEventListener("input",()=>document.getElementById("char-count").textContent=String(message.value.length));
+    form.addEventListener("submit",event=>{
+      event.preventDefault();
+      const text=message.value.trim();
+      if(!text)return;
+      posts.unshift({name:"Vos",topic:"General",text,likes:0});
+      activeTopic="Todo";
+      message.value="";
+      document.getElementById("char-count").textContent="0";
+      renderCommunity();
+      message.focus();
+    });
+    renderCommunity();
+  </script>
+  <a class="back" href="index.html">← Volver a los ejemplos</a>
+</body>
+</html>

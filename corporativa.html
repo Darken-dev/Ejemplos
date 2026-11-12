@@ -1,8 +1,196 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>BizBud – Corporativa</title><style>.hero{background:linear-gradient(160deg,#fff 30%,#cdb4ff);padding:90px 5% 150px;position:relative;overflow:hidden}.hero h1{font-size:clamp(46px,7vw,84px);color:#2a1060;max-width:560px}.hero p{margin:18px 0 26px;max-width:420px}.p{background:#8b3dff}.wave{position:absolute;right:-5%;bottom:-10px;width:70%;animation:fl 6s ease-in-out infinite alternate}@keyframes fl{to{transform:translateY(-18px)}}.ic{font-size:2.4rem}</style></head><body>
-<nav><b>BizBud</b><div><a href="#s">Servicios</a><a href="#s">Nosotros</a><a class="btn p" href="#s">Llámanos</a></div></nav>
-<div class="hero"><h1 class="rv">El poder de la asesoría</h1><p class="rv" style="animation-delay:.2s">Acompañamos a tu empresa con planes claros, números ordenados y decisiones seguras.</p><a class="btn p rv" style="animation-delay:.4s" href="#s">Más información</a>
-<svg class="wave" viewBox="0 0 400 150"><path d="M0 150V90C60 20 110 120 170 70S280 0 400 60V150Z" fill="#8b3dff" opacity=".85"/></svg></div>
-<section id="s" style="text-align:center"><h2 style="font-size:2.8rem;margin-bottom:34px">Llevando tu negocio al siguiente nivel</h2><div class="grid">
-<div class="card"><div class="ic">🎯</div><h3>Plan de negocios</h3><p>Estrategia a medida de tu empresa.</p></div>
-<div class="card"><div class="ic">✅</div><h3>Servicios contables</h3><p>Impuestos y balances al día.</p></div>
-<div class="card"><div class="ic">📈</div><h3>Optimización financiera</h3><p>Más margen con menos gasto.</p></div></div></section><a class="back" href="index.html">← Volver al portafolio</a></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ejemplo de página corporativa para una empresa de asesoría.">
+  <title>BizBud | Asesoría para crecer</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root{--violet:#c15d3c;--violet-dark:#342329;--lime:#f1bd76;--paper:#faf2e7;--muted:#77665e}
+    body{background:var(--paper);color:#35282a}
+    .biz-nav{position:sticky;top:0;padding:14px max(5%,calc((100% - 1120px)/2));background:#fffaf3;box-shadow:0 6px 24px #50332312}
+    .biz-nav b{font-size:1.55rem;color:var(--violet-dark)}
+    .biz-nav nav{position:static;padding:0;display:flex;gap:14px;background:transparent;backdrop-filter:none}
+    .biz-nav nav a{margin:0;text-decoration:none}
+    .biz-nav nav a:not(.btn){color:var(--muted)}
+    .biz-nav .btn{background:var(--violet);padding:10px 18px;font-size:.92rem}
+    .biz-hero{position:relative;overflow:hidden;padding:clamp(64px,9vw,120px) max(6%,calc((100% - 1120px)/2));background:var(--violet-dark);color:#fff}
+    .biz-hero:before{content:"";position:absolute;width:420px;aspect-ratio:1;right:4%;top:12%;border:1px solid #ffffff28;border-radius:48% 52% 62% 38%;box-shadow:0 0 0 38px #ffffff0a,0 0 0 76px #ffffff08;transform:rotate(-18deg)}
+    .biz-hero:after{content:"";position:absolute;inset:auto 0 0;height:12px;background:linear-gradient(90deg,var(--lime) 0 33%,#b4a1ff 33% 66%,#ffb79f 66%)}
+    .biz-copy{position:relative;z-index:1;max-width:760px}
+    .biz-kicker{display:inline-flex;align-items:center;gap:9px;color:var(--lime);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:.78rem}
+    .biz-kicker:before{content:"";width:24px;height:2px;background:currentColor}
+    .biz-hero h1{max-width:700px;margin:20px 0;font-size:clamp(54px,9vw,104px);line-height:.9;letter-spacing:-.02em}
+    .biz-hero h1 span{color:var(--lime)}
+    .biz-hero p{max-width:540px;margin-bottom:28px;color:#f0dfd4;font-size:1.15rem}
+    .biz-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .biz-hero .btn{background:var(--lime);color:var(--violet-dark)!important}
+    .biz-ghost{display:inline-flex;align-items:center;padding:11px 20px;border:1px solid #ffffff55;border-radius:99px;color:#fff;text-decoration:none;font-weight:700}
+    .biz-ghost:hover{background:#ffffff12}
+    .biz-orbit{position:absolute;right:13%;top:27%;width:210px;height:210px;border:1px solid #ffffff3b;border-radius:50%;display:grid;place-items:center;transform:rotate(24deg)}
+    .biz-orbit:before,.biz-orbit:after{content:"";position:absolute;border-radius:50%;background:var(--lime)}
+    .biz-orbit:before{width:24px;height:24px;top:14px;left:36px}.biz-orbit:after{width:12px;height:12px;bottom:30px;right:9px;background:#f28f69}
+    .biz-orbit span{display:grid;place-items:center;width:115px;height:115px;border-radius:50%;background:#ffffff14;font:800 2.7rem 'Barlow Condensed';transform:rotate(-24deg)}
+    .biz-section{max-width:1180px;margin:auto;padding-top:76px;padding-bottom:76px}
+    .biz-section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:28px}
+    .biz-section h2{font-size:clamp(40px,6vw,66px);color:var(--violet-dark)}
+    .biz-section-head p{max-width:410px;color:var(--muted)}
+    .biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .biz-card{width:100%;min-height:240px;padding:24px;border:1px solid #eadbd0;border-radius:22px;background:#fffaf3;color:inherit;text-align:left;font:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .biz-card:hover{transform:translateY(-5px);box-shadow:0 18px 35px #4a2d2018}
+    .biz-card[aria-expanded=true]{border-color:var(--violet);box-shadow:0 12px 28px #4a2d2018}
+    .biz-card:focus-visible{outline:3px solid #bd7d4e;outline-offset:4px}
+    .biz-icon{width:48px;height:48px;margin-bottom:28px;display:grid;place-items:center;border-radius:15px;background:#f8e6d5;color:var(--violet);font-size:1.5rem}
+    .biz-card:nth-child(2) .biz-icon{background:#f4edd4;color:#826633}.biz-card:nth-child(3) .biz-icon{background:#ffede3;color:#b45438}
+    .biz-card-title{display:block;margin-bottom:8px;font:800 1.65rem 'Barlow Condensed';line-height:1}
+    .biz-card-description{display:block;color:var(--muted)}
+    .biz-showcase{margin-top:22px;padding:clamp(20px,4vw,34px);border:1px solid #eadbd0;border-radius:26px;background:#fffaf3;box-shadow:0 16px 42px #49334c0a}
+    .biz-showcase[hidden]{display:none}
+    .biz-showcase-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px}
+    .biz-showcase-kicker{display:block;margin-bottom:7px;color:var(--violet);font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .biz-showcase h3{font-size:clamp(1.7rem,4vw,2.4rem)}
+    .biz-showcase-close{flex:0 0 auto;padding:8px 13px;border:1px solid #eadbd0;border-radius:99px;background:#fff;color:inherit;font:700 .88rem Barlow;cursor:pointer}
+    .biz-slide{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.9fr);gap:24px;align-items:center}
+    .biz-slide-copy p{max-width:560px;color:#68564d}
+    .biz-slide-note{display:inline-block;margin-top:15px;padding:6px 10px;border-radius:99px;background:#f5e8d8;color:#70584a;font-size:.78rem;font-weight:700}
+    .biz-chart{min-width:0;padding:20px;border:1px solid #eadbd0;border-radius:20px;background:#fff}
+    .biz-chart h4{margin-bottom:16px;font-size:1.25rem}
+    .biz-roadmap{display:grid;gap:12px;list-style:none}
+    .biz-roadmap li{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:10px}
+    .biz-roadmap li>span{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#f8e6d5;color:var(--violet);font-weight:800}
+    .biz-roadmap strong,.biz-roadmap small{display:block}
+    .biz-roadmap small{color:var(--muted)}
+    .biz-roadmap-track{height:6px;margin:6px 0 0 44px;overflow:hidden;border-radius:99px;background:#f0e7dc}
+    .biz-roadmap-track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--violet),var(--lime))}
+    .biz-chart svg{display:block;width:100%;height:auto}
+    .biz-chart-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;color:var(--muted);font-size:.82rem}
+    .biz-chart-legend span{display:flex;align-items:center;gap:6px}
+    .biz-chart-legend i{width:10px;height:10px;border-radius:50%;background:var(--violet)}
+    .biz-chart-legend span+span i{background:#e5b878}
+    .biz-opportunity-list{display:grid;gap:12px}
+    .biz-opportunity{padding:12px;border-radius:13px;background:#faf2e7}
+    .biz-opportunity-head{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;font-weight:700}
+    .biz-opportunity-head span:last-child{color:var(--violet)}
+    .biz-opportunity-track{height:8px;margin-top:8px;overflow:hidden;border-radius:99px;background:#e9dfd2}
+    .biz-opportunity-track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#bd5639,#f1bd76)}
+    .biz-band{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;padding:38px;border-radius:28px;background:#f1e2d2}
+    .biz-band h2{max-width:480px;margin-bottom:12px;font-size:clamp(36px,5vw,58px);color:var(--violet-dark)}
+    .biz-band p{max-width:480px;color:#68564d}
+    .biz-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .biz-metric{min-height:92px;padding:15px;border:1px solid #eadbd0;border-radius:18px;background:#fffaf3;color:inherit;text-align:left;cursor:pointer;font:inherit;transition:transform .18s,border-color .18s,background .18s}
+    .biz-metric:hover{transform:translateY(-3px);border-color:#d29570}
+    .biz-metric[aria-selected=true]{border-color:#c15d3c;background:#fff2e4}
+    .biz-metric:focus-visible{outline:3px solid #bd7d4e;outline-offset:3px}
+    .biz-metric strong{display:block;color:var(--violet);font:800 2rem 'Barlow Condensed'}
+    .biz-metric span{color:var(--muted);font-size:.88rem}
+    .biz-detail{grid-column:1/-1;min-height:64px;padding:15px 18px;border-left:3px solid var(--violet);border-radius:0 12px 12px 0;background:#fffaf3;color:#68564d}
+    .biz-footer{padding:28px 5%;background:var(--violet-dark);color:#f0dfd4;text-align:center}
+    .biz-footer a{color:var(--lime);font-weight:700}
+    @media(max-width:1024px){.biz-orbit{right:-320px;opacity:.2}}
+    @media(max-width:800px){.biz-grid{grid-template-columns:1fr 1fr}.biz-section-head{align-items:flex-start;flex-direction:column}.biz-band{grid-template-columns:1fr}.biz-slide{grid-template-columns:1fr}}
+    @media(max-width:560px){.biz-nav nav a:not(.btn){display:none}.biz-grid{grid-template-columns:1fr}.biz-card{min-height:unset}.biz-orbit{width:150px;height:150px;top:18%}.biz-orbit span{width:80px;height:80px;font-size:2rem}.biz-band{padding:24px}.biz-hero{padding-bottom:76px}}
+  </style>
+</head>
+<body>
+  <header class="biz-nav">
+    <b>BizBud<span style="color:var(--violet)">.</span></b>
+    <nav aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#enfoque">Enfoque</a><a class="btn" href="#contacto">Hablemos</a></nav>
+  </header>
+  <main>
+    <section class="biz-hero">
+      <div class="biz-copy">
+        <span class="biz-kicker">Asesoría para negocios</span>
+        <h1>Tu próxima etapa empieza con <span>claridad.</span></h1>
+        <p>Un equipo estratégico para ordenar las ideas, tomar decisiones y hacer crecer tu negocio con intención.</p>
+        <div class="biz-actions"><a class="btn" href="#contacto">Descubrí cómo</a><a class="biz-ghost" href="#servicios">Conocé los servicios</a></div>
+      </div>
+      <div class="biz-orbit" aria-hidden="true"><span>BB</span></div>
+    </section>
+    <section class="biz-section" id="servicios">
+      <div class="biz-section-head"><h2>Un mejor plan<br>cambia todo.</h2><p>Asesoramiento práctico para que puedas enfocarte en lo que más importa: llevar tu proyecto adelante.</p></div>
+      <div class="biz-grid">
+        <button class="biz-card" type="button" aria-controls="biz-showcase" aria-expanded="false" data-slide="strategy"><span class="biz-icon" aria-hidden="true">↗</span><span class="biz-card-title">Estrategia de negocio</span><span class="biz-card-description">Objetivos claros, prioridades ordenadas y un plan para avanzar.</span></button>
+        <button class="biz-card" type="button" aria-controls="biz-showcase" aria-expanded="false" data-slide="numbers"><span class="biz-icon" aria-hidden="true">◎</span><span class="biz-card-title">Gestión y números</span><span class="biz-card-description">Información más sencilla para tomar decisiones con confianza.</span></button>
+        <button class="biz-card" type="button" aria-controls="biz-showcase" aria-expanded="false" data-slide="opportunities"><span class="biz-icon" aria-hidden="true">✳</span><span class="biz-card-title">Nuevas oportunidades</span><span class="biz-card-description">Detectá posibilidades de crecimiento y convertí ideas en acciones.</span></button>
+      </div>
+      <section class="biz-showcase" id="biz-showcase" aria-live="polite" aria-labelledby="biz-showcase-title" hidden>
+        <div class="biz-showcase-head"><div><span class="biz-showcase-kicker">Presentación de ejemplo</span><h3 id="biz-showcase-title"></h3></div><button class="biz-showcase-close" id="biz-showcase-close" type="button">Cerrar</button></div>
+        <div id="biz-slide-content"></div>
+      </section>
+    </section>
+    <section class="biz-section" id="enfoque">
+      <div class="biz-band">
+        <div><h2>Menos dudas.<br>Más dirección.</h2><p>Un acompañamiento cercano, con conversaciones honestas y recomendaciones pensadas para tu realidad.</p></div>
+        <div class="biz-metrics" role="tablist" aria-label="Etapas del acompañamiento">
+          <button class="biz-metric" id="biz-tab-1" role="tab" tabindex="0" type="button" aria-selected="true" aria-controls="biz-detail" data-description="Empezamos por conversar sobre lo que hoy te preocupa y qué querés conseguir."><strong>01</strong><span>Entender el desafío</span></button>
+          <button class="biz-metric" id="biz-tab-2" role="tab" tabindex="-1" type="button" aria-selected="false" aria-controls="biz-detail" data-description="Ordenamos las ideas para distinguir lo urgente de lo que puede esperar."><strong>02</strong><span>Definir prioridades</span></button>
+          <button class="biz-metric" id="biz-tab-3" role="tab" tabindex="-1" type="button" aria-selected="false" aria-controls="biz-detail" data-description="Convertimos las prioridades en próximos pasos claros y posibles."><strong>03</strong><span>Armar un plan</span></button>
+          <button class="biz-metric" id="biz-tab-4" role="tab" tabindex="-1" type="button" aria-selected="false" aria-controls="biz-detail" data-description="Revisamos el progreso y adaptamos el plan a lo que vaya pasando."><strong>04</strong><span>Avanzar juntos</span></button>
+          <p class="biz-detail" id="biz-detail" role="tabpanel" aria-labelledby="biz-tab-1">Empezamos por conversar sobre lo que hoy te preocupa y qué querés conseguir.</p>
+        </div>
+      </div>
+    </section>
+    <section class="biz-section" id="contacto"><div class="biz-band"><div><h2>Tu próximo paso empieza con una charla.</h2><p>Contanos qué querés mejorar y descubrí cómo podemos ayudarte.</p></div><a class="btn" href="index.html#contacto">Volver a los ejemplos</a></div></section>
+  </main>
+  <footer class="biz-footer">BizBud · Asesoría para negocios · <a href="index.html">Volver a los ejemplos</a></footer>
+  <template id="biz-slide-strategy">
+    <div class="biz-slide">
+      <div class="biz-slide-copy"><p>Una vista rápida para pasar de una meta general a pasos concretos, con responsables y avances visibles.</p><span class="biz-slide-note">Ejemplo visual · datos ilustrativos</span></div>
+      <div class="biz-chart"><h4>Ruta hacia el objetivo</h4><ol class="biz-roadmap"><li><span>1</span><div><strong>Ordenar prioridades</strong><small>Definir qué importa primero</small></div></li></ol><div class="biz-roadmap-track"><span style="width:82%"></span></div><ol class="biz-roadmap" start="2"><li><span>2</span><div><strong>Probar una acción</strong><small>Medir la respuesta inicial</small></div></li></ol><div class="biz-roadmap-track"><span style="width:58%"></span></div><ol class="biz-roadmap" start="3"><li><span>3</span><div><strong>Revisar y ajustar</strong><small>Elegir los próximos pasos</small></div></li></ol><div class="biz-roadmap-track"><span style="width:34%"></span></div></div>
+    </div>
+  </template>
+  <template id="biz-slide-numbers">
+    <div class="biz-slide">
+      <div class="biz-slide-copy"><p>Un resumen financiero sencillo ayuda a comparar ingresos y gastos por período y conversar sobre decisiones con más claridad.</p><span class="biz-slide-note">Ejemplo visual · cifras ficticias</span></div>
+      <figure class="biz-chart"><h4>Ingresos y gastos por período</h4><svg viewBox="0 0 440 210" role="img" aria-label="Gráfico ilustrativo de ingresos y gastos en tres períodos"><path d="M48 20V170H420M48 130H420M48 90H420M48 50H420" fill="none" stroke="#eadbd0" stroke-width="1"/><text x="8" y="54" fill="#77665e" font-size="12">alto</text><text x="12" y="174" fill="#77665e" font-size="12">base</text><rect x="95" y="80" width="32" height="90" rx="5" fill="#c15d3c"/><rect x="132" y="112" width="32" height="58" rx="5" fill="#e5b878"/><rect x="215" y="56" width="32" height="114" rx="5" fill="#c15d3c"/><rect x="252" y="101" width="32" height="69" rx="5" fill="#e5b878"/><rect x="335" y="38" width="32" height="132" rx="5" fill="#c15d3c"/><rect x="372" y="91" width="32" height="79" rx="5" fill="#e5b878"/><text x="102" y="194" fill="#77665e" font-size="12">Período 1</text><text x="222" y="194" fill="#77665e" font-size="12">Período 2</text><text x="342" y="194" fill="#77665e" font-size="12">Período 3</text></svg><figcaption class="biz-chart-legend"><span><i></i>Ingresos</span><span><i></i>Gastos</span></figcaption></figure>
+    </div>
+  </template>
+  <template id="biz-slide-opportunities">
+    <div class="biz-slide">
+      <div class="biz-slide-copy"><p>Un mapa de oportunidades permite comparar ideas por impacto estimado y esfuerzo antes de decidir qué probar.</p><span class="biz-slide-note">Ejemplo visual · prioridades hipotéticas</span></div>
+      <div class="biz-chart"><h4>Ideas para explorar</h4><div class="biz-opportunity-list"><div class="biz-opportunity"><div class="biz-opportunity-head"><span>Mejorar la experiencia</span><span>Alto impacto</span></div><div class="biz-opportunity-track"><span style="width:86%"></span></div></div><div class="biz-opportunity"><div class="biz-opportunity-head"><span>Probar un canal nuevo</span><span>Impacto medio</span></div><div class="biz-opportunity-track"><span style="width:64%"></span></div></div><div class="biz-opportunity"><div class="biz-opportunity-head"><span>Crear una alianza</span><span>Para explorar</span></div><div class="biz-opportunity-track"><span style="width:46%"></span></div></div></div></div>
+    </div>
+  </template>
+  <script>
+    const serviceCards=[...document.querySelectorAll(".biz-card[data-slide]")];
+    const showcase=document.getElementById("biz-showcase");
+    const showcaseTitle=document.getElementById("biz-showcase-title");
+    const slideContent=document.getElementById("biz-slide-content");
+    const slideTitles={strategy:"Estrategia de negocio",numbers:"Gestión y números",opportunities:"Nuevas oportunidades"};
+    serviceCards.forEach(card=>card.addEventListener("click",()=>{
+      const slide=card.dataset.slide;
+      serviceCards.forEach(item=>item.setAttribute("aria-expanded",String(item===card)));
+      showcaseTitle.textContent=slideTitles[slide];
+      slideContent.replaceChildren(document.getElementById(`biz-slide-${slide}`).content.cloneNode(true));
+      showcase.hidden=false;
+    }));
+    document.getElementById("biz-showcase-close").addEventListener("click",()=>{
+      const activeCard=serviceCards.find(card=>card.getAttribute("aria-expanded")==="true");
+      showcase.hidden=true;
+      serviceCards.forEach(card=>card.setAttribute("aria-expanded","false"));
+      activeCard?.focus();
+    });
+    const processTabs=[...document.querySelectorAll('[role="tab"]')];
+    const processDetail=document.getElementById("biz-detail");
+    processTabs.forEach((tab)=>tab.addEventListener("click",()=>{
+      processTabs.forEach((item)=>{
+        const selected=item===tab;
+        item.setAttribute("aria-selected",String(selected));
+        item.tabIndex=selected?0:-1;
+      });
+      processDetail.textContent=tab.dataset.description;
+      processDetail.setAttribute("aria-labelledby",tab.id);
+    }));
+    document.querySelector('[role="tablist"]').addEventListener("keydown",event=>{
+      if(!["ArrowRight","ArrowLeft"].includes(event.key))return;
+      event.preventDefault();
+      const current=processTabs.indexOf(document.activeElement);
+      const direction=event.key==="ArrowRight"?1:-1;
+      const next=processTabs[(current+direction+processTabs.length)%processTabs.length];
+      next.focus();
+      next.click();
+    });
+  </script>
+</body>
+</html>

@@ -1,4 +1,96 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Landing page</title><style>.h{min-height:100vh;background:linear-gradient(#0008,#0008),linear-gradient(135deg,#2b6777,#c8a2c8,#f4c7ab);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px}.h h1{font-size:clamp(46px,8vw,100px);max-width:900px}.h p{max-width:560px;margin:20px 0 28px}.t{background:#0ea5a0;font-size:1.1rem;animation:pu 2s infinite}@keyframes pu{50%{box-shadow:0 0 0 14px #0ea5a033}}form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px}input{padding:12px 18px;border-radius:99px;border:1px solid #bbb;font:inherit;min-width:240px}</style></head><body>
-<div class="h"><h1 class="rv">Comunícate de la mejor forma con tu clientela</h1><p class="rv" style="animation-delay:.2s">Un sitio web profesional que te ayuda a construir presencia en internet.</p><a class="btn t rv" style="animation-delay:.4s" href="#c">Empezar</a></div>
-<section style="text-align:center"><div class="grid"><div class="card"><h3>⚡ Rápida</h3><p>Carga en menos de un segundo.</p></div><div class="card"><h3>📱 Móvil</h3><p>Se ve bien en cualquier pantalla.</p></div><div class="card"><h3>🔎 Visible</h3><p>Lista para aparecer en Google.</p></div></div>
-<h2 id="c" style="font-size:2.6rem;margin-top:50px">Recibí tu propuesta gratis</h2><form onsubmit="event.preventDefault();this.innerHTML='<b>¡Gracias! Te escribimos pronto.</b>'"><input type="email" required placeholder="tu@email.com"><button class="btn t">Enviar</button></form></section><a class="back" href="index.html">← Volver al portafolio</a></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Landing de ejemplo para un estudio creativo.">
+  <title>Sur Estudio | Ideas que toman forma</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root{--coral:#c95038;--navy:#38282a;--cream:#fff6e8;--mint:#edc789}
+    body{background:var(--cream);color:var(--navy)}
+    .sur-nav{position:absolute;inset:0 0 auto;padding:20px max(5%,calc((100% - 1120px)/2));background:transparent}
+    .sur-nav b{font-size:1.55rem}.sur-nav b span{color:var(--coral)}
+    .sur-nav a{color:var(--navy);text-decoration:none}
+    .sur-nav .btn{color:#fff}
+    .sur-hero{position:relative;min-height:690px;overflow:hidden;padding:145px max(6%,calc((100% - 1120px)/2)) 90px;background:var(--mint)}
+    .sur-hero:before{content:"";position:absolute;width:480px;height:480px;right:-90px;top:80px;border-radius:49% 51% 45% 55%;background:#f3b968;transform:rotate(-18deg)}
+    .sur-hero:after{content:"";position:absolute;width:310px;height:400px;right:9%;top:19%;border-radius:48% 52% 12px 12px;background:linear-gradient(145deg,#e9784e,#b94a40);transform:rotate(8deg);box-shadow:28px 30px 0 #38282a}
+    .sur-copy{position:relative;z-index:1;max-width:680px}
+    .sur-label{color:#765129;font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    .sur-hero h1{max-width:680px;margin:20px 0;font-size:clamp(58px,9vw,108px);line-height:.88;letter-spacing:-.03em}
+    .sur-hero h1 span{color:var(--coral)}
+    .sur-hero p{max-width:460px;margin-bottom:28px;color:#594b3d;font-size:1.15rem}
+    .sur-hero .btn{background:var(--navy)}
+    .sur-note{position:absolute;z-index:2;right:12%;bottom:10%;width:155px;height:155px;display:grid;place-items:center;border:1px solid #fff9;border-radius:50%;background:#fff8;font:800 1rem Barlow;text-align:center;transform:rotate(8deg)}
+    .sur-section{max-width:1160px;margin:auto;padding-top:90px;padding-bottom:90px}
+    .sur-title{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px}
+    .sur-title h2{max-width:600px;font-size:clamp(42px,6vw,68px)}
+    .sur-title p{max-width:380px;color:#74665c}
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .work-card{min-height:260px;padding:24px;border-radius:22px;background:#fff;box-shadow:0 12px 32px #17243a0d;transition:transform .2s,box-shadow .2s}
+    .work-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px #17243a18}
+    .work-card strong{display:block;color:var(--coral);font:800 3.2rem 'Barlow Condensed'}
+    .work-card h3{margin:28px 0 8px;font-size:1.8rem}
+    .work-card p{color:#74665c}
+    .sur-contact{position:relative;overflow:hidden;padding:clamp(30px,6vw,70px);border-radius:30px;background:var(--navy);color:#fff}
+    .sur-contact:after{content:"";position:absolute;width:240px;height:240px;right:-65px;top:-85px;border:1px solid #ffffff3b;border-radius:50%;box-shadow:0 0 0 28px #ffffff0a,0 0 0 57px #ffffff08}
+    .sur-contact h2{position:relative;z-index:1;max-width:660px;margin-bottom:14px;font-size:clamp(42px,7vw,72px)}
+    .sur-contact p{position:relative;z-index:1;max-width:500px;margin-bottom:24px;color:#d9e3ed}
+    .sur-contact .btn{position:relative;z-index:1;background:var(--coral)}
+    .project-form{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:700px}
+    .project-form label{display:grid;gap:6px;color:#f5ded1;font-size:.88rem;font-weight:700}
+    .project-form select,.project-form textarea{width:100%;padding:12px 14px;border:1px solid #ffffff3b;border-radius:12px;background:#fff9f2;color:#38282a;font:inherit}
+    .project-form textarea{min-height:84px;resize:vertical}
+    .project-form .wide{grid-column:1/-1}
+    .project-form .btn{justify-self:start}
+    .project-form-note{position:relative;z-index:1;margin-top:12px;color:#e4d3c8;font-size:.85rem}
+    .sur-footer{padding:26px 5%;text-align:center;color:#74665c}
+    .sur-footer a{color:#8e442e;font-weight:700}
+    @media(max-width:780px){.sur-hero{min-height:640px}.sur-hero:before{width:330px;height:330px;right:-100px;top:230px}.sur-hero:after{width:220px;height:290px;right:8%;top:39%;opacity:.83}.sur-copy{max-width:580px}.work-grid{grid-template-columns:1fr 1fr}.sur-title{align-items:flex-start;flex-direction:column}}
+    @media(max-width:540px){.sur-nav nav a:not(.btn){display:none}.sur-hero{min-height:680px;padding-top:125px}.sur-hero:after{width:150px;height:205px;top:auto;bottom:13%;right:12%}.sur-hero:before{width:250px;height:250px;top:auto;bottom:9%;right:-60px}.sur-note{width:100px;height:100px;right:53%;bottom:13%;font-size:.8rem}.work-grid{grid-template-columns:1fr}.work-card{min-height:unset}.sur-section{padding-top:64px;padding-bottom:64px}.project-form{grid-template-columns:1fr}.project-form .wide{grid-column:auto}}
+  </style>
+</head>
+<body>
+  <header class="sur-nav"><nav aria-label="Navegación principal"><b>SUR<span>.</span></b><div><a href="#proceso">Cómo trabajamos</a><a class="btn" href="#contacto">Hablemos</a></div></nav></header>
+  <main>
+    <section class="sur-hero" id="inicio">
+      <div class="sur-copy"><span class="sur-label">Estudio creativo independiente</span><h1>Ideas que toman <span>forma.</span></h1><p>Una buena historia merece una presencia digital a su altura. Diseñamos experiencias claras, cálidas y hechas para personas.</p><a class="btn" href="#contacto">Contanos tu idea <span aria-hidden="true">↗</span></a></div>
+      <div class="sur-note" aria-hidden="true">Diseño con<br>intención</div>
+    </section>
+    <section class="sur-section" id="proceso">
+      <div class="sur-title"><h2>Un proceso simple.<br>Un resultado propio.</h2><p>Trabajamos en equipo para convertir una idea inicial en una experiencia que represente tu proyecto.</p></div>
+      <div class="work-grid">
+        <article class="work-card"><strong>01</strong><h3>Escuchamos</h3><p>Conocemos tu idea, tus objetivos y a las personas a quienes querés llegar.</p></article>
+        <article class="work-card"><strong>02</strong><h3>Exploramos</h3><p>Ordenamos el contenido y encontramos una dirección visual con personalidad.</p></article>
+        <article class="work-card"><strong>03</strong><h3>Lo hacemos real</h3><p>Diseñamos, revisamos y preparamos una propuesta lista para compartir.</p></article>
+      </div>
+    </section>
+    <section class="sur-section" id="contacto"><div class="sur-contact"><h2>¿Qué tenés ganas de crear?</h2><p>Elegí el tipo de sitio y prepará una consulta para conversar por WhatsApp.</p>
+      <form class="project-form" id="project-form">
+        <label>¿Qué necesitás?
+          <select id="project-kind" required><option value="">Elegí una opción</option><option>Sitio para mi negocio</option><option>Catálogo de productos</option><option>Landing page</option><option>Quiero una recomendación</option></select>
+        </label>
+        <label>¿Qué te gustaría lograr?
+          <textarea id="project-goal" maxlength="240" placeholder="Contame brevemente tu idea (opcional)"></textarea>
+        </label>
+        <button class="btn wide" type="submit">Preparar consulta por WhatsApp <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="project-form-note" id="project-feedback" aria-live="polite">Es una demo: no guardamos tus respuestas, solo se prepara el mensaje para que lo revises antes de enviarlo.</p>
+    </div></section>
+  </main>
+  <footer class="sur-footer">SUR Estudio · <a href="index.html">Ver más ejemplos</a></footer>
+  <a class="back" href="index.html">← Volver a los ejemplos</a>
+  <script>
+    document.getElementById("project-form").addEventListener("submit",event=>{
+      event.preventDefault();
+      const kind=document.getElementById("project-kind").value;
+      const goal=document.getElementById("project-goal").value.trim();
+      const message=`Hola Manuel, me interesa: ${kind}.${goal?` Mi idea: ${goal}`:""}`;
+      const whatsappUrl=`https://wa.me/5492234371575?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl,"_blank","noopener,noreferrer");
+      document.getElementById("project-feedback").textContent="Se abrió WhatsApp con el mensaje preparado. Podés revisarlo y enviarlo cuando quieras.";
+    });
+  </script>
+</body>
+</html>

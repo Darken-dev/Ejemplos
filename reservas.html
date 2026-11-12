@@ -1,10 +1,118 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Reservas</title><style>main{max-width:620px;margin:30px auto;padding:0 16px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 24px}.chips button{border:1px solid #d9e2ef;background:#fff;border-radius:99px;padding:9px 16px;font:700 .95rem Barlow;cursor:pointer;transition:.15s}.chips button.on{background:#111;color:#fff;transform:scale(1.06)}select{width:100%;padding:12px;border-radius:14px;border:1px solid #d9e2ef;font:inherit;margin:8px 0 22px}#ok{margin-top:20px;padding:18px;border-radius:16px;background:#d9f7e4;display:none}</style></head><body>
-<nav><b>Peluquería Lúa</b><span>Reservá tu turno</span></nav>
-<main class="card" style="margin-top:30px"><h2 style="font-size:2.4rem">Elegí tu turno</h2><label>Servicio</label><select id="s"><option>Corte y peinado</option><option>Color</option><option>Manicura</option></select>
-<label>Día</label><div class="chips" id="d"></div><label>Horario</label><div class="chips" id="h"></div><button class="btn" id="b" style="width:100%">Confirmar reserva</button><div id="ok"></div></main>
-<script>
-const D=["Lun 16","Mar 17","Mié 18","Jue 19","Vie 20"],H=["09:00","10:30","12:00","15:00","16:30","18:00"],v={};
-function ch(id,a){const e=document.getElementById(id);e.innerHTML=a.map(x=>'<button>'+x+'</button>').join("");e.onclick=t=>{if(t.target.tagName!="BUTTON")return;[...e.children].forEach(c=>c.classList.remove("on"));t.target.classList.add("on");v[id]=t.target.textContent}}
-ch("d",D);ch("h",H);
-b.onclick=()=>{ok.style.display="block";ok.textContent=v.d&&v.h?"✅ Reserva confirmada: "+s.value+", "+v.d+" a las "+v.h:"Elegí un día y un horario para continuar."}
-</script><a class="back" href="index.html">← Volver al portafolio</a></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demostración de reserva de turnos en un salón de belleza.">
+  <title>Casa Lúa | Reservá tu momento</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root{--plum:#49302c;--rose:#c76557;--blush:#f5dfcb;--sage:#ece8d6}
+    body{background:#fff8ee;color:var(--plum)}
+    .lua-nav{padding:16px max(5%,calc((100% - 1120px)/2));background:#fff8ee}
+    .lua-nav b{font-size:1.55rem}.lua-nav b span{color:var(--rose)}
+    .lua-nav a{text-decoration:none}.lua-nav .btn{background:var(--plum)}
+    .booking-hero{position:relative;overflow:hidden;padding:70px max(6%,calc((100% - 1120px)/2)) 82px;background:var(--blush)}
+    .booking-hero:after{content:"";position:absolute;width:270px;height:340px;right:13%;top:-85px;border:1px solid #49334c22;border-radius:48% 48% 8px 8px;box-shadow:18px 22px 0 #d889872e,36px 44px 0 #49334c0c;transform:rotate(12deg)}
+    .booking-hero p{position:relative;z-index:1;max-width:640px;margin-top:18px;color:#705e70;font-size:1.1rem}
+    .booking-hero h1{position:relative;z-index:1;max-width:750px;font-size:clamp(54px,9vw,92px);line-height:.9}
+    .booking-hero h1 span{color:#b84d3e}
+    .booking-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr);gap:22px;max-width:1050px;margin:42px auto;padding:0 20px 70px}
+    .booking-card{padding:clamp(22px,4vw,36px);border:1px solid #eadfda;border-radius:26px;background:#fff;box-shadow:0 16px 42px #49334c0a}
+    .booking-card h2{margin-bottom:8px;font-size:2.3rem}
+    .booking-intro{margin-bottom:24px;color:#786f79}
+    .booking-progress{margin:18px 0 24px}
+    .progress-copy{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;color:#78645b;font-size:.86rem}
+    .progress-track{height:8px;overflow:hidden;border-radius:99px;background:#f1e8dc}
+    .progress-fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#c76557,#e5ac69);transition:width .25s ease}
+    .booking-summary{margin-top:20px;padding:14px;border-radius:14px;background:#fff2e4;color:#665045;font-size:.9rem}
+    .field-label{display:block;margin:20px 0 10px;font-weight:700}
+    .service-select{width:100%;padding:13px 15px;border:1px solid #dcd1da;border-radius:13px;background:#fff;color:inherit;font:inherit}
+    .choice-list{display:flex;flex-wrap:wrap;gap:8px}
+    .choice{padding:9px 13px;border:1px solid #ddd2dc;border-radius:99px;background:#fff;color:inherit;font:700 .93rem Barlow;cursor:pointer;transition:background .18s,color .18s,border .18s}
+    .choice[aria-pressed=true]{border-color:var(--plum);background:var(--plum);color:#fff}
+    .booking-submit{width:100%;margin-top:24px;background:var(--plum)}
+    .booking-help{margin-top:14px;color:#786f79;font-size:.88rem;text-align:center}
+    .booking-aside{padding:28px;border-radius:26px;background:var(--sage)}
+    .booking-aside h2{margin-bottom:12px;font-size:2rem}
+    .booking-aside p{color:#5f6e63}
+    .booking-aside ul{margin:18px 0 0 20px;color:#5f6e63}
+    .booking-aside li{margin:8px 0}
+    #booking-result{margin-top:18px;padding:15px;border-radius:14px;background:#f7eeee;color:var(--plum)}
+    #booking-result:empty{display:none}
+    #booking-result[data-state=success]{background:#e8f4e9}
+    .booking-footer{padding:25px 5%;background:var(--plum);color:#fff;text-align:center}
+    .booking-footer a{color:#ffd4c8}
+    @media(max-width:760px){.booking-layout{grid-template-columns:1fr;margin-top:28px}.booking-hero:after{right:-70px;opacity:.5}.booking-aside{order:-1}}
+    @media(max-width:520px){.lua-nav nav a:not(.btn){display:none}.booking-hero{padding-top:55px;padding-bottom:60px}.booking-hero:after{width:180px;height:240px;right:-110px}.booking-layout{padding-right:5%;padding-left:5%}.booking-card{padding:22px}}
+  </style>
+</head>
+<body>
+  <header class="lua-nav"><nav aria-label="Navegación principal"><b>Casa Lúa<span>.</span></b><div><a href="#turno">Turnos</a><a class="btn" href="#turno">Reservar</a></div></nav></header>
+  <main>
+    <section class="booking-hero"><h1>Un momento<br>para <span>vos.</span></h1><p>Elegí tu servicio, un día y un horario para armar tu solicitud. Esta página es una demostración: no confirma una reserva real.</p></section>
+    <div class="booking-layout" id="turno">
+      <section class="booking-card" aria-labelledby="booking-title">
+        <h2 id="booking-title">Elegí tu turno</h2><p class="booking-intro">Seleccioná las opciones que mejor te queden.</p>
+        <div class="booking-progress" aria-label="Progreso de la solicitud">
+          <div class="progress-copy"><span id="progress-label">Paso 1 de 2 · Elegí un día</span><span id="progress-percent">0%</span></div>
+          <div class="progress-track" id="progress-track" role="progressbar" aria-label="Progreso de selección" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="progress-fill"></div></div>
+        </div>
+        <label class="field-label" for="service">Servicio</label>
+        <select class="service-select" id="service"><option>Corte y peinado</option><option>Color</option><option>Manicura</option><option>Tratamiento capilar</option></select>
+        <span class="field-label" id="date-label">Día</span><div class="choice-list" id="date-options" role="group" aria-labelledby="date-label"></div>
+        <span class="field-label" id="time-label">Horario</span><div class="choice-list" id="time-options" role="group" aria-labelledby="time-label"></div>
+        <button class="btn booking-submit" id="confirm-booking" type="button">Ver resumen de solicitud</button>
+        <p class="booking-help">Los turnos y horarios son ilustrativos.</p><div id="booking-result" role="status" aria-live="polite"></div>
+      </section>
+      <aside class="booking-aside"><h2>Un ratito para bajar un cambio.</h2><p>Un espacio tranquilo para elegir el cuidado que te hace bien, sin apuro.</p><ul><li>Atención personalizada</li><li>Productos seleccionados</li><li>Un ambiente para disfrutar</li></ul><div class="booking-summary" id="booking-summary" aria-live="polite">Tu resumen aparecerá acá mientras elegís.</div></aside>
+    </div>
+  </main>
+  <footer class="booking-footer">Casa Lúa · <a href="index.html">Volver a los ejemplos</a></footer>
+  <script>
+    const bookingChoices={date:null,time:null};
+    const dateOptions=["Lun 16","Mar 17","Mié 18","Jue 19","Vie 20"];
+    const timeOptions=["09:00","10:30","12:00","15:00","16:30","18:00"];
+    function updateBookingProgress(){
+      const completed=[bookingChoices.date,bookingChoices.time].filter(Boolean).length;
+      const percent=completed*50;
+      const label=completed===0?"Paso 1 de 2 · Elegí un día":completed===1?"Paso 2 de 2 · Elegí un horario":"¡Listo! Revisá tu solicitud";
+      document.getElementById("progress-fill").style.width=`${percent}%`;
+      document.getElementById("progress-track").setAttribute("aria-valuenow",String(percent));
+      document.getElementById("progress-label").textContent=label;
+      document.getElementById("progress-percent").textContent=`${percent}%`;
+      const service=document.getElementById("service").value;
+      const date=bookingChoices.date||"día pendiente";
+      const time=bookingChoices.time||"horario pendiente";
+      document.getElementById("booking-summary").textContent=`${service} · ${date} · ${time}`;
+    }
+    function renderChoices(containerId,values,key){
+      const container=document.getElementById(containerId);
+      container.innerHTML=values.map(value=>`<button class="choice" type="button" data-choice="${value}" aria-pressed="${bookingChoices[key]===value}">${value}</button>`).join("");
+      container.addEventListener("click",event=>{
+        const button=event.target.closest("[data-choice]");
+        if(!button)return;
+        bookingChoices[key]=button.dataset.choice;
+        container.querySelectorAll("[data-choice]").forEach(choice=>choice.setAttribute("aria-pressed",String(choice===button)));
+        document.getElementById("booking-result").textContent="";
+        updateBookingProgress();
+      });
+    }
+    renderChoices("date-options",dateOptions,"date");
+    renderChoices("time-options",timeOptions,"time");
+    document.getElementById("service").addEventListener("change",updateBookingProgress);
+    updateBookingProgress();
+    document.getElementById("confirm-booking").addEventListener("click",()=>{
+      const result=document.getElementById("booking-result");
+      if(!bookingChoices.date||!bookingChoices.time){
+        result.dataset.state="error";
+        result.textContent="Elegí un día y un horario para ver el resumen.";
+        return;
+      }
+      result.dataset.state="success";
+      result.textContent=`Solicitud de demostración: ${document.getElementById("service").value}, ${bookingChoices.date} a las ${bookingChoices.time}. No se envió ni reservó un turno.`;
+    });
+  </script>
+  <a class="back" href="index.html">← Volver a los ejemplos</a>
+</body>
+</html>

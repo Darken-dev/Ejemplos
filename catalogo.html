@@ -4,27 +4,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Ejemplo genérico de catálogo interactivo con categorías, filtros y consultas por WhatsApp.">
-  <meta name="theme-color" content="#10233e">
+  <meta name="theme-color" content="#342428">
   <title>Catálogo Demo | Ejemplo de tienda</title>
   <link rel="stylesheet" href="base.css">
   <style>
     :root {
-      --catalog-ink: #17243a;
-      --catalog-muted: #68778c;
-      --catalog-blue: #1d5e75;
-      --catalog-blue-dark: #10233e;
-      --catalog-line: #dce4e9;
-      --catalog-bg: #f3f5f2;
-      --catalog-accent: #d5a861;
+      --catalog-ink: #342720;
+      --catalog-muted: #77685c;
+      --catalog-blue: #9c543b;
+      --catalog-blue-dark: #342428;
+      --catalog-line: #e6ddd1;
+      --catalog-bg: #f8f2e8;
+      --catalog-accent: #dba15d;
     }
 
     body { background: var(--catalog-bg); color: var(--catalog-ink); }
     .catalog-header {
       position: relative;
       overflow: hidden;
-      padding: 18px max(5%, calc((100% - 1180px) / 2)) 50px;
+      padding: 18px max(5%, calc((100% - 1180px) / 2)) 62px;
       background: var(--catalog-blue-dark);
       color: #fff;
+    }
+    .catalog-header::before {
+      content: "";
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      top: -300px;
+      right: -60px;
+      border: 1px solid #ffffff15;
+      border-top-color: #f4bb78;
+      border-radius: 50%;
+      box-shadow: 0 0 0 45px #ffffff08, 0 0 0 90px #ffffff06;
     }
     .catalog-top {
       position: relative;
@@ -43,13 +55,67 @@
     }
     .catalog-top-links { position: static; z-index: auto; padding: 0; display: flex; align-items: center; gap: 18px; background: transparent; backdrop-filter: none; }
     .catalog-top-links a { margin-left: 0; }
-    .catalog-top-links a:not(.btn) { color: #d4dfeb; font-weight: 700; text-decoration: none; }
+    .catalog-top-links a:not(.btn) { color: #f2dfcf; font-weight: 700; text-decoration: none; }
     .catalog-top-links .btn { background: var(--catalog-blue); }
-    .catalog-top-links .btn:hover { background: #287c91; }
+    .catalog-top-links .btn:hover { background: #b96545; }
+    .catalog-hero-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: center; gap: 30px; }
     .catalog-intro { position: relative; z-index: 1; max-width: 720px; padding: 20px 0 16px; }
     .catalog-kicker { color: #e0b56d; font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
     .catalog-intro h1 { margin: 14px 0; font-size: clamp(44px, 8vw, 82px); line-height: .96; }
-    .catalog-intro p:last-child { max-width: 590px; color: #d4dfeb; font-size: 1.08rem; }
+    .catalog-intro p:last-child { max-width: 590px; color: #ecd9c9; font-size: 1.08rem; }
+    .catalog-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
+    .catalog-actions .btn { background: #e3aa62; color: #342428 !important; }
+    .catalog-secondary { padding: 10px 15px; border: 1px solid #ffffff4d; border-radius: 99px; color: #fff; font-weight: 700; text-decoration: none; }
+    .catalog-secondary:hover { background: #ffffff12; }
+    .catalog-visual { position: relative; min-height: 340px; display: grid; place-items: center; }
+    .visual-orbit { position: absolute; width: 310px; aspect-ratio: 1; border: 1px solid #ffffff35; border-top-color: #f4bb78; border-radius: 50%; box-shadow: 0 0 0 30px #ffffff0a, 0 0 0 62px #ffffff07; }
+    .visual-product {
+      position: absolute;
+      width: 185px;
+      height: 230px;
+      padding: 14px;
+      border: 1px solid #ffffff9e;
+      border-radius: 18px;
+      appearance: none;
+      background: #fff;
+      box-shadow: 0 22px 48px #0005;
+      color: var(--catalog-ink);
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      transition: translate .34s ease, scale .34s ease, box-shadow .28s ease, opacity .28s ease;
+    }
+    .visual-product:focus-visible { outline: 3px solid #f4bb78; outline-offset: 4px; }
+    .visual-product[aria-pressed="true"] { z-index: 4; scale: 1.08; opacity: 1; box-shadow: 0 28px 56px #0007; }
+    .visual-product.main { z-index: 1; left: 50%; width: 170px; height: 245px; transform: translateX(-50%) rotate(4deg); }
+    .visual-product.side { width: 150px; height: 205px; right: -28px; top: 30px; transform: rotate(12deg); }
+    .visual-product.rear-card { width: 150px; left: -28px; bottom: 11px; transform: rotate(-12deg); }
+    .visual-tag { display: inline-block; padding: 4px 8px; border-radius: 99px; background: #fff; color: var(--catalog-ink); font-size: .58rem; font-weight: 800; letter-spacing: .1em; }
+    .visual-shape { position: relative; display: block; width: 100%; height: 130px; margin: 10px 0; overflow: hidden; border-radius: 12px; background: linear-gradient(145deg, #c6d9d4, #e8dfcb); }
+    .visual-shape::before { content: ""; position: absolute; z-index: 1; width: 74px; height: 91px; left: 50%; top: 20px; border: 8px solid #557b72; border-radius: 42px 42px 16px 16px; background: #e3c18d; transform: translateX(-50%) rotate(-7deg); }
+    .visual-shape::after { content: ""; position: absolute; z-index: 0; width: 78px; height: 8px; left: 50%; bottom: 4px; border-radius: 50%; background: #17243a25; transform: translateX(-50%); }
+    .visual-product.main .visual-shape::before { width: 70px; height: 76px; top: 13px; }
+    .visual-product.side .visual-shape { height: 100px; background: linear-gradient(145deg, #ead7d0, #e9c886); }
+    .visual-product.side .visual-shape::before { width: 62px; height: 70px; border-color: #b27961; border-radius: 50%; background: #f3ece1; }
+    .visual-product.rear-card .visual-shape { height: 100px; background: linear-gradient(145deg, #f1d5bf, #f4e3d1); }
+    .visual-product.rear-card .visual-shape::before { width: 72px; height: 56px; top: 21px; border-color: #a76a50; border-radius: 12px; background: #f3e7d2; }
+    .visual-product strong { display: block; font: 800 1rem 'Barlow Condensed', sans-serif; }
+    .visual-product small { color: var(--catalog-muted); font-size: .68rem; }
+    .visual-float {
+      position: absolute;
+      z-index: 2;
+      right: -2px;
+      bottom: 17px;
+      padding: 12px 15px;
+      border: 1px solid #ffffff45;
+      border-radius: 13px;
+      background: #18395b;
+      color: #fff;
+      box-shadow: 0 12px 28px #0004;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+    .visual-float span { display: block; color: #d8c08f; font-size: .7rem; font-weight: 500; }
     .catalog-header::after {
       content: "";
       position: absolute;
@@ -58,26 +124,46 @@
       right: -80px;
       bottom: -240px;
       border: 1px solid #ffffff26;
+      border-top-color: #f4bb78;
       border-radius: 50%;
       box-shadow: 0 0 0 44px #ffffff0c, 0 0 0 88px #ffffff09;
     }
-    .catalog-main { max-width: 1180px; margin: 0 auto; padding: 38px 24px 70px; }
+    .catalog-main { max-width: 1180px; margin: 0 auto; padding: 0 24px 70px; }
+    .catalog-highlights {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: -25px 0 36px;
+      border: 1px solid var(--catalog-line);
+      border-radius: 17px;
+      background: #fff;
+      box-shadow: 0 15px 34px #17243a12;
+    }
+    .catalog-highlight { padding: 18px 22px; }
+    .catalog-highlight + .catalog-highlight { border-left: 1px solid var(--catalog-line); }
+    .catalog-highlight strong { display: block; color: var(--catalog-blue-dark); font: 800 1.45rem 'Barlow Condensed', sans-serif; }
+    .catalog-highlight span { color: var(--catalog-muted); font-size: .82rem; }
     .catalog-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
     .catalog-toolbar h2 { font-size: clamp(30px, 4vw, 42px); }
     .catalog-toolbar p { color: var(--catalog-muted); margin-top: 5px; }
+    .catalog-controls { display: flex; align-items: end; gap: 12px; }
     .catalog-search { width: min(100%, 330px); }
     .catalog-search label { display: block; margin-bottom: 6px; font-size: .85rem; font-weight: 700; }
     .catalog-search input {
       width: 100%;
       padding: 12px 14px;
-      border: 1px solid #cbd6df;
+      border: 1px solid #d8cbbd;
       border-radius: 12px;
-      background: #fff;
+      background: #fffdf9;
       color: var(--catalog-ink);
       font: inherit;
     }
+    .catalog-sort { display: grid; gap: 6px; min-width: 150px; }
+    .catalog-sort label { font-size: .85rem; font-weight: 700; }
+    .catalog-sort select { padding: 12px; border: 1px solid #d8cbbd; border-radius: 12px; background: #fffdf9; color: var(--catalog-ink); font: inherit; }
     .catalog-search input:focus-visible, .category-button:focus-visible, .subcat-button:focus-visible, .product-link:focus-visible {
-      outline: 3px solid #4d94aa;
+      outline: 3px solid #c46c48;
       outline-offset: 3px;
     }
     .catalog-layout { min-width: 0; display: grid; grid-template-columns: 248px minmax(0, 1fr); align-items: start; gap: 24px; }
@@ -101,10 +187,10 @@
       cursor: pointer;
       font: 700 .92rem Barlow, sans-serif;
       text-align: left;
-      transition: background .2s, color .2s;
+      transition: background .2s, color .2s, transform .2s;
     }
-    .category-button:hover, .subcat-button:hover { background: #edf3f4; color: var(--catalog-blue-dark); }
-    .category-button[aria-pressed="true"], .subcat-button[aria-pressed="true"] { background: var(--catalog-blue-dark); color: #fff; }
+    .category-button:hover, .subcat-button:hover { background: #f8ece0; color: var(--catalog-blue-dark); }
+    .category-button[aria-pressed="true"], .subcat-button[aria-pressed="true"] { background: #fff; color: var(--catalog-blue-dark); box-shadow: 0 4px 12px #3424281c; transform: scale(1.05); }
     .subcategory-block { margin-top: 24px; border-top: 1px solid var(--catalog-line); padding-top: 18px; }
     .subcategory-block h4 { margin-bottom: 9px; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
     .subcategory-list { display: grid; gap: 4px; }
@@ -114,9 +200,11 @@
     .products-heading h3 { font-size: 1.8rem; }
     .products-count { color: var(--catalog-muted); font-size: .86rem; white-space: nowrap; }
     .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 16px; padding-top: 18px; }
-    .product-card { overflow: hidden; border: 1px solid var(--catalog-line); border-radius: 16px; background: #fff; transition: transform .2s, box-shadow .2s; }
+    .product-card { overflow: hidden; border: 1px solid var(--catalog-line); border-radius: 16px; background: #fff; transition: transform .2s, box-shadow .2s, border-color .2s; }
     .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px #17243a12; }
-    .product-art { display: grid; place-items: center; height: 174px; overflow: hidden; background: #eaf0ee; }
+    .product-card:nth-child(3n+2) .product-art { background: linear-gradient(140deg, #fae9df, #f3ddd1); }
+    .product-card:nth-child(3n) .product-art { background: linear-gradient(140deg, #f8eddb, #f3e5d1); }
+    .product-art { display: grid; place-items: center; height: 190px; overflow: hidden; background: linear-gradient(140deg, #e1efeb, #d9e8e9); }
     .product-art svg { width: min(88%, 260px); height: 150px; }
     .product-info { padding: 16px; }
     .product-category { color: var(--catalog-blue); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -125,7 +213,7 @@
     .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
     .product-price { color: var(--catalog-ink); font-size: .9rem; font-weight: 700; }
     .product-link { padding: 8px 12px; border-radius: 99px; background: var(--catalog-blue); color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
-    .product-link:hover { background: #16495b; }
+    .product-link:hover { background: #753b32; }
     .catalog-empty { grid-column: 1 / -1; padding: 52px 18px; color: var(--catalog-muted); text-align: center; }
     .catalog-empty strong { display: block; margin-bottom: 7px; color: var(--catalog-ink); font-size: 1.2rem; }
     .catalog-note { margin-top: 18px; color: var(--catalog-muted); font-size: .85rem; }
@@ -142,6 +230,7 @@
     .catalog-contact h2 { margin-bottom: 4px; font-size: 1.65rem; }
     .catalog-contact p { color: var(--catalog-muted); }
     .catalog-contact .btn { flex-shrink: 0; background: var(--catalog-blue-dark); }
+    .catalog-note { padding: 12px 14px; border-left: 3px solid var(--catalog-accent); border-radius: 0 9px 9px 0; background: #fbf8f1; }
     .catalog-footer { padding: 24px; background: var(--catalog-blue-dark); color: #d4dfeb; text-align: center; }
     .catalog-footer a { color: #fff; font-weight: 700; }
     @media (max-width: 760px) {
@@ -149,8 +238,20 @@
       .catalog-top { padding-bottom: 25px; }
       .catalog-top-links a:not(.btn) { display: none; }
       .catalog-top-links .btn { padding: 10px 16px; font-size: .9rem; }
-      .catalog-main { padding: 28px 5% 56px; }
+      .catalog-hero-layout { grid-template-columns: 1fr; gap: 0; }
+      .catalog-intro { padding-bottom: 4px; }
+      .catalog-visual { min-height: 285px; max-width: 430px; width: 100%; margin: 0 auto; }
+      .visual-orbit { width: 250px; }
+      .visual-product.main { left: 50%; width: 175px; height: 220px; }
+      .visual-product.side, .visual-product.rear-card { width: 135px; height: 180px; }
+      .visual-shape { height: 108px; }
+      .catalog-main { padding: 0 5% 56px; }
+      .catalog-highlights { margin-top: -18px; }
+      .catalog-highlight { padding: 14px 12px; }
+      .catalog-highlight strong { font-size: 1.2rem; }
+      .catalog-highlight span { font-size: .72rem; }
       .catalog-toolbar { align-items: stretch; flex-direction: column; }
+      .catalog-controls { align-items: stretch; flex-direction: column; }
       .catalog-search { width: 100%; }
       .catalog-layout { grid-template-columns: 1fr; gap: 14px; }
       .catalog-sidebar { padding: 16px; }
@@ -161,6 +262,20 @@
       .subcat-button { width: auto; flex: 0 0 auto; white-space: nowrap; }
       .catalog-products { padding: 15px; }
       .catalog-contact { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .catalog-highlights { grid-template-columns: 1fr; }
+      .catalog-highlight { padding: 11px 15px; }
+      .catalog-highlight + .catalog-highlight { border-top: 1px solid var(--catalog-line); border-left: 0; }
+      .catalog-highlight strong, .catalog-highlight span { display: inline; }
+      .catalog-highlight span::before { content: " · "; }
+      .catalog-visual { min-height: 250px; }
+      .visual-product.side, .visual-product.rear-card { display: none; }
+      .visual-product.main { z-index: 1; left: 50%; width: 180px; height: 220px; transform: translateX(-50%) rotate(4deg); }
+      .visual-shape { height: 96px; }
+      .visual-product.main .visual-shape::before { width: 62px; height: 60px; top: 13px; border-width: 6px; }
+      .visual-float { display: none; }
+      .products-heading { align-items: flex-start; flex-direction: column; gap: 3px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -177,22 +292,48 @@
         <a class="btn" href="index.html">Volver al portafolio</a>
       </nav>
     </div>
-    <div class="catalog-intro" id="inicio">
-      <p class="catalog-kicker">Ejemplo de tienda online</p>
-      <h1>Encontrá lo que buscás.</h1>
-      <p>Explorá productos de ejemplo, filtrá por categoría y consultá por el que te interese.</p>
+    <div class="catalog-hero-layout" id="inicio">
+      <div class="catalog-intro">
+        <p class="catalog-kicker">Una tienda, a tu manera</p>
+        <h1>Encontrá algo que te guste.</h1>
+        <p>Explorá productos de ejemplo, filtrá por categoría y consultá por el que te interese. Esta demo muestra cómo un catálogo puede sentirse propio y fácil de recorrer.</p>
+        <div class="catalog-actions"><a class="btn" href="#catalogo">Explorar el catálogo <span aria-hidden="true">↓</span></a><a class="catalog-secondary" href="#contacto">Hacer una consulta</a></div>
+      </div>
+      <div class="catalog-visual" aria-label="Productos destacados; seleccioná uno para filtrar el catálogo">
+        <div class="visual-orbit" aria-hidden="true"></div>
+        <button class="visual-product rear-card" type="button" data-hero-category="categoria-2" aria-pressed="false" aria-label="Filtrar por Categoría 2"><span class="visual-tag">CATEGORÍA 2</span><span class="visual-shape" aria-hidden="true"></span><strong>PRODUCTO 04</strong><small>Variante 1</small></button>
+        <button class="visual-product side" type="button" data-hero-category="categoria-3" aria-pressed="false" aria-label="Filtrar por Categoría 3"><span class="visual-tag">CATEGORÍA 3</span><span class="visual-shape" aria-hidden="true"></span><strong>PRODUCTO 07</strong><small>Variante 1</small></button>
+        <button class="visual-product main" type="button" data-hero-category="categoria-1" aria-pressed="false" aria-label="Filtrar por Categoría 1"><span class="visual-tag">SELECCIÓN DEMO</span><span class="visual-shape" aria-hidden="true"></span><strong>PRODUCTO 01</strong><small>Explorá todas las variantes</small></button>
+        <div class="visual-float" aria-hidden="true">9 productos<span>3 categorías para descubrir</span></div>
+      </div>
     </div>
   </header>
 
   <main class="catalog-main" id="catalogo">
+    <div class="catalog-highlights" aria-label="Características del catálogo">
+      <div class="catalog-highlight"><strong>03 categorías</strong><span>Para ordenar la selección</span></div>
+      <div class="catalog-highlight"><strong>09 productos</strong><span>Con variantes de ejemplo</span></div>
+      <div class="catalog-highlight"><strong>Consulta directa</strong><span>Un acceso rápido por WhatsApp</span></div>
+    </div>
     <div class="catalog-toolbar">
       <div>
-        <h2>Catálogo</h2>
+        <p class="catalog-kicker" style="color:var(--catalog-blue)">EXPLORÁ LA COLECCIÓN</p>
+        <h2>Todo empieza por mirar.</h2>
         <p>Filtrá por categoría o buscá un producto.</p>
       </div>
-      <div class="catalog-search">
-        <label for="catalog-search-input">Buscar productos</label>
-        <input id="catalog-search-input" type="search" placeholder="Ej.: Producto 1..." autocomplete="off">
+      <div class="catalog-controls">
+        <div class="catalog-search">
+          <label for="catalog-search-input">Buscar productos</label>
+          <input id="catalog-search-input" type="search" placeholder="Ej.: Producto 1..." autocomplete="off">
+        </div>
+        <div class="catalog-sort">
+          <label for="catalog-sort-select">Ordenar</label>
+          <select id="catalog-sort-select">
+            <option value="default">Orden original</option>
+            <option value="name-asc">Nombre: A a Z</option>
+            <option value="name-desc">Nombre: Z a A</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -252,6 +393,14 @@
     const subcategoryList = document.getElementById("subcategory-list");
     const productGrid = document.getElementById("product-grid");
     const searchInput = document.getElementById("catalog-search-input");
+    const sortSelect = document.getElementById("catalog-sort-select");
+    const heroCategoryCards = [...document.querySelectorAll("[data-hero-category]")];
+
+    function syncHeroCategoryCards() {
+      heroCategoryCards.forEach((card) => {
+        card.setAttribute("aria-pressed", String(card.dataset.heroCategory === activeCategory));
+      });
+    }
 
     function makeProductArt(index) {
       const palettes = [
@@ -276,6 +425,7 @@
       ).join("");
 
       const selectedCategory = categories.find((category) => category.id === activeCategory);
+      syncHeroCategoryCards();
       const types = selectedCategory ? selectedCategory.types : ["Todos"];
       subcategoryList.innerHTML = types.map((type) =>
         `<button class="subcat-button" type="button" data-type="${type}" aria-pressed="${activeType === type}">${type}</button>`
@@ -293,6 +443,8 @@
         const searchMatches = !query || `${product.name} ${product.type} ${product.description} ${product.finish}`.toLocaleLowerCase("es").includes(query);
         return categoryMatches && typeMatches && searchMatches;
       });
+      if (sortSelect.value === "name-asc") filtered.sort((first, second) => first.name.localeCompare(second.name, "es"));
+      if (sortSelect.value === "name-desc") filtered.sort((first, second) => second.name.localeCompare(first.name, "es"));
 
       document.getElementById("products-count").textContent =
         `${filtered.length} ${filtered.length === 1 ? "modelo" : "modelos"}`;
@@ -328,6 +480,16 @@
       activeType = "Todos";
       renderCategories();
       renderProducts();
+      categoryList.querySelector('[aria-pressed="true"]')?.focus();
+    });
+
+    document.querySelector(".catalog-visual").addEventListener("click", (event) => {
+      const card = event.target.closest("[data-hero-category]");
+      if (!card) return;
+      activeCategory = card.dataset.heroCategory;
+      activeType = "Todos";
+      renderCategories();
+      renderProducts();
     });
 
     subcategoryList.addEventListener("click", (event) => {
@@ -336,9 +498,11 @@
       activeType = button.dataset.type;
       renderCategories();
       renderProducts();
+      subcategoryList.querySelector('[aria-pressed="true"]')?.focus();
     });
 
     searchInput.addEventListener("input", renderProducts);
+    sortSelect.addEventListener("change", renderProducts);
     renderCategories();
     renderProducts();
   </script>
