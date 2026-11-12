@@ -1,0 +1,10 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Reservas</title><style>main{max-width:620px;margin:30px auto;padding:0 16px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 24px}.chips button{border:1px solid #d9e2ef;background:#fff;border-radius:99px;padding:9px 16px;font:700 .95rem Barlow;cursor:pointer;transition:.15s}.chips button.on{background:#111;color:#fff;transform:scale(1.06)}select{width:100%;padding:12px;border-radius:14px;border:1px solid #d9e2ef;font:inherit;margin:8px 0 22px}#ok{margin-top:20px;padding:18px;border-radius:16px;background:#d9f7e4;display:none}</style></head><body>
+<nav><b>Peluquería Lúa</b><span>Reservá tu turno</span></nav>
+<main class="card" style="margin-top:30px"><h2 style="font-size:2.4rem">Elegí tu turno</h2><label>Servicio</label><select id="s"><option>Corte y peinado</option><option>Color</option><option>Manicura</option></select>
+<label>Día</label><div class="chips" id="d"></div><label>Horario</label><div class="chips" id="h"></div><button class="btn" id="b" style="width:100%">Confirmar reserva</button><div id="ok"></div></main>
+<script>
+const D=["Lun 16","Mar 17","Mié 18","Jue 19","Vie 20"],H=["09:00","10:30","12:00","15:00","16:30","18:00"],v={};
+function ch(id,a){const e=document.getElementById(id);e.innerHTML=a.map(x=>'<button>'+x+'</button>').join("");e.onclick=t=>{if(t.target.tagName!="BUTTON")return;[...e.children].forEach(c=>c.classList.remove("on"));t.target.classList.add("on");v[id]=t.target.textContent}}
+ch("d",D);ch("h",H);
+b.onclick=()=>{ok.style.display="block";ok.textContent=v.d&&v.h?"✅ Reserva confirmada: "+s.value+", "+v.d+" a las "+v.h:"Elegí un día y un horario para continuar."}
+</script><a class="back" href="index.html">← Volver al portafolio</a></body></html>

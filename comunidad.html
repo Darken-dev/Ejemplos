@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="base.css"><title>Comunidad</title><style>body{background:#e9eef5}.w{display:grid;grid-template-columns:230px 1fr;gap:20px;max-width:1000px;margin:24px auto;padding:0 16px}@media(max-width:700px){.w{grid-template-columns:1fr}}.sb a{display:block;padding:10px 14px;border-radius:12px;font-weight:700;color:inherit;text-decoration:none}.sb a:first-of-type{background:#111;color:#fff}.av{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;margin-right:10px;vertical-align:middle}.post{margin-bottom:16px}.post p{margin:12px 0}.lk{border:0;background:var(--soft);border-radius:99px;padding:6px 14px;cursor:pointer;font:700 .9rem Barlow;transition:.15s}.lk.on{background:#ffd9de;transform:scale(1.1)}textarea{width:100%;border:1px solid #d9e2ef;border-radius:14px;padding:12px;font:inherit;resize:none;margin-bottom:10px}</style></head><body>
+<nav><b>Comunidad Dev</b><a class="btn" href="#">Unirme</a></nav>
+<div class="w"><aside class="card sb"><h3 style="font-size:1.6rem;margin-bottom:8px">Foros</h3><a href="#">💬 General</a><a href="#">🎨 Diseño</a><a href="#">💻 Código</a><a href="#">🚀 Proyectos</a></aside>
+<main><div class="card" style="margin-bottom:16px"><textarea id="t" rows="2" placeholder="¿Qué querés compartir?"></textarea><button class="btn" id="p">Publicar</button></div><div id="f"></div></main></div>
+<script>
+const C=["#0a63ff","#e0457b","#16a34a"];let i=0;
+function add(n,x){const d=document.createElement("div");d.className="card post rv";d.innerHTML='<span class="av" style="background:'+C[i++%3]+'">'+n[0]+'</span><b>'+n+'</b><p></p><button class="lk">♥ <span>0</span></button>';d.querySelector("p").textContent=x;f.prepend(d)}
+add("Sofi","Terminé mi primera tienda online. ¿Consejos para el carrito?");add("Marcos","Tip: usá CSS Grid para catálogos, te ahorra mucho código.");
+f.onclick=e=>{const b=e.target.closest(".lk");if(b){const s=b.querySelector("span");b.classList.toggle("on");s.textContent=b.classList.contains("on")?1:0}};
+p.onclick=()=>{if(t.value.trim()){add("Vos",t.value);t.value=""}}
+</script><a class="back" href="index.html">← Volver al portafolio</a></body></html>

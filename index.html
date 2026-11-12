@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Diseño y desarrollo web a medida. Conocé los proyectos y contactá a Manuel Fernandez Tolomeo.">
+  <meta name="theme-color" content="#08152b">
+  <title>Manuel Fernandez Tolomeo | Diseño web</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #08152b;
+      --surface: #10213d;
+      --surface-raised: #172b4b;
+      --text: #f5f8ff;
+      --muted: #becbe0;
+      --accent: #77a7ff;
+      --accent-strong: #3478f6;
+      --line: #2a3d5d;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { background: var(--page); color: var(--text); }
+    a { color: inherit; }
+    .bar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, 92%);
+      min-height: 62px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background: #0e1e37;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      z-index: 20;
+      box-shadow: 0 12px 32px #0005;
+    }
+    .brand { font: 800 1.25rem 'Barlow Condensed', sans-serif; text-decoration: none; }
+    .nav-links { position: static; padding: 0; display: flex; align-items: center; gap: 22px; background: transparent; backdrop-filter: none; z-index: auto; }
+    .nav-links a { margin-left: 0; }
+    .nav-links a:not(.btn) { color: var(--muted); font-weight: 700; text-decoration: none; }
+    .nav-links a:not(.btn):hover { color: var(--text); }
+    .btn { background: var(--accent-strong); }
+    .btn:hover { background: #2468e8; }
+    .hero {
+      min-height: 92vh;
+      min-height: 92svh;
+      padding: 150px 8% 84px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(ellipse at 82% 23%, #2455a84d, transparent 34%),
+        linear-gradient(135deg, #08152b 12%, #10284d 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: min(38vw, 460px);
+      aspect-ratio: 1;
+      top: 17%;
+      right: 3%;
+      border: 1px solid #77a7ff2e;
+      border-radius: 50%;
+      box-shadow: 0 0 0 42px #77a7ff0b, 0 0 0 84px #77a7ff08;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .hero h1 {
+      max-width: 900px;
+      margin-top: 18px;
+      font-size: clamp(54px, 9vw, 112px);
+      line-height: .96;
+      letter-spacing: -.025em;
+      position: relative;
+    }
+    .hero h1 span { color: var(--accent); }
+    .sub {
+      max-width: 600px;
+      margin: 24px 0 30px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      position: relative;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; position: relative; }
+    .btn-secondary {
+      display: inline-block;
+      padding: 11px 20px;
+      border: 1px solid #7185a5;
+      border-radius: 99px;
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .btn-secondary:hover { background: #ffffff12; transform: translateY(-2px); }
+    .mq { overflow: hidden; background: #0d1d35; padding: 14px 0; white-space: nowrap; border-block: 1px solid var(--line); }
+    .mq div { display: inline-block; animation: marquee 32s linear infinite; font: 800 1.4rem 'Barlow Condensed', sans-serif; }
+    .mq i { color: var(--accent); font-style: normal; margin: 0 22px; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    section h2 { margin-bottom: 10px; font-size: clamp(40px, 6vw, 68px); }
+    .section-lead { max-width: 680px; margin-bottom: 30px; color: var(--muted); }
+    .g { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 20px; }
+    .c {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      color: var(--text);
+      text-decoration: none;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .c:hover { transform: translateY(-5px); border-color: #6b95d9; box-shadow: 0 18px 38px #0004; }
+    .c:focus-visible, .bar a:focus-visible, .btn-secondary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .pv { height: 190px; overflow: hidden; position: relative; background: #e9eef5; }
+    .pv iframe { width: 1200px; height: 760px; transform: scale(.27); transform-origin: 0 0; border: 0; pointer-events: none; }
+    .here {
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #183d76, #2765c5);
+      color: white;
+      font: 800 2rem 'Barlow Condensed', sans-serif;
+    }
+    .t { padding: 18px 20px 20px; }
+    .t h3 { margin-bottom: 7px; font-size: 1.6rem; }
+    .t p { color: var(--muted); font-size: .95rem; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; }
+    .step {
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+    .step b { display: block; margin-bottom: 14px; color: var(--accent); font: 800 2rem 'Barlow Condensed', sans-serif; }
+    .step h3 { margin-bottom: 8px; font-size: 1.5rem; }
+    .step p { color: var(--muted); }
+    .sk { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .sk span { padding: 8px 16px; border: 1px solid #3b5275; border-radius: 99px; background: #10213d; color: #e1eaff; font-weight: 700; }
+    .contact {
+      margin: 20px 5% 70px;
+      padding: clamp(28px, 6vw, 64px);
+      border: 1px solid #3b5f91;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #10284b, #142f56);
+    }
+    .contact h2 { margin-bottom: 12px; }
+    .contact > p { max-width: 620px; margin-bottom: 26px; color: var(--muted); }
+    .contact-options { display: flex; flex-wrap: wrap; gap: 14px; }
+    .contact-link {
+      min-width: min(100%, 270px);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      border: 1px solid #49648a;
+      border-radius: 16px;
+      background: #0a1a31;
+      text-decoration: none;
+    }
+    .contact-link:hover { border-color: var(--accent); }
+    .contact-link strong { color: var(--accent); }
+    .contact-link span { overflow-wrap: anywhere; color: var(--text); }
+    footer { padding: 30px 5% 40px; color: var(--muted); text-align: center; }
+    footer strong { color: var(--text); }
+    @media (max-width: 640px) {
+      .bar { top: 10px; width: 94%; padding: 9px 12px; }
+      .brand { font-size: 1rem; line-height: 1.05; }
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.btn) { display: none; }
+      .bar .btn { padding: 10px 16px; font-size: .9rem; }
+      .hero { min-height: 82svh; padding-inline: 6%; }
+      .hero::after { width: 65vw; top: 17%; right: -24%; }
+      section { padding: 52px 6%; }
+      .contact { margin: 8px 4% 48px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <a class="brand" href="#inicio">Manuel Fernandez Tolomeo</a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a class="btn" href="#contacto">Contactame</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" id="inicio">
+      <p class="eyebrow">Diseño y desarrollo web</p>
+      <h1>Tu idea merece una web <span>que funcione.</span></h1>
+      <p class="sub">Creo sitios claros, rápidos y adaptados a cada pantalla para ayudar a que tu proyecto llegue más lejos.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#servicios">Conocé mis trabajos</a>
+        <a class="btn-secondary" href="https://wa.me/5492234371575">Hablemos por WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="mq" aria-hidden="true"><div id="marquee"></div></div>
+
+    <section id="servicios">
+      <h2>Lo que puedo hacer por vos</h2>
+      <p class="section-lead">Explorá algunos ejemplos y abrilos para ver cada propuesta completa.</p>
+      <div class="g">
+        <a class="c" href="corporativa.html"><div class="pv"><iframe src="corporativa.html" loading="lazy" tabindex="-1" title="Vista previa de sitio corporativo"></iframe></div><div class="t"><h3>Páginas corporativas</h3><p>Una presencia profesional para tu empresa o institución.</p></div></a>
+        <a class="c" href="tienda.html"><div class="pv"><iframe src="tienda.html" loading="lazy" tabindex="-1" title="Vista previa de tienda online"></iframe></div><div class="t"><h3>Tiendas online</h3><p>Catálogo de productos y una experiencia de compra simple.</p></div></a>
+        <a class="c" href="catalogo.html"><div class="pv"><iframe src="catalogo.html" loading="lazy" tabindex="-1" title="Vista previa de catálogo de productos genéricos"></iframe></div><div class="t"><h3>Catálogos interactivos</h3><p>Producto 1, Producto 2 y más, con categorías, búsqueda y consultas directas.</p></div></a>
+        <a class="c" href="blog.html"><div class="pv"><iframe src="blog.html" loading="lazy" tabindex="-1" title="Vista previa de blog"></iframe></div><div class="t"><h3>Blogs y noticias</h3><p>Contenido ordenado, legible y fácil de recorrer.</p></div></a>
+        <a class="c" href="#inicio"><div class="here">Estás acá 👋</div><div class="t"><h3>Portafolios online</h3><p>Una página para mostrar proyectos, servicios y contacto.</p></div></a>
+        <a class="c" href="landing.html"><div class="pv"><iframe src="landing.html" loading="lazy" tabindex="-1" title="Vista previa de landing page"></iframe></div><div class="t"><h3>Landing pages</h3><p>Una página enfocada en una acción y un objetivo concreto.</p></div></a>
+        <a class="c" href="reservas.html"><div class="pv"><iframe src="reservas.html" loading="lazy" tabindex="-1" title="Vista previa de sistema de reservas"></iframe></div><div class="t"><h3>Reservas y citas</h3><p>Una forma práctica de organizar turnos y consultas.</p></div></a>
+        <a class="c" href="comunidad.html"><div class="pv"><iframe src="comunidad.html" loading="lazy" tabindex="-1" title="Vista previa de comunidad online"></iframe></div><div class="t"><h3>Foros y comunidades</h3><p>Espacios para compartir publicaciones e intercambiar ideas.</p></div></a>
+      </div>
+    </section>
+
+    <section id="proceso">
+      <h2>Un proceso simple</h2>
+      <p class="section-lead">Cada proyecto empieza por entender qué necesitás y termina con una web lista para usar.</p>
+      <div class="steps">
+        <article class="step"><b>01</b><h3>Conversamos</h3><p>Me contás tu idea, tus objetivos y qué necesitás resolver.</p></article>
+        <article class="step"><b>02</b><h3>Diseñamos</h3><p>Definimos una propuesta clara, visual y pensada para tus clientes.</p></article>
+        <article class="step"><b>03</b><h3>Publicamos</h3><p>Desarrollamos y revisamos el sitio para que funcione en celular y computadora.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Herramientas y enfoque</h2>
+      <p class="section-lead">Tecnologías y buenas prácticas para sitios ágiles, accesibles y listos para distintos dispositivos.</p>
+      <div class="sk"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Firebase</span><span>SEO</span><span>Diseño responsive</span><span>Accesibilidad</span></div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <p class="eyebrow">Manuel Fernandez Tolomeo</p>
+      <h2>¿Tenés una idea?</h2>
+      <p>Escribime y contame qué necesitás. Podemos conversar sobre tu proyecto sin compromiso.</p>
+      <div class="contact-options">
+        <a class="contact-link" href="https://wa.me/5492234371575"><strong>WhatsApp</strong><span>223 437-1575</span></a>
+        <a class="contact-link" href="mailto:manuel.f.tolomeo@gmail.com"><strong>Correo electrónico</strong><span>manuel.f.tolomeo@gmail.com</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer><strong>Manuel Fernandez Tolomeo</strong> · Diseño y desarrollo web</footer>
+  <script>
+    const services = ["Corporativas", "Tiendas online", "Blogs", "Portafolios", "Landing pages", "Reservas", "Comunidades"];
+    document.getElementById("marquee").innerHTML =
+      Array(4).fill(services.map((service) => `${service}<i>✦</i>`).join("")).join("");
+  </script>
+</body>
+</html>
