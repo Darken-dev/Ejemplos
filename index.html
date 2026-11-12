@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Diseño y desarrollo web a medida. Conocé los proyectos y contactá a Manuel Fernandez Tolomeo.">
+  <meta name="description" content="Manuel Fernandez Tolomeo crea sitios web a medida, rápidos y adaptables. Conocé sus ejemplos, servicios y opciones de contacto.">
   <meta name="theme-color" content="#08152b">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Manuel Fernandez Tolomeo">
+  <meta property="og:title" content="Manuel Fernandez Tolomeo | Diseño y desarrollo web">
+  <meta property="og:description" content="Sitios web a medida, rápidos y adaptables. Conocé ejemplos, servicios y opciones para tu proyecto.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Manuel Fernandez Tolomeo | Diseño web">
+  <meta name="twitter:description" content="Diseño y desarrollo de sitios web a medida.">
   <title>Manuel Fernandez Tolomeo | Diseño web</title>
   <link rel="stylesheet" href="base.css">
   <style>
@@ -40,7 +49,9 @@
       border-radius: 18px;
       z-index: 20;
       box-shadow: 0 12px 32px #0005;
+      transition: transform .24s ease, opacity .24s ease;
     }
+    .bar.is-hidden { transform: translate(-50%, -145%); opacity: 0; pointer-events: none; }
     .brand { font: 800 1.25rem 'Barlow Condensed', sans-serif; text-decoration: none; }
     .nav-links { position: static; padding: 0; display: flex; align-items: center; gap: 22px; background: transparent; backdrop-filter: none; z-index: auto; }
     .nav-links a { margin-left: 0; }
@@ -128,7 +139,8 @@
       transition: transform .2s, border-color .2s, box-shadow .2s;
     }
     .c:hover { transform: translateY(-5px); border-color: #6b95d9; box-shadow: 0 18px 38px #0004; }
-    .c:focus-visible, .bar a:focus-visible, .btn-secondary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .c:focus-visible, .bar a:focus-visible, .btn-secondary:focus-visible, .contact-link:focus-visible, .faq-question:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .btn:focus-visible, .extras-submit:focus-visible, .extras-plan select:focus-visible, .extra-option input:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
     .pv { height: 190px; overflow: hidden; position: relative; background: #e9eef5; }
     .pv iframe { width: 1200px; height: 760px; transform: scale(.27); transform-origin: 0 0; border: 0; pointer-events: none; }
     .here {
@@ -154,6 +166,115 @@
     .step b { display: block; margin-bottom: 14px; color: var(--accent); font: 800 2rem 'Barlow Condensed', sans-serif; }
     .step h3 { margin-bottom: 8px; font-size: 1.5rem; }
     .step p { color: var(--muted); }
+    .service-section { scroll-margin-top: 100px; }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 185px), 1fr)); gap: 14px; }
+    .process-step {
+      min-height: 190px;
+      padding: 22px;
+      border: 1px solid #d9e2ef;
+      border-radius: 20px;
+      background: #f8fafc;
+      color: #17243a;
+    }
+    .process-step b { display: block; margin-bottom: 14px; color: var(--accent-strong); font: 800 2rem 'Barlow Condensed', sans-serif; }
+    .process-step h3 { margin-bottom: 8px; font-size: 1.45rem; }
+    .process-step p { color: #53627a; }
+    .js .process-step { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+    .js .process-step.is-visible { opacity: 1; transform: none; }
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); align-items: stretch; gap: 18px; }
+    .plan-card {
+      position: relative;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #d9e2ef;
+      border-radius: 22px;
+      background: #f8fafc;
+      color: #17243a;
+    }
+    .plan-card.featured { border: 2px solid #77a7ff; box-shadow: 0 12px 32px #0002; }
+    .plan-badge { align-self: flex-start; margin: -8px 0 10px; padding: 5px 11px; border-radius: 99px; background: #e8f0ff; color: #174ca5; font-size: .76rem; font-weight: 800; }
+    .plan-card h3 { margin: 4px 0 10px; font-size: 1.8rem; }
+    .plan-description { min-height: 50px; color: #53627a; }
+    .plan-price { margin: 18px 0; color: #174ca5; font: 800 1.55rem 'Barlow Condensed', sans-serif; }
+    .plan-features { flex: 1; margin: 0 0 22px; padding-left: 21px; color: #36445a; }
+    .plan-features li { margin: 9px 0; padding-left: 2px; }
+    .plan-card .btn { align-self: flex-start; }
+    .extras-panel { padding: clamp(20px, 4vw, 32px); border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
+    .extras-plan { display: grid; gap: 8px; max-width: 460px; margin-bottom: 20px; }
+    .extras-plan label { font-weight: 700; }
+    .extras-plan select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #7185a5;
+      border-radius: 10px;
+      background: #0a1a31;
+      color: var(--text);
+      font: inherit;
+    }
+    .extras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; }
+    .extra-option {
+      min-height: 68px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      border: 1px solid #d9e2ef;
+      border-radius: 14px;
+      background: #f8fafc;
+      color: #17243a;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .extra-option:hover { border-color: #8daee3; background: #f0f5ff; }
+    .extra-option input { width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--accent-strong); }
+    .extras-summary { min-height: 26px; margin: 18px 0 14px; color: var(--muted); }
+    .extras-submit:disabled { cursor: not-allowed; opacity: .55; transform: none; box-shadow: none; }
+    .ads-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 14px; }
+    .ads-link {
+      min-height: 112px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid #d9e2ef;
+      border-radius: 16px;
+      background: #f8fafc;
+      color: #17243a;
+      text-decoration: none;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .ads-link:hover { transform: translateY(-3px); border-color: #8daee3; box-shadow: 0 10px 24px #0002; }
+    .ads-link strong { color: #174ca5; font-size: 1.05rem; }
+    .ads-link span { color: #53627a; font-size: .9rem; }
+    .ads-support { margin-top: 18px; padding: 20px; border-radius: 16px; background: #10213d; }
+    .ads-support p { margin-bottom: 14px; color: var(--muted); }
+    .ads-note { margin-top: 16px; color: var(--muted); font-size: .9rem; }
+    .ownership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px; }
+    .ownership-card { padding: 24px; border: 1px solid #d9e2ef; border-radius: 20px; background: #f8fafc; color: #17243a; }
+    .ownership-card h3 { margin-bottom: 10px; font-size: 1.6rem; }
+    .ownership-card p { color: #53627a; }
+    .payment-note { margin-top: 18px; padding: 17px 20px; border-left: 4px solid var(--accent); border-radius: 8px; background: #10213d; color: var(--muted); }
+    .faq-list { display: grid; gap: 10px; max-width: 900px; }
+    .faq-item { overflow: hidden; border: 1px solid #d9e2ef; border-radius: 14px; background: #f8fafc; color: #17243a; }
+    .faq-question {
+      width: 100%;
+      padding: 17px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font: 700 1rem Barlow, sans-serif;
+      text-align: left;
+    }
+    .faq-question:hover { background: #eef3fb; }
+    .faq-question span:last-child { color: #174ca5; font-size: 1.3rem; }
+    .faq-answer { padding: 0 20px 18px; color: #53627a; }
     .sk { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
     .sk span { padding: 8px 16px; border: 1px solid #3b5275; border-radius: 99px; background: #10213d; color: #e1eaff; font-weight: 700; }
     .contact {
@@ -183,11 +304,12 @@
     footer { padding: 30px 5% 40px; color: var(--muted); text-align: center; }
     footer strong { color: var(--text); }
     @media (max-width: 640px) {
-      .bar { top: 10px; width: 94%; padding: 9px 12px; }
-      .brand { font-size: 1rem; line-height: 1.05; }
-      .nav-links { gap: 12px; }
-      .nav-links a:not(.btn) { display: none; }
-      .bar .btn { padding: 10px 16px; font-size: .9rem; }
+      .bar { top: 10px; width: 94%; padding: 9px 12px; gap: 10px; }
+      .brand { flex: 0 1 145px; font-size: .88rem; line-height: 1.05; }
+      .nav-links { flex: 0 0 auto; gap: 8px; }
+      .nav-links a:not(.btn):not(.nav-service) { display: none; }
+      .bar .btn { padding: 9px 10px; font-size: .84rem; }
+      .nav-links .nav-service { font-size: .85rem; }
       .hero { min-height: 82svh; padding-inline: 6%; }
       .hero::after { width: 65vw; top: 17%; right: -24%; }
       section { padding: 52px 6%; }
@@ -196,6 +318,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .bar.is-hidden { transform: translateX(-50%); }
     }
   </style>
 </head>
@@ -203,8 +326,8 @@
   <header class="bar">
     <a class="brand" href="#inicio">Manuel Fernandez Tolomeo</a>
     <nav class="nav-links" aria-label="Navegación principal">
-      <a href="#servicios">Servicios</a>
-      <a href="#proceso">Proceso</a>
+      <a class="nav-service" href="#servicios">Servicios</a>
+      <a href="#ejemplos">Ejemplos</a>
       <a class="btn" href="#contacto">Contactame</a>
     </nav>
   </header>
@@ -215,14 +338,14 @@
       <h1>Tu idea merece una web <span>que funcione.</span></h1>
       <p class="sub">Creo sitios claros, rápidos y adaptados a cada pantalla para ayudar a que tu proyecto llegue más lejos.</p>
       <div class="hero-actions">
-        <a class="btn" href="#servicios">Conocé mis trabajos</a>
+        <a class="btn" href="#ejemplos">Ver ejemplos</a>
         <a class="btn-secondary" href="https://wa.me/5492234371575">Hablemos por WhatsApp</a>
       </div>
     </div>
 
     <div class="mq" aria-hidden="true"><div id="marquee"></div></div>
 
-    <section id="servicios">
+    <section id="ejemplos">
       <h2>Lo que puedo hacer por vos</h2>
       <p class="section-lead">Explorá algunos ejemplos y abrilos para ver cada propuesta completa.</p>
       <div class="g">
@@ -237,20 +360,162 @@
       </div>
     </section>
 
-    <section id="proceso">
-      <h2>Un proceso simple</h2>
-      <p class="section-lead">Cada proyecto empieza por entender qué necesitás y termina con una web lista para usar.</p>
-      <div class="steps">
-        <article class="step"><b>01</b><h3>Conversamos</h3><p>Me contás tu idea, tus objetivos y qué necesitás resolver.</p></article>
-        <article class="step"><b>02</b><h3>Diseñamos</h3><p>Definimos una propuesta clara, visual y pensada para tus clientes.</p></article>
-        <article class="step"><b>03</b><h3>Publicamos</h3><p>Desarrollamos y revisamos el sitio para que funcione en celular y computadora.</p></article>
+    <section class="service-section" id="servicios" aria-labelledby="process-heading">
+      <h2 id="process-heading">Cómo trabajamos</h2>
+      <p class="section-lead">Un camino claro, desde la primera charla hasta la entrega.</p>
+      <div class="process-grid">
+        <article class="process-step"><b>01</b><h3>Charlamos</h3><p>Me contás qué necesitás por WhatsApp.</p></article>
+        <article class="process-step"><b>02</b><h3>Presupuesto</h3><p>Te paso el precio cerrado por escrito.</p></article>
+        <article class="process-step"><b>03</b><h3>Diseño</h3><p>Te muestro una propuesta y hacemos hasta 2 rondas de cambios.</p></article>
+        <article class="process-step"><b>04</b><h3>Dominio y publicación</h3><p>El dominio (.com.ar o .com) queda a tu nombre; yo lo configuro.</p></article>
+        <article class="process-step"><b>05</b><h3>Entrega y soporte</h3><p>Te entrego todo funcionando y me quedo para lo que necesites.</p></article>
       </div>
     </section>
 
-    <section>
+    <section class="service-section" id="planes" aria-labelledby="plans-heading">
+      <h2 id="plans-heading">Elegí tu plan</h2>
+      <p class="section-lead">Elegimos juntos la opción que mejor se ajuste a lo que necesitás.</p>
+      <div class="plan-grid">
+        <article class="plan-card">
+          <h3>Plan Landing</h3>
+          <p class="plan-description">Para presentar un servicio o una propuesta concreta.</p>
+          <p class="plan-price">Desde $ <span data-price="landing">A DEFINIR</span></p>
+          <ul class="plan-features">
+            <li>Una página</li>
+            <li>Formulario de contacto</li>
+            <li>Botón de WhatsApp</li>
+          </ul>
+          <a class="btn plan-link" data-plan="landing" href="#">Pedir presupuesto</a>
+        </article>
+        <article class="plan-card featured">
+          <span class="plan-badge">Más elegido</span>
+          <h3>Plan Sitio Web</h3>
+          <p class="plan-description">Una presencia online completa para tu negocio.</p>
+          <p class="plan-price">Desde $ <span data-price="sitioWeb">A DEFINIR</span></p>
+          <ul class="plan-features">
+            <li>Hasta 5 secciones o páginas</li>
+            <li>SEO básico: títulos, descripciones y estructura clara</li>
+            <li>Diseño a medida</li>
+          </ul>
+          <a class="btn plan-link" data-plan="sitioWeb" href="#">Pedir presupuesto</a>
+        </article>
+        <article class="plan-card">
+          <h3>Plan Tienda / Catálogo</h3>
+          <p class="plan-description">Para mostrar productos y administrar las publicaciones.</p>
+          <p class="plan-price">Desde $ <span data-price="tiendaCatalogo">A DEFINIR</span></p>
+          <ul class="plan-features">
+            <li>Catálogo de productos</li>
+            <li>Panel de administración con Firebase</li>
+            <li>Para que cargues tus productos</li>
+          </ul>
+          <a class="btn plan-link" data-plan="tiendaCatalogo" href="#">Pedir presupuesto</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="service-section" id="extras" aria-labelledby="extras-heading">
+      <h2 id="extras-heading">Extras (opcionales)</h2>
+      <p class="section-lead">Marcá lo que te interesa y armá una consulta con tus opciones.</p>
+      <div class="extras-panel">
+        <div class="extras-plan">
+          <label for="extras-plan-select">Plan que te interesa</label>
+          <select id="extras-plan-select" required>
+            <option value="">Elegí un plan</option>
+            <option value="landing">Plan Landing</option>
+            <option value="sitioWeb">Plan Sitio Web</option>
+            <option value="tiendaCatalogo">Plan Tienda / Catálogo</option>
+          </select>
+        </div>
+        <div class="extras-grid">
+          <label class="extra-option"><input type="checkbox" value="Mail profesional (contacto@tudominio)"><span>Mail profesional (contacto@tudominio)</span></label>
+          <label class="extra-option"><input type="checkbox" value="Mantenimiento mensual"><span>Mantenimiento mensual</span></label>
+          <label class="extra-option"><input type="checkbox" value="Mejoras adicionales de SEO"><span>Mejoras adicionales de SEO</span></label>
+          <label class="extra-option"><input type="checkbox" value="Carga inicial de productos"><span>Carga inicial de productos</span></label>
+          <label class="extra-option"><input type="checkbox" value="Panel de administración"><span>Panel de administración</span></label>
+        </div>
+        <p class="extras-summary" id="extras-summary" aria-live="polite">Elegí un plan y los extras que te interesan.</p>
+        <button class="btn extras-submit" id="extras-submit" type="button" disabled>Pedir presupuesto con mis opciones</button>
+      </div>
+    </section>
+
+    <section class="service-section" id="publicidad" aria-labelledby="ads-heading">
+      <h2 id="ads-heading">¿Querés promocionar tu página?</h2>
+      <p class="section-lead">Podés explorar las plataformas y herramientas oficiales por tu cuenta, o contactarme para que te ayude con la configuración por un extra.</p>
+      <div class="ads-grid" aria-label="Plataformas de publicidad y presencia para negocios">
+        <a class="ads-link" id="ads-google" href="#" target="_blank" rel="noopener noreferrer">
+          <strong>Google Ads</strong><span>Crear y administrar campañas pagas en Google.</span>
+        </a>
+        <a class="ads-link" id="ads-meta" href="#" target="_blank" rel="noopener noreferrer">
+          <strong>Meta Ads</strong><span>Administrar anuncios para Facebook e Instagram.</span>
+        </a>
+        <a class="ads-link" id="ads-tiktok" href="#" target="_blank" rel="noopener noreferrer">
+          <strong>TikTok Ads</strong><span>Crear una cuenta de publicidad para TikTok.</span>
+        </a>
+        <a class="ads-link" id="ads-mercadolibre" href="#" target="_blank" rel="noopener noreferrer">
+          <strong>Mercado Libre Product Ads</strong><span>Promocionar productos publicados en Mercado Libre.</span>
+        </a>
+        <a class="ads-link" id="ads-google-negocio" href="#" target="_blank" rel="noopener noreferrer">
+          <strong>Perfil de Negocio en Google</strong><span>Mostrar gratis tu negocio local en Google.</span>
+        </a>
+      </div>
+      <div class="ads-support">
+        <p>Si preferís, puedo ayudarte a preparar y configurar la campaña. Ese servicio se presupuesta aparte; la inversión de los anuncios se paga directamente a la plataforma.</p>
+        <a class="btn" id="ads-contact" href="https://wa.me/5492234371575">Contactame para publicidad</a>
+      </div>
+      <p class="ads-note">Crear un Perfil de Negocio en Google es gratis. Las campañas pagas tienen un costo que se abona directamente a cada plataforma.</p>
+    </section>
+
+    <section class="service-section" id="dominio" aria-labelledby="domain-heading">
+      <h2 id="domain-heading">Tu dominio y tus datos son tuyos</h2>
+      <p class="section-lead">Las cuentas importantes quedan a tu nombre y sabés qué servicio estás pagando.</p>
+      <div class="ownership-grid">
+        <article class="ownership-card">
+          <h3>Dominio</h3>
+          <p>Lo registrás vos con tu CUIT o CUIL: .com.ar en nic.ar o .com en un registrador. Se paga aparte, directo al registro, una vez por año. Yo lo configuro.</p>
+        </article>
+        <article class="ownership-card">
+          <h3>Hosting</h3>
+          <p>El sitio se publica con Firebase Hosting, cuyo plan gratuito puede alcanzar para muchos negocios chicos. Si el sitio crece mucho, el proveedor puede cobrar por uso.</p>
+        </article>
+        <article class="ownership-card">
+          <h3>Base de datos</h3>
+          <p>Solo para planes con catálogo: el proyecto Firebase se crea con tu cuenta de Google o te lo transfiero al final. Los datos son tuyos y te los podés llevar cuando quieras.</p>
+        </article>
+      </div>
+      <p class="payment-note"><strong>Yo me encargo:</strong> del diseño, desarrollo y configuración acordados. <strong>Vos pagás:</strong> el dominio anual y cualquier servicio externo o uso que genere costos.</p>
+    </section>
+
+    <section class="service-section" id="preguntas" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Preguntas frecuentes</h2>
+      <div class="faq-list">
+        <article class="faq-item">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1"><span>¿Cuánto tarda?</span><span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-1" hidden><p>Depende del plan, del contenido y de las revisiones. Te confirmo el tiempo estimado junto con el presupuesto.</p></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2"><span>¿Quién paga el dominio?</span><span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-2" hidden><p>Lo pagás vos directamente al registrador y queda registrado a tu nombre. Yo te ayudo a configurarlo.</p></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3"><span>¿Puedo cambiar cosas después?</span><span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-3" hidden><p>Sí. Los cambios posteriores se pueden coordinar y presupuestar según lo que necesites.</p></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4"><span>¿Cómo se paga?</span><span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-4" hidden><p>Se abona un anticipo del 50% para comenzar y el resto al entregar el sitio.</p></div>
+        </article>
+        <article class="faq-item">
+          <h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5"><span>¿Qué pasa si quiero irme con otro proveedor?</span><span aria-hidden="true">+</span></button></h3>
+          <div class="faq-answer" id="faq-answer-5" hidden><p>El dominio, los datos y las cuentas a tu nombre siguen siendo tuyos. Te entrego el trabajo acordado para que puedas continuar con otro proveedor.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="herramientas">
       <h2>Herramientas y enfoque</h2>
       <p class="section-lead">Tecnologías y buenas prácticas para sitios ágiles, accesibles y listos para distintos dispositivos.</p>
-      <div class="sk"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Firebase</span><span>SEO</span><span>Diseño responsive</span><span>Accesibilidad</span></div>
+      <div class="sk"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Firebase</span><span>SEO básico</span><span>Diseño responsive</span><span>Accesibilidad</span></div>
+      <p class="section-lead" style="margin-top:16px;margin-bottom:0">SEO básico: preparo títulos, descripciones y una estructura clara para ayudar a los buscadores a entender el sitio. No garantiza una posición específica en Google.</p>
     </section>
 
     <section class="contact" id="contacto">
@@ -266,6 +531,126 @@
 
   <footer><strong>Manuel Fernandez Tolomeo</strong> · Diseño y desarrollo web</footer>
   <script>
+    const PRECIOS = {
+      landing: "A DEFINIR",
+      sitioWeb: "A DEFINIR",
+      tiendaCatalogo: "A DEFINIR"
+    };
+    const WHATSAPP_NUMBER = "5492234371575";
+    const ENLACES = {
+      google: "https://ads.google.com",
+      meta: "https://business.facebook.com",
+      tiktok: "https://ads.tiktok.com/business/es/create-account",
+      mercadoLibre: "https://vendedores.mercadolibre.com.ar/nota/como-puedo-publicitar-mis-productos-en-product-ads?guideKeyId=GE34",
+      googleNegocio: "https://business.google.com/es/business-profile/"
+    };
+    const PLANES = {
+      landing: "Plan Landing",
+      sitioWeb: "Plan Sitio Web",
+      tiendaCatalogo: "Plan Tienda / Catálogo"
+    };
+
+    Object.entries(PRECIOS).forEach(([plan, precio]) => {
+      const priceElement = document.querySelector(`[data-price="${plan}"]`);
+      if (priceElement) priceElement.textContent = precio;
+    });
+
+    document.querySelectorAll(".plan-link").forEach((link) => {
+      const plan = PLANES[link.dataset.plan];
+      link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola Manuel, quisiera pedir presupuesto para el ${plan}.`)}`;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    });
+
+    const advertisingLinks = {
+      "ads-google": ENLACES.google,
+      "ads-meta": ENLACES.meta,
+      "ads-tiktok": ENLACES.tiktok,
+      "ads-mercadolibre": ENLACES.mercadoLibre,
+      "ads-google-negocio": ENLACES.googleNegocio
+    };
+    Object.entries(advertisingLinks).forEach(([id, url]) => {
+      const link = document.getElementById(id);
+      if (link) link.href = url;
+    });
+
+    document.getElementById("ads-contact").href =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Manuel, quisiera consultar por el servicio de configuración de publicidad para mi página web.")}`;
+
+    const extrasPlanSelect = document.getElementById("extras-plan-select");
+    const extrasCheckboxes = [...document.querySelectorAll(".extra-option input")];
+    const extrasSummary = document.getElementById("extras-summary");
+    const extrasSubmit = document.getElementById("extras-submit");
+
+    function updateExtrasSummary() {
+      const selectedPlan = PLANES[extrasPlanSelect.value];
+      const selectedExtras = extrasCheckboxes.filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value);
+      extrasSubmit.disabled = !selectedPlan;
+
+      if (!selectedPlan) {
+        extrasSummary.textContent = "Elegí un plan y los extras que te interesan.";
+        return;
+      }
+
+      extrasSummary.textContent = `Plan: ${selectedPlan}. Extras: ${selectedExtras.length ? selectedExtras.join(", ") : "ninguno seleccionado"}.`;
+    }
+
+    extrasPlanSelect.addEventListener("change", updateExtrasSummary);
+    extrasCheckboxes.forEach((checkbox) => checkbox.addEventListener("change", updateExtrasSummary));
+    extrasSubmit.addEventListener("click", () => {
+      const selectedPlan = PLANES[extrasPlanSelect.value];
+      if (!selectedPlan) return;
+
+      const selectedExtras = extrasCheckboxes.filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value);
+      const message = `Hola Manuel, quisiera pedir presupuesto para el ${selectedPlan}. Extras de mi interés: ${selectedExtras.length ? selectedExtras.join(", ") : "ninguno por ahora"}.`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    });
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") === "true";
+        const answer = document.getElementById(button.getAttribute("aria-controls"));
+        button.setAttribute("aria-expanded", String(!expanded));
+        button.querySelector("span:last-child").textContent = expanded ? "+" : "−";
+        answer.hidden = expanded;
+      });
+    });
+
+    const headerBar = document.querySelector(".bar");
+    let lastScrollY = window.scrollY;
+    let scrollTicking = false;
+
+    window.addEventListener("scroll", () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const scrollingDown = currentScrollY > lastScrollY;
+        const hasScrolledPastHeader = currentScrollY > headerBar.offsetHeight + 24;
+        const focusedWithinHeader = headerBar.contains(document.activeElement);
+
+        headerBar.classList.toggle("is-hidden", scrollingDown && hasScrolledPastHeader && !focusedWithinHeader);
+        lastScrollY = currentScrollY;
+        scrollTicking = false;
+      });
+    }, { passive: true });
+
+    headerBar.addEventListener("focusin", () => headerBar.classList.remove("is-hidden"));
+
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("js");
+      const processObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll(".process-step").forEach((step) => processObserver.observe(step));
+    }
+
     const services = ["Corporativas", "Tiendas online", "Blogs", "Portafolios", "Landing pages", "Reservas", "Comunidades"];
     document.getElementById("marquee").innerHTML =
       Array(4).fill(services.map((service) => `${service}<i>✦</i>`).join("")).join("");
