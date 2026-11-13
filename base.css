@@ -49,9 +49,9 @@ section{padding:60px 5%}
 @keyframes slow-circle-counterspin{to{rotate:-1turn}}
 @media(prefers-reduced-motion:no-preference){
   .hero::after,.window-sample::after,.catalog-header::before,.catalog-header::after,.catalog-visual .visual-orbit,.sur-contact::after,.community-hero::after,.editorial-feature::before,.biz-orbit,.product-art::before{
-    animation:slow-circle-spin 60s linear infinite
+    animation:slow-circle-spin 32s linear infinite
   }
-  .biz-orbit span{animation:slow-circle-counterspin 60s linear infinite}
+  .biz-orbit span{animation:slow-circle-counterspin 32s linear infinite}
 }
 .hero::after{border-top-color:#f4bb78}
 .catalog-header::before,.catalog-header::after,.catalog-visual .visual-orbit{border-top-color:#f4bb78}

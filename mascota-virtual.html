@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Elegí y nombrá tu mascota virtual, y jugá 11 minijuegos interactivos.">
+  <meta name="theme-color" content="#e9f4ff">
+  <title>Mascota virtual | Elegí tu compañero de juegos</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="editor.css">
+  <link rel="stylesheet" href="mascota-virtual.css">
+  <script src="editor.js" defer></script>
+  <script src="mascota-juegos.js" defer></script>
+  <script src="mascota-virtual.js" defer></script>
+  <style>
+    /* Colores principales: cambiá estos valores */
+    :root {
+      --bg: #f3f8ff;
+      --surface: #ffffff;
+      --text: #132d52;
+      --muted: #62758d;
+      --accent: #2868d7;
+      --accent-2: #ffc65c;
+      --line: #d7e4f3;
+      --radius: 22px;
+      --hero-bg: #96d4f4;
+    }
+  </style>
+</head>
+<body>
+  <header class="pet-nav">
+    <a class="pet-brand" id="pet-brand-name" href="index.html">Mi mascota</a>
+    <nav aria-label="Navegación principal">
+      <a href="#mascota">Tu mascota</a>
+      <a href="#juegos">Minijuegos</a>
+      <a class="pet-nav-cta" href="#mascota">Personalizar <span aria-hidden="true">↓</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="pet-hero" aria-labelledby="pet-title">
+      <div class="pet-hero-copy">
+        <p class="pet-eyebrow">Una compañía para jugar</p>
+        <h1 id="pet-title">Una mascota. <span>Un mundo de juegos.</span></h1>
+        <p class="pet-lead">Elegí quién te acompaña, ponéle un nombre y compartan una partida. Hay una mascota para cada aventura.</p>
+        <div class="pet-hero-actions">
+          <button class="pet-primary" type="button" data-open-games>Elegir un juego <span aria-hidden="true">↗</span></button>
+          <a class="pet-secondary" href="#juegos">Ver los 11 minijuegos</a>
+        </div>
+        <div class="pet-count"><strong>11</strong><span>juegos cortitos<br>para descubrir</span></div>
+      </div>
+
+      <figure class="pet-scene">
+        <img src="mascota-escena.png" alt="Ilustración pixel art de una playa con una gaviota, una estrella de mar y una foca">
+        <div class="pet-scene-shade" aria-hidden="true"></div>
+        <div class="pet-scene-note"><span id="pet-greeting">¡Hola!</span><small>¿A qué jugamos?</small></div>
+        <button id="tolo" class="pet-mascot-button" type="button" aria-label="Saludar a tu mascota">
+          <span class="pet-mascot-sprite" id="pet-mascot-sprite" aria-hidden="true"></span>
+        </button>
+        <figcaption id="pet-scene-caption">Tu mascota te espera para jugar.</figcaption>
+      </figure>
+    </section>
+
+    <section class="pet-customize" id="mascota" aria-labelledby="pet-customize-title">
+      <div class="pet-section-heading">
+        <div><p class="pet-eyebrow">A tu manera</p><h2 id="pet-customize-title">Elegí a tu mascota</h2></div>
+        <p>Escogé un modelo y escribí el nombre que quieras. Tu elección queda guardada en este navegador.</p>
+      </div>
+      <label class="pet-name-field" for="pet-name">¿Cómo se va a llamar?
+        <input id="pet-name" name="pet-name" type="text" maxlength="24" autocomplete="off" placeholder="Escribí un nombre">
+      </label>
+      <div class="pet-model-grid" id="pet-model-options" role="group" aria-label="Elegí un modelo de mascota"></div>
+    </section>
+
+    <section class="pet-games" id="juegos" aria-labelledby="games-title">
+      <div class="pet-section-heading">
+        <div><p class="pet-eyebrow">Elegí tu próxima aventura</p><h2 id="games-title">¿A qué jugamos?</h2></div>
+        <p>Hay juegos para moverse, competir, correr y pensar. Tocá uno para empezar.</p>
+      </div>
+      <div class="pet-game-grid" id="pet-game-grid" aria-live="polite"></div>
+      <p class="pet-footnote">Juegos de demostración: tus partidas se juegan en este navegador y no se envían a ningún servidor.</p>
+    </section>
+  </main>
+
+  <footer class="pet-footer"><a href="index.html">← Volver a los ejemplos</a><span>Una demo de mascota virtual</span></footer>
+</body>
+</html>

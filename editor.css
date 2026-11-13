@@ -1,0 +1,337 @@
+.visual-editor-toggle {
+  position: fixed;
+  z-index: 9998;
+  right: 18px;
+  bottom: 18px;
+  padding: 12px 18px;
+  border: 1px solid #fff7;
+  border-radius: 999px;
+  background: #302329;
+  color: #fffaf3;
+  box-shadow: 0 12px 32px #160d1160;
+  font: 700 15px/1.2 Barlow, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.visual-editor-toggle:hover { background: #493137; }
+.visual-editor-toggle:focus-visible,
+.visual-editor-panel :focus-visible {
+  outline: 3px solid #e5ac69;
+  outline-offset: 3px;
+}
+
+.visual-editor-panel {
+  position: fixed;
+  z-index: 9999;
+  inset: 0 0 0 auto;
+  width: min(440px, 100vw);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e6d8ca;
+  background: #fffaf3;
+  color: #35282a;
+  box-shadow: -24px 0 70px #160d1140;
+  font: 15px/1.45 Barlow, Arial, sans-serif;
+}
+
+.visual-editor-panel[hidden] { display: none; }
+.visual-editor-panel * { box-sizing: border-box; }
+.visual-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e7d9ca;
+}
+
+.visual-editor-head h2 {
+  margin: 0;
+  color: #35282a;
+  font: 800 24px/1 Barlow, Arial, sans-serif;
+}
+
+.visual-editor-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e1d2c2;
+  border-radius: 50%;
+  background: #fff;
+  color: #35282a;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.visual-editor-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e7d9ca;
+}
+
+.visual-editor-tab {
+  min-height: 38px;
+  padding: 7px 5px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: #69564d;
+  font: 700 13px/1.1 Barlow, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.visual-editor-tab[aria-selected="true"] {
+  border-color: #e4cbb2;
+  background: #f6e8d9;
+  color: #803f31;
+}
+
+.visual-editor-content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 20px;
+}
+
+.visual-editor-page[hidden] { display: none; }
+.visual-editor-page h3 {
+  margin: 0 0 16px;
+  color: #493137;
+  font: 800 21px/1.1 Barlow, Arial, sans-serif;
+}
+
+.visual-editor-description {
+  margin: 0 0 16px;
+  color: #695b52;
+  font-size: 14px;
+}
+
+.visual-editor-field {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 16px;
+  color: #493a34;
+  font-weight: 700;
+}
+
+.visual-editor-field input[type="text"],
+.visual-editor-field input[type="tel"],
+.visual-editor-field select {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid #d8c8b7;
+  border-radius: 9px;
+  background: #fff;
+  color: #35282a;
+  font: inherit;
+}
+
+.visual-editor-color-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 54px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 11px;
+  font-weight: 700;
+}
+
+.visual-editor-color-row input {
+  width: 54px;
+  height: 38px;
+  padding: 3px;
+  border: 1px solid #d8c8b7;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.visual-editor-range {
+  width: 100%;
+  accent-color: #a64e37;
+}
+
+.visual-editor-contrast {
+  margin: 16px 0 0;
+  padding: 12px;
+  border-radius: 10px;
+  background: #e9f2e7;
+  color: #305333;
+  font-size: 14px;
+}
+
+.visual-editor-contrast[data-low="true"] {
+  background: #fff0dc;
+  color: #7d3b20;
+}
+
+.visual-editor-actions {
+  display: grid;
+  gap: 9px;
+  padding: 15px 20px;
+  border-top: 1px solid #e7d9ca;
+  background: #fffaf3;
+}
+
+.visual-editor-action {
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid #d8c8b7;
+  border-radius: 10px;
+  background: #fff;
+  color: #493137;
+  font: 700 14px/1.2 Barlow, Arial, sans-serif;
+  cursor: pointer;
+}
+
+.visual-editor-action-primary {
+  border-color: #803f31;
+  background: #803f31;
+  color: white;
+}
+
+.visual-editor-action:hover { filter: brightness(.97); }
+.visual-editor-status {
+  min-height: 20px;
+  margin: 0;
+  color: #69564d;
+  font-size: 13px;
+}
+
+.visual-editor-sections {
+  display: grid;
+  gap: 9px;
+}
+
+.visual-editor-section-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #e3d6c7;
+  border-radius: 11px;
+  background: white;
+}
+
+.visual-editor-section-name {
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+.visual-editor-section-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.visual-editor-section-row input[type="checkbox"] { accent-color: #803f31; }
+.visual-editor-section-row button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #e3d6c7;
+  border-radius: 8px;
+  background: #fffaf3;
+  color: #493137;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.visual-editor-panel [data-editor-text][contenteditable="true"] {
+  outline: 2px dashed #c15d3c !important;
+  outline-offset: 3px;
+  cursor: text;
+}
+
+body.visual-editor-ready {
+  font-family: var(--editor-font-body, Barlow, Arial, sans-serif);
+}
+
+body.visual-editor-ready :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--editor-font-heading, "Barlow Condensed", "Arial Narrow", sans-serif);
+}
+
+body.visual-editor-ready {
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+body.visual-editor-ready.visual-editor-bg-changed :is(.shop-header, .biz-nav, .masthead, .lua-nav) {
+  background-color: var(--bg);
+}
+
+body.visual-editor-ready.visual-editor-hero-bg-changed :is(.biz-hero, .shop-hero, .catalog-header, .sur-hero, .editorial-feature, .community-hero, .common-nav, .booking-hero) {
+  background: var(--hero-bg);
+}
+
+body.visual-editor-ready.visual-editor-accent-2-changed :is(.sur-hero, .shop-hero, .editorial-feature, .booking-hero) {
+  background: var(--accent-2);
+}
+
+body.visual-editor-ready.visual-editor-accent-2-changed .editorial-feature,
+body.visual-editor-ready.visual-editor-accent-2-changed .editorial-feature .read-link {
+  color: var(--text);
+}
+
+body.visual-editor-ready.visual-editor-accent-2-changed :is(.biz-hero .btn, .catalog-actions .btn, .common-nav .btn, .lua-nav .btn) {
+  background-color: var(--accent-2);
+}
+
+body.visual-editor-ready.visual-editor-accent-2-changed .catalog-kicker {
+  color: var(--accent-2);
+}
+
+body.visual-editor-ready.visual-editor-accent-changed :is(.sur-hero:after, .shop-vase) {
+  background: var(--accent);
+}
+
+body.visual-editor-ready.visual-editor-accent-changed .booking-hero h1 span {
+  color: var(--accent);
+}
+
+body.visual-editor-ready.visual-editor-radius-changed :is(.card, .process-step, .plan-card, .ownership-card, .faq-item, .ads-link, .product, .product-card, .work-card, .story, .booking-card, .booking-aside, .biz-card, .biz-band, .community-sidebar, .composer, .feed-card, .catalog-contact, .extras-panel, .contact-link, .sur-contact, .catalog-sidebar, .catalog-products, .pet-game-card) {
+  border-radius: var(--radius);
+}
+
+body.visual-editor-ready.visual-editor-line-changed :is(.card, .process-step, .plan-card, .ownership-card, .faq-item, .ads-link, .product, .product-card, .work-card, .story, .booking-card, .booking-aside, .biz-card, .biz-band, .community-sidebar, .composer, .feed-card, .catalog-contact, .extras-panel, .contact-link, .sur-contact, .catalog-sidebar, .catalog-products, .pet-game-card) {
+  border-color: var(--line);
+}
+
+body.visual-editor-ready.visual-editor-surface-changed :is(.card, .process-step, .plan-card, .ownership-card, .faq-item, .ads-link, .product, .product-card, .work-card, .story, .booking-card, .booking-aside, .biz-card, .biz-band, .community-sidebar, .composer, .feed-card, .catalog-contact, .extras-panel, .contact-link, .sur-contact, .catalog-sidebar, .catalog-products, .pet-game-card) {
+  background-color: var(--surface);
+}
+
+body.visual-editor-ready.visual-editor-accent-changed :is(.btn, .product-buy, .product-link, .biz-nav .btn, .catalog-top-links .btn, .common-nav .btn, .composer .btn) {
+  background-color: var(--accent);
+}
+
+body.visual-editor-ready.visual-editor-muted-changed :is(.shop-heading p, .product-info p, .shop-note, .section-lead, .booking-intro, .brandline p, .story p, .story-meta, .catalog-note, .products-count, .biz-section-head p, .sidebar-note, .composer-hint) {
+  color: var(--muted);
+}
+
+body.visual-editor-image-mode img,
+body.visual-editor-image-mode [data-editor-image] {
+  cursor: zoom-in !important;
+}
+
+@media (max-width: 700px) {
+  .visual-editor-toggle { right: 12px; bottom: 12px; }
+  .visual-editor-panel {
+    inset: auto 0 0;
+    width: 100%;
+    max-height: min(88dvh, 760px);
+    border: 1px solid #e6d8ca;
+    border-bottom: 0;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -18px 60px #160d1140;
+  }
+  .visual-editor-content { padding: 16px; }
+  .visual-editor-actions { padding: 12px 16px max(12px, env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visual-editor-panel,
+  .visual-editor-panel * { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
