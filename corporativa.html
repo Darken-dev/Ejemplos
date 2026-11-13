@@ -6,49 +6,64 @@
   <meta name="description" content="Ejemplo de página corporativa para una empresa de asesoría.">
   <title>BizBud | Asesoría para crecer</title>
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="editor.css">
+  <script src="editor.js" defer></script>
   <style>
-    :root{--violet:#c15d3c;--violet-dark:#342329;--lime:#f1bd76;--paper:#faf2e7;--muted:#77665e}
-    body{background:var(--paper);color:#35282a}
+    /* Colores principales: cambiá estos valores */
+    :root{
+      --bg:#faf2e7;
+      --surface:#fffaf3;
+      --text:#35282a;
+      --muted:#77665e;
+      --accent:#c15d3c;
+      --accent-2:#f1bd76;
+      --line:#eadbd0;
+      --radius:22px;
+      --hero-bg:#342329;
+      --brand-dark:#342329;
+      --paper:var(--bg);
+    }
+    body{background:var(--bg);color:var(--text)}
     .biz-nav{position:sticky;top:0;padding:14px max(5%,calc((100% - 1120px)/2));background:#fffaf3;box-shadow:0 6px 24px #50332312}
-    .biz-nav b{font-size:1.55rem;color:var(--violet-dark)}
+    .biz-nav b{font-size:1.55rem;color:var(--brand-dark)}
     .biz-nav nav{position:static;padding:0;display:flex;gap:14px;background:transparent;backdrop-filter:none}
     .biz-nav nav a{margin:0;text-decoration:none}
     .biz-nav nav a:not(.btn){color:var(--muted)}
-    .biz-nav .btn{background:var(--violet);padding:10px 18px;font-size:.92rem}
-    .biz-hero{position:relative;overflow:hidden;padding:clamp(64px,9vw,120px) max(6%,calc((100% - 1120px)/2));background:var(--violet-dark);color:#fff}
+    .biz-nav .btn{background:var(--accent);padding:10px 18px;font-size:.92rem}
+    .biz-hero{position:relative;overflow:hidden;padding:clamp(64px,9vw,120px) max(6%,calc((100% - 1120px)/2));background:var(--brand-dark);color:#fff}
     .biz-hero:before{content:"";position:absolute;width:420px;aspect-ratio:1;right:4%;top:12%;border:1px solid #ffffff28;border-radius:48% 52% 62% 38%;box-shadow:0 0 0 38px #ffffff0a,0 0 0 76px #ffffff08;transform:rotate(-18deg)}
-    .biz-hero:after{content:"";position:absolute;inset:auto 0 0;height:12px;background:linear-gradient(90deg,var(--lime) 0 33%,#b4a1ff 33% 66%,#ffb79f 66%)}
+    .biz-hero:after{content:"";position:absolute;inset:auto 0 0;height:12px;background:linear-gradient(90deg,var(--accent-2) 0 33%,#b4a1ff 33% 66%,#ffb79f 66%)}
     .biz-copy{position:relative;z-index:1;max-width:760px}
-    .biz-kicker{display:inline-flex;align-items:center;gap:9px;color:var(--lime);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:.78rem}
+    .biz-kicker{display:inline-flex;align-items:center;gap:9px;color:var(--accent-2);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:.78rem}
     .biz-kicker:before{content:"";width:24px;height:2px;background:currentColor}
     .biz-hero h1{max-width:700px;margin:20px 0;font-size:clamp(54px,9vw,104px);line-height:.9;letter-spacing:-.02em}
-    .biz-hero h1 span{color:var(--lime)}
+    .biz-hero h1 span{color:var(--accent-2)}
     .biz-hero p{max-width:540px;margin-bottom:28px;color:#f0dfd4;font-size:1.15rem}
     .biz-actions{display:flex;flex-wrap:wrap;gap:12px}
-    .biz-hero .btn{background:var(--lime);color:var(--violet-dark)!important}
+    .biz-hero .btn{background:var(--accent-2);color:var(--brand-dark)!important}
     .biz-ghost{display:inline-flex;align-items:center;padding:11px 20px;border:1px solid #ffffff55;border-radius:99px;color:#fff;text-decoration:none;font-weight:700}
     .biz-ghost:hover{background:#ffffff12}
     .biz-orbit{position:absolute;right:13%;top:27%;width:210px;height:210px;border:1px solid #ffffff3b;border-radius:50%;display:grid;place-items:center;transform:rotate(24deg)}
-    .biz-orbit:before,.biz-orbit:after{content:"";position:absolute;border-radius:50%;background:var(--lime)}
+    .biz-orbit:before,.biz-orbit:after{content:"";position:absolute;border-radius:50%;background:var(--accent-2)}
     .biz-orbit:before{width:24px;height:24px;top:14px;left:36px}.biz-orbit:after{width:12px;height:12px;bottom:30px;right:9px;background:#f28f69}
     .biz-orbit span{display:grid;place-items:center;width:115px;height:115px;border-radius:50%;background:#ffffff14;font:800 2.7rem 'Barlow Condensed';transform:rotate(-24deg)}
     .biz-section{max-width:1180px;margin:auto;padding-top:76px;padding-bottom:76px}
     .biz-section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:28px}
-    .biz-section h2{font-size:clamp(40px,6vw,66px);color:var(--violet-dark)}
+    .biz-section h2{font-size:clamp(40px,6vw,66px);color:var(--brand-dark)}
     .biz-section-head p{max-width:410px;color:var(--muted)}
     .biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .biz-card{width:100%;min-height:240px;padding:24px;border:1px solid #eadbd0;border-radius:22px;background:#fffaf3;color:inherit;text-align:left;font:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
     .biz-card:hover{transform:translateY(-5px);box-shadow:0 18px 35px #4a2d2018}
-    .biz-card[aria-expanded=true]{border-color:var(--violet);box-shadow:0 12px 28px #4a2d2018}
+    .biz-card[aria-expanded=true]{border-color:var(--accent);box-shadow:0 12px 28px #4a2d2018}
     .biz-card:focus-visible{outline:3px solid #bd7d4e;outline-offset:4px}
-    .biz-icon{width:48px;height:48px;margin-bottom:28px;display:grid;place-items:center;border-radius:15px;background:#f8e6d5;color:var(--violet);font-size:1.5rem}
+    .biz-icon{width:48px;height:48px;margin-bottom:28px;display:grid;place-items:center;border-radius:15px;background:#f8e6d5;color:var(--accent);font-size:1.5rem}
     .biz-card:nth-child(2) .biz-icon{background:#f4edd4;color:#826633}.biz-card:nth-child(3) .biz-icon{background:#ffede3;color:#b45438}
     .biz-card-title{display:block;margin-bottom:8px;font:800 1.65rem 'Barlow Condensed';line-height:1}
     .biz-card-description{display:block;color:var(--muted)}
     .biz-showcase{margin-top:22px;padding:clamp(20px,4vw,34px);border:1px solid #eadbd0;border-radius:26px;background:#fffaf3;box-shadow:0 16px 42px #49334c0a}
     .biz-showcase[hidden]{display:none}
     .biz-showcase-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px}
-    .biz-showcase-kicker{display:block;margin-bottom:7px;color:var(--violet);font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .biz-showcase-kicker{display:block;margin-bottom:7px;color:var(--accent);font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
     .biz-showcase h3{font-size:clamp(1.7rem,4vw,2.4rem)}
     .biz-showcase-close{flex:0 0 auto;padding:8px 13px;border:1px solid #eadbd0;border-radius:99px;background:#fff;color:inherit;font:700 .88rem Barlow;cursor:pointer}
     .biz-slide{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.9fr);gap:24px;align-items:center}
@@ -58,35 +73,35 @@
     .biz-chart h4{margin-bottom:16px;font-size:1.25rem}
     .biz-roadmap{display:grid;gap:12px;list-style:none}
     .biz-roadmap li{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:10px}
-    .biz-roadmap li>span{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#f8e6d5;color:var(--violet);font-weight:800}
+    .biz-roadmap li>span{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#f8e6d5;color:var(--accent);font-weight:800}
     .biz-roadmap strong,.biz-roadmap small{display:block}
     .biz-roadmap small{color:var(--muted)}
     .biz-roadmap-track{height:6px;margin:6px 0 0 44px;overflow:hidden;border-radius:99px;background:#f0e7dc}
-    .biz-roadmap-track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--violet),var(--lime))}
+    .biz-roadmap-track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
     .biz-chart svg{display:block;width:100%;height:auto}
     .biz-chart-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;color:var(--muted);font-size:.82rem}
     .biz-chart-legend span{display:flex;align-items:center;gap:6px}
-    .biz-chart-legend i{width:10px;height:10px;border-radius:50%;background:var(--violet)}
+    .biz-chart-legend i{width:10px;height:10px;border-radius:50%;background:var(--accent)}
     .biz-chart-legend span+span i{background:#e5b878}
     .biz-opportunity-list{display:grid;gap:12px}
     .biz-opportunity{padding:12px;border-radius:13px;background:#faf2e7}
     .biz-opportunity-head{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;font-weight:700}
-    .biz-opportunity-head span:last-child{color:var(--violet)}
+    .biz-opportunity-head span:last-child{color:var(--accent)}
     .biz-opportunity-track{height:8px;margin-top:8px;overflow:hidden;border-radius:99px;background:#e9dfd2}
     .biz-opportunity-track span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#bd5639,#f1bd76)}
     .biz-band{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;padding:38px;border-radius:28px;background:#f1e2d2}
-    .biz-band h2{max-width:480px;margin-bottom:12px;font-size:clamp(36px,5vw,58px);color:var(--violet-dark)}
+    .biz-band h2{max-width:480px;margin-bottom:12px;font-size:clamp(36px,5vw,58px);color:var(--brand-dark)}
     .biz-band p{max-width:480px;color:#68564d}
     .biz-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .biz-metric{min-height:92px;padding:15px;border:1px solid #eadbd0;border-radius:18px;background:#fffaf3;color:inherit;text-align:left;cursor:pointer;font:inherit;transition:transform .18s,border-color .18s,background .18s}
     .biz-metric:hover{transform:translateY(-3px);border-color:#d29570}
     .biz-metric[aria-selected=true]{border-color:#c15d3c;background:#fff2e4}
     .biz-metric:focus-visible{outline:3px solid #bd7d4e;outline-offset:3px}
-    .biz-metric strong{display:block;color:var(--violet);font:800 2rem 'Barlow Condensed'}
+    .biz-metric strong{display:block;color:var(--accent);font:800 2rem 'Barlow Condensed'}
     .biz-metric span{color:var(--muted);font-size:.88rem}
-    .biz-detail{grid-column:1/-1;min-height:64px;padding:15px 18px;border-left:3px solid var(--violet);border-radius:0 12px 12px 0;background:#fffaf3;color:#68564d}
-    .biz-footer{padding:28px 5%;background:var(--violet-dark);color:#f0dfd4;text-align:center}
-    .biz-footer a{color:var(--lime);font-weight:700}
+    .biz-detail{grid-column:1/-1;min-height:64px;padding:15px 18px;border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:#fffaf3;color:#68564d}
+    .biz-footer{padding:28px 5%;background:var(--brand-dark);color:#f0dfd4;text-align:center}
+    .biz-footer a{color:var(--accent-2);font-weight:700}
     @media(max-width:1024px){.biz-orbit{right:-320px;opacity:.2}}
     @media(max-width:800px){.biz-grid{grid-template-columns:1fr 1fr}.biz-section-head{align-items:flex-start;flex-direction:column}.biz-band{grid-template-columns:1fr}.biz-slide{grid-template-columns:1fr}}
     @media(max-width:560px){.biz-nav nav a:not(.btn){display:none}.biz-grid{grid-template-columns:1fr}.biz-card{min-height:unset}.biz-orbit{width:150px;height:150px;top:18%}.biz-orbit span{width:80px;height:80px;font-size:2rem}.biz-band{padding:24px}.biz-hero{padding-bottom:76px}}
@@ -100,7 +115,7 @@
     .biz-section-head { margin-bottom: 36px; }
     .biz-section-head p {
       padding: 14px 0 14px 18px;
-      border-left: 2px solid var(--violet);
+      border-left: 2px solid var(--accent);
     }
     .biz-card {
       position: relative;
@@ -145,7 +160,7 @@
 </head>
 <body>
   <header class="biz-nav">
-    <b>BizBud<span style="color:var(--violet)">.</span></b>
+    <b>BizBud<span style="color:var(--accent)">.</span></b>
     <nav aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#enfoque">Enfoque</a><a class="btn" href="#contacto">Hablemos</a></nav>
   </header>
   <main>

@@ -6,22 +6,35 @@
   <meta name="description" content="Landing de ejemplo para un estudio creativo.">
   <title>Sur Estudio | Ideas que toman forma</title>
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="editor.css">
+  <script src="editor.js" defer></script>
   <style>
-    :root{--coral:#c95038;--navy:#38282a;--cream:#fff6e8;--mint:#edc789}
-    body{background:var(--cream);color:var(--navy)}
+    /* Colores principales: cambiá estos valores */
+    :root{
+      --bg:#fff6e8;
+      --surface:#fff9f2;
+      --text:#38282a;
+      --muted:#74665c;
+      --accent:#c95038;
+      --accent-2:#edc789;
+      --line:#e4d7c6;
+      --radius:22px;
+      --hero-bg:#edc789;
+    }
+    body{background:var(--bg);color:var(--text)}
     .sur-nav{position:absolute;inset:0 0 auto;padding:20px max(5%,calc((100% - 1120px)/2));background:transparent}
-    .sur-nav b{font-size:1.55rem}.sur-nav b span{color:var(--coral)}
-    .sur-nav a{color:var(--navy);text-decoration:none}
+    .sur-nav b{font-size:1.55rem}.sur-nav b span{color:var(--accent)}
+    .sur-nav a{color:var(--text);text-decoration:none}
     .sur-nav .btn{color:#fff}
-    .sur-hero{position:relative;min-height:690px;overflow:hidden;padding:145px max(6%,calc((100% - 1120px)/2)) 90px;background:var(--mint)}
+    .sur-hero{position:relative;min-height:690px;overflow:hidden;padding:145px max(6%,calc((100% - 1120px)/2)) 90px;background:var(--accent-2)}
     .sur-hero:before{content:"";position:absolute;width:480px;height:480px;right:-90px;top:80px;border-radius:49% 51% 45% 55%;background:#f3b968;transform:rotate(-18deg)}
     .sur-hero:after{content:"";position:absolute;width:310px;height:400px;right:9%;top:19%;border-radius:48% 52% 12px 12px;background:linear-gradient(145deg,#e9784e,#b94a40);transform:rotate(8deg);box-shadow:28px 30px 0 #38282a}
     .sur-copy{position:relative;z-index:1;max-width:680px}
     .sur-label{color:#765129;font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
     .sur-hero h1{max-width:680px;margin:20px 0;font-size:clamp(58px,9vw,108px);line-height:.88;letter-spacing:-.03em}
-    .sur-hero h1 span{color:var(--coral)}
+    .sur-hero h1 span{color:var(--accent)}
     .sur-hero p{max-width:460px;margin-bottom:28px;color:#594b3d;font-size:1.15rem}
-    .sur-hero .btn{background:var(--navy)}
+    .sur-hero .btn{background:var(--text)}
     .sur-note{position:absolute;z-index:2;right:12%;bottom:10%;width:155px;height:155px;display:grid;place-items:center;border:1px solid #fff9;border-radius:50%;background:#fff8;font:800 1rem Barlow;text-align:center;transform:rotate(8deg)}
     .sur-section{max-width:1160px;margin:auto;padding-top:90px;padding-bottom:90px}
     .sur-title{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px}
@@ -30,14 +43,14 @@
     .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .work-card{min-height:260px;padding:24px;border-radius:22px;background:#fff;box-shadow:0 12px 32px #17243a0d;transition:transform .2s,box-shadow .2s}
     .work-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px #17243a18}
-    .work-card strong{display:block;color:var(--coral);font:800 3.2rem 'Barlow Condensed'}
+    .work-card strong{display:block;color:var(--accent);font:800 3.2rem 'Barlow Condensed'}
     .work-card h3{margin:28px 0 8px;font-size:1.8rem}
     .work-card p{color:#74665c}
-    .sur-contact{position:relative;overflow:hidden;padding:clamp(30px,6vw,70px);border-radius:30px;background:var(--navy);color:#fff}
+    .sur-contact{position:relative;overflow:hidden;padding:clamp(30px,6vw,70px);border-radius:30px;background:var(--text);color:#fff}
     .sur-contact:after{content:"";position:absolute;width:240px;height:240px;right:-65px;top:-85px;border:1px solid #ffffff3b;border-radius:50%;box-shadow:0 0 0 28px #ffffff0a,0 0 0 57px #ffffff08}
     .sur-contact h2{position:relative;z-index:1;max-width:660px;margin-bottom:14px;font-size:clamp(42px,7vw,72px)}
     .sur-contact p{position:relative;z-index:1;max-width:500px;margin-bottom:24px;color:#d9e3ed}
-    .sur-contact .btn{position:relative;z-index:1;background:var(--coral)}
+    .sur-contact .btn{position:relative;z-index:1;background:var(--accent)}
     .project-form{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:700px}
     .project-form label{display:grid;gap:6px;color:#f5ded1;font-size:.88rem;font-weight:700}
     .project-form select,.project-form textarea{width:100%;padding:12px 14px;border:1px solid #ffffff3b;border-radius:12px;background:#fff9f2;color:#38282a;font:inherit}
@@ -59,7 +72,7 @@
     .sur-title h2 { line-height: .96; }
     .sur-title p {
       padding-left: 18px;
-      border-left: 2px solid var(--coral);
+      border-left: 2px solid var(--accent);
     }
     .work-grid { gap: 20px; }
     .work-card {
@@ -128,7 +141,7 @@
       const kind=document.getElementById("project-kind").value;
       const goal=document.getElementById("project-goal").value.trim();
       const message=`Hola Manuel, me interesa: ${kind}.${goal?` Mi idea: ${goal}`:""}`;
-      const whatsappUrl=`https://wa.me/5492234371575?text=${encodeURIComponent(message)}`;
+      const whatsappUrl=`https://wa.me/${window.__demoWhatsAppNumber || "5492234371575"}?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl,"_blank","noopener,noreferrer");
       document.getElementById("project-feedback").textContent="Se abrió WhatsApp con el mensaje preparado. Podés revisarlo y enviarlo cuando quieras.";
     });

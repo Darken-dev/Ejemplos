@@ -7,23 +7,34 @@
   <meta name="theme-color" content="#342428">
   <title>Catálogo Demo | Ejemplo de tienda</title>
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="editor.css">
+  <script src="editor.js" defer></script>
   <style>
+    /* Colores principales: cambiá estos valores */
     :root {
-      --catalog-ink: #342720;
-      --catalog-muted: #77685c;
-      --catalog-blue: #9c543b;
-      --catalog-blue-dark: #342428;
-      --catalog-line: #e6ddd1;
-      --catalog-bg: #f8f2e8;
-      --catalog-accent: #dba15d;
+      --bg: #f8f2e8;
+      --surface: #fffaf3;
+      --text: #342720;
+      --muted: #77685c;
+      --accent: #9c543b;
+      --accent-2: #dba15d;
+      --line: #e6ddd1;
+      --radius: 18px;
+      --hero-bg: #342428;
+      --brand-dark: #342428;
+      --catalog-ink: var(--text);
+      --catalog-muted: var(--muted);
+      --catalog-line: var(--line);
+      --catalog-bg: var(--bg);
+      --catalog-accent: var(--accent-2);
     }
 
-    body { background: var(--catalog-bg); color: var(--catalog-ink); }
+    body { background: var(--bg); color: var(--text); }
     .catalog-header {
       position: relative;
       overflow: hidden;
       padding: 18px max(5%, calc((100% - 1180px) / 2)) 62px;
-      background: var(--catalog-blue-dark);
+      background: var(--brand-dark);
       color: #fff;
     }
     .catalog-header::before {
@@ -57,7 +68,7 @@
     .catalog-top-links { position: static; z-index: auto; padding: 0; display: flex; align-items: center; gap: 18px; background: transparent; backdrop-filter: none; }
     .catalog-top-links a { margin-left: 0; }
     .catalog-top-links a:not(.btn) { color: #f2dfcf; font-weight: 700; text-decoration: none; }
-    .catalog-top-links .btn { background: var(--catalog-blue); }
+    .catalog-top-links .btn { background: var(--accent); }
     .catalog-top-links .btn:hover { background: #b96545; }
     .catalog-hero-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: center; gap: 30px; }
     .catalog-intro { position: relative; z-index: 1; max-width: 720px; padding: 20px 0 16px; }
@@ -143,7 +154,7 @@
     }
     .catalog-highlight { padding: 18px 22px; }
     .catalog-highlight + .catalog-highlight { border-left: 1px solid var(--catalog-line); }
-    .catalog-highlight strong { display: block; color: var(--catalog-blue-dark); font: 800 1.45rem 'Barlow Condensed', sans-serif; }
+    .catalog-highlight strong { display: block; color: var(--brand-dark); font: 800 1.45rem 'Barlow Condensed', sans-serif; }
     .catalog-highlight span { color: var(--catalog-muted); font-size: .82rem; }
     .catalog-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
     .catalog-toolbar h2 { font-size: clamp(30px, 4vw, 42px); }
@@ -190,8 +201,8 @@
       text-align: left;
       transition: background .2s, color .2s, transform .2s;
     }
-    .category-button:hover, .subcat-button:hover { background: #f8ece0; color: var(--catalog-blue-dark); }
-    .category-button[aria-pressed="true"], .subcat-button[aria-pressed="true"] { background: #fff; color: var(--catalog-blue-dark); box-shadow: 0 4px 12px #3424281c; transform: scale(1.05); }
+    .category-button:hover, .subcat-button:hover { background: #f8ece0; color: var(--brand-dark); }
+    .category-button[aria-pressed="true"], .subcat-button[aria-pressed="true"] { background: #fff; color: var(--brand-dark); box-shadow: 0 4px 12px #3424281c; transform: scale(1.05); }
     .subcategory-block { margin-top: 24px; border-top: 1px solid var(--catalog-line); padding-top: 18px; }
     .subcategory-block h4 { margin-bottom: 9px; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
     .subcategory-list { display: grid; gap: 4px; }
@@ -208,12 +219,12 @@
     .product-art { display: grid; place-items: center; height: 190px; overflow: hidden; background: linear-gradient(140deg, #e1efeb, #d9e8e9); }
     .product-art svg { width: min(88%, 260px); height: 150px; }
     .product-info { padding: 16px; }
-    .product-category { color: var(--catalog-blue); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .product-category { color: var(--accent); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
     .product-info h4 { margin: 6px 0; font: 700 1.15rem Barlow, sans-serif; line-height: 1.3; }
     .product-info p { min-height: 42px; color: var(--catalog-muted); font-size: .9rem; }
     .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
     .product-price { color: var(--catalog-ink); font-size: .9rem; font-weight: 700; }
-    .product-link { padding: 8px 12px; border-radius: 99px; background: var(--catalog-blue); color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .product-link { padding: 8px 12px; border-radius: 99px; background: var(--accent); color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
     .product-link:hover { background: #753b32; }
     .catalog-empty { grid-column: 1 / -1; padding: 52px 18px; color: var(--catalog-muted); text-align: center; }
     .catalog-empty strong { display: block; margin-bottom: 7px; color: var(--catalog-ink); font-size: 1.2rem; }
@@ -230,9 +241,9 @@
     }
     .catalog-contact h2 { margin-bottom: 4px; font-size: 1.65rem; }
     .catalog-contact p { color: var(--catalog-muted); }
-    .catalog-contact .btn { flex-shrink: 0; background: var(--catalog-blue-dark); }
+    .catalog-contact .btn { flex-shrink: 0; background: var(--brand-dark); }
     .catalog-note { padding: 12px 14px; border-left: 3px solid var(--catalog-accent); border-radius: 0 9px 9px 0; background: #fbf8f1; }
-    .catalog-footer { padding: 24px; background: var(--catalog-blue-dark); color: #d4dfeb; text-align: center; }
+    .catalog-footer { padding: 24px; background: var(--brand-dark); color: #d4dfeb; text-align: center; }
     .catalog-footer a { color: #fff; font-weight: 700; }
     @media (max-width: 760px) {
       .catalog-header { padding: 12px 6% 34px; }
@@ -296,7 +307,7 @@
       padding: 0 2px 16px;
       border-bottom: 1px solid #dfd1c2;
     }
-    .catalog-toolbar h2 { color: var(--catalog-blue-dark); }
+    .catalog-toolbar h2 { color: var(--brand-dark); }
     .catalog-layout { align-items: start; gap: 20px; }
     .catalog-sidebar,
     .catalog-products {
@@ -370,7 +381,7 @@
     </div>
     <div class="catalog-toolbar">
       <div>
-        <p class="catalog-kicker" style="color:var(--catalog-blue)">EXPLORÁ LA COLECCIÓN</p>
+        <p class="catalog-kicker" style="color:var(--accent)">EXPLORÁ LA COLECCIÓN</p>
         <h2>Todo empieza por mirar.</h2>
         <p>Filtrá por categoría o buscá un producto.</p>
       </div>
@@ -421,6 +432,7 @@
 
   <footer class="catalog-footer">Ejemplo de catálogo web · <a href="mailto:manuel.f.tolomeo@gmail.com">Manuel Fernandez Tolomeo</a></footer>
   <script>
+    // EDITÁ ACÁ: categorías y productos de ejemplo.
     const categories = [
       { id: "categoria-1", name: "Categoría 1", types: ["Todos", "Variante 1", "Variante 2", "Variante 3"] },
       { id: "categoria-2", name: "Categoría 2", types: ["Todos", "Variante 1", "Variante 2", "Variante 3"] },
@@ -510,7 +522,7 @@
       productGrid.innerHTML = filtered.map((product) => {
         const categoryName = categories.find((category) => category.id === product.category).name;
         const message = encodeURIComponent(`Hola Manuel, vi ${product.name} de la ${categoryName} en tu catálogo de ejemplo y quisiera consultar.`);
-        const contactUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+        const contactUrl = `https://wa.me/${window.__demoWhatsAppNumber || whatsappNumber}?text=${message}`;
         return `<article class="product-card">
           <div class="product-art">${makeProductArt(product.visual)}</div>
           <div class="product-info">

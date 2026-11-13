@@ -6,9 +6,27 @@
   <meta name="description" content="Ejemplo de tienda online con productos, categorías y carrito interactivo.">
   <title>Objetos de Todos los Días | Tienda</title>
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="editor.css">
+  <script src="editor.js" defer></script>
   <style>
-    :root{--shop-ink:#30251f;--shop-paper:#fbf4e8;--shop-orange:#c95735;--shop-muted:#74665c;--shop-green:#5e7045}
-    body{background:var(--shop-paper);color:var(--shop-ink)}
+    /* Colores principales: cambiá estos valores */
+    :root{
+      --bg:#fbf4e8;
+      --surface:#fffdf9;
+      --text:#30251f;
+      --muted:#74665c;
+      --accent:#c95735;
+      --accent-2:#5e7045;
+      --line:#e4dfd4;
+      --radius:19px;
+      --hero-bg:#f0d7b6;
+      --shop-ink:var(--text);
+      --shop-paper:var(--bg);
+      --shop-orange:var(--accent);
+      --shop-muted:var(--muted);
+      --shop-green:var(--accent-2);
+    }
+    body{background:var(--bg);color:var(--text)}
     .shop-header{padding:0 max(5%,calc((100% - 1180px)/2));background:#f6f3eb}
     .shop-nav{position:static;padding:18px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;background:transparent;backdrop-filter:none}
     .shop-mark{font:800 1.3rem 'Barlow Condensed';letter-spacing:.04em}
@@ -154,6 +172,7 @@
   </aside>
   <footer class="shop-footer">Objetos de Todos los Días · <a href="index.html">Volver a los ejemplos</a></footer>
   <script>
+    // EDITÁ ACÁ: productos de ejemplo.
     const products=[
       {name:"Vasija Terracota",category:"Decoración",price:24000,emoji:"🏺",color:"#eed8c7",description:"Una forma cálida para tus flores favoritas."},
       {name:"Lámpara Nube",category:"Iluminación",price:48500,emoji:"💡",color:"#f5e8bd",description:"Luz suave para leer, descansar y crear."},

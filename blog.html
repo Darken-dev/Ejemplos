@@ -6,10 +6,26 @@
   <meta name="description" content="Ejemplo de revista digital con notas y filtros por tema.">
   <title>Papel &amp; Punto | Ideas para entender lo que pasa</title>
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="editor.css">
+  <script src="editor.js" defer></script>
   <style>
-    :root{--editorial:#bf3927;--paper:#f6f1e8;--ink:#1f1e1b;--muted:#77736d}
-    body{background:var(--paper);color:var(--ink)}
-    .masthead{padding:0 max(5%,calc((100% - 1120px)/2));background:var(--paper)}
+    /* Colores principales: cambiá estos valores */
+    :root{
+      --bg:#f6f1e8;
+      --surface:#fff;
+      --text:#1f1e1b;
+      --muted:#77736d;
+      --accent:#bf3927;
+      --accent-2:#d39743;
+      --line:#d7d0c4;
+      --radius:18px;
+      --hero-bg:#342421;
+      --editorial:var(--accent);
+      --paper:var(--bg);
+      --ink:var(--text);
+    }
+    body{background:var(--bg);color:var(--text)}
+    .masthead{padding:0 max(5%,calc((100% - 1120px)/2));background:var(--bg)}
     .masthead nav{position:static;padding:13px 0;background:transparent;backdrop-filter:none;border-bottom:1px solid #d7d0c4}
     .masthead nav a{margin:0;color:var(--ink);text-decoration:none;font-size:.88rem}
     .masthead nav .brand{font:800 1.2rem 'Barlow Condensed';letter-spacing:.08em}
@@ -122,6 +138,7 @@
   </dialog>
   <footer class="editorial-footer">Papel & Punto · <a href="index.html">Volver a los ejemplos</a></footer>
   <script>
+    // EDITÁ ACÁ: notas de ejemplo.
     const stories=[
       {category:"Economía",title:"El comercio local se reinventa",description:"Pequeños negocios descubren nuevas formas de llegar a sus comunidades.",time:"4 min"},
       {category:"Cultura",title:"Un festival para descubrir nuevas voces",description:"Artistas independientes abren sus espacios a una ciudad curiosa.",time:"6 min"},

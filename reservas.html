@@ -6,10 +6,27 @@
   <meta name="description" content="Demostración de reserva de turnos en un salón de belleza.">
   <title>Casa Lúa | Reservá tu momento</title>
   <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="editor.css">
+  <script src="editor.js" defer></script>
   <style>
-    :root{--plum:#49302c;--rose:#c76557;--blush:#f5dfcb;--sage:#ece8d6}
-    body{background:#fff8ee;color:var(--plum)}
-    .lua-nav{padding:16px max(5%,calc((100% - 1120px)/2));background:#fff8ee}
+    /* Colores principales: cambiá estos valores */
+    :root{
+      --bg:#fff8ee;
+      --surface:#fff;
+      --text:#49302c;
+      --muted:#786f79;
+      --accent:#c76557;
+      --accent-2:#e5ac69;
+      --line:#eadfda;
+      --radius:26px;
+      --hero-bg:#f5dfcb;
+      --blush:#f5dfcb;
+      --sage:#ece8d6;
+      --plum:var(--text);
+      --rose:var(--accent);
+    }
+    body{background:var(--bg);color:var(--text)}
+    .lua-nav{padding:16px max(5%,calc((100% - 1120px)/2));background:var(--bg)}
     .lua-nav b{font-size:1.55rem}.lua-nav b span{color:var(--rose)}
     .lua-nav a{text-decoration:none}.lua-nav .btn{background:var(--plum)}
     .booking-hero{position:relative;overflow:hidden;padding:70px max(6%,calc((100% - 1120px)/2)) 82px;background:var(--blush)}
@@ -102,9 +119,10 @@
   </main>
   <footer class="booking-footer">Casa Lúa · <a href="index.html">Volver a los ejemplos</a></footer>
   <script>
-    const bookingChoices={date:null,time:null};
+    // EDITÁ ACÁ: días y horarios disponibles en esta demostración.
     const dateOptions=["Lun 16","Mar 17","Mié 18","Jue 19","Vie 20"];
     const timeOptions=["09:00","10:30","12:00","15:00","16:30","18:00"];
+    const bookingChoices={date:null,time:null};
     function updateBookingProgress(){
       const completed=[bookingChoices.date,bookingChoices.time].filter(Boolean).length;
       const percent=completed*50;
